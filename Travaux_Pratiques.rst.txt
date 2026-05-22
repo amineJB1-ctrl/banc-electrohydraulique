@@ -1,0 +1,3438 @@
+Travaux Pratiques
+=================
+
+.. admonition:: Avant de commencer — Consignes générales
+
+   Ces travaux pratiques s'effectuent sur le banc électro-hydraulique **TDS DIDACTIC**.
+   Chaque TP doit être réalisé en respectant strictement la fiche de sécurité présentée
+   en début de séance. Aucune manipulation sous pression ne doit avoir lieu sans la
+   validation préalable de l'enseignant.
+
+----
+
+TP 1 : Commande d'un vérin double effet par distributeur hydraulique 4/2 à commande manuelle
+---------------------------------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter les **lunettes de protection** et les **gants anti-huile** pendant toute la séance
+   - ✅ Vérifier l'absence de **fuite d'huile** sur tous les raccords avant la mise sous pression
+   - ✅ S'assurer que le **disjoncteur différentiel** du banc est enclenché
+   - ✅ Ne jamais dépasser **1,6 MPa (16 bar)** — pression maximale du banc TDS DIDACTIC
+   - ✅ En cas d'anomalie (fuite, bruit anormal, odeur), **couper immédiatement** l'alimentation
+   - ✅ Ne jamais déconnecter un tuyau sous pression — toujours arrêter la pompe d'abord
+   - ✅ En cas d'urgence : appuyer sur le **bouton d'arrêt d'urgence** (champignon rouge)
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce travail pratique constitue l'introduction aux systèmes hydrauliques. Il porte sur
+l'étude du fonctionnement d'un **vérin double effet** commandé par un **distributeur
+hydraulique 4/2 à commande manuelle**.
+
+Ce premier TP permet de poser les bases de l'hydraulique industrielle en observant
+directement la relation entre la position du distributeur, le sens de circulation
+du fluide et le mouvement du piston. Il constitue le fondement nécessaire à la
+compréhension des travaux pratiques suivants, où la commande manuelle sera remplacée
+par une commande électrique pilotée par automate programmable (API).
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Comprendre le principe de fonctionnement d'un vérin double effet
+- Identifier les 4 orifices d'un distributeur 4/2 (P, T, A, B) et leur rôle
+- Observer et interpréter le mouvement de sortie et de rentrée du vérin
+- Expliquer la relation entre la pression du fluide et la force développée
+- Réaliser un schéma hydraulique normalisé dans **FluidSIM** et le simuler
+- Lire et interpréter les indications d'un manomètre en cours de fonctionnement
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
++---------------------------------------+-----------------------------------------------+
+| Composant                             | Rôle dans le circuit                          |
++=======================================+===============================================+
+| Pompe hydraulique                     | Génération du débit d'huile sous pression     |
++---------------------------------------+-----------------------------------------------+
+| Réservoir d'huile hydraulique         | Stockage et retour du fluide                  |
++---------------------------------------+-----------------------------------------------+
+| Distributeur 4/2 à commande manuelle  | Orientation du fluide vers le vérin           |
++---------------------------------------+-----------------------------------------------+
+| Vérin double effet                    | Conversion de l'énergie hydraulique en        |
+|                                       | mouvement mécanique de translation            |
++---------------------------------------+-----------------------------------------------+
+| Manomètre                             | Mesure et affichage de la pression du fluide  |
++---------------------------------------+-----------------------------------------------+
+| Tuyaux et raccords de connexion       | Liaisons hydrauliques entre les composants    |
++---------------------------------------+-----------------------------------------------+
+
+.. note::
+
+   Le distributeur **4/2** est caractérisé par :
+
+   - **4 orifices** : P (pression — alimentation pompe), T (tank — retour réservoir),
+     A et B (sorties vers les deux chambres du vérin)
+   - **2 positions** : chaque position dirige le fluide dans un sens de déplacement
+     différent du piston
+
+----
+
+4. Schéma du circuit hydraulique
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp1.png
+   :align: center
+   :width: 80%
+
+   Schéma hydraulique complet : pompe, réservoir, manomètre, distributeur 4/2
+   à commande manuelle et vérin double effet.
+
+**Description du schéma :**
+
+- La **pompe** aspire l'huile dans le **réservoir** et la refoule sous pression
+- Le **manomètre** est placé sur la ligne de pression principale entre la pompe et le distributeur
+- Le **distributeur 4/2** reçoit l'huile sous pression sur l'orifice P et la dirige
+  vers l'orifice A ou B selon sa position
+- Les orifices **A et B** sont reliés aux deux chambres du **vérin double effet**
+- L'huile de la chambre non alimentée retourne au réservoir via l'orifice **T**
+
+----
+
+5. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Ouvrir le logiciel **FluidSIM** et créer un nouveau schéma hydraulique.
+2. Placer les composants : pompe, réservoir, distributeur 4/2 à commande manuelle et vérin double effet.
+3. Ajouter un **manomètre** sur la ligne de pression principale (entre pompe et orifice P).
+4. Connecter la sortie de la pompe à l'orifice **P** du distributeur.
+5. Relier l'orifice **A** à la chambre arrière (fond) du vérin.
+6. Relier l'orifice **B** à la chambre avant (côté tige) du vérin.
+7. Connecter l'orifice **T** au réservoir.
+8. Vérifier la cohérence du schéma et lancer la simulation FluidSIM.
+9. Actionner le distributeur en **position 1** → observer la sortie de la tige.
+10. Relever la pression au manomètre en cours de mouvement.
+11. Actionner le distributeur en **position 2** → observer la rentrée de la tige.
+12. Relever la pression en rentrée, puis en fin de course (vérin en butée).
+
+----
+
+6. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sortie du vérin — Distributeur en position 1
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/verin_sortie1.png
+   :align: center
+   :width: 80%
+
+   Distributeur en position 1 : l'huile sous pression est dirigée vers la chambre
+   fond (orifice A). Le piston se déplace vers l'avant — la tige **sort**.
+   L'huile de la chambre tige retourne au réservoir via B et T.
+
+Rentrée du vérin — Distributeur en position 2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/verin_rentree1.png
+   :align: center
+   :width: 80%
+
+   Distributeur en position 2 : l'huile est dirigée vers la chambre tige (orifice B).
+   Le piston recule — la tige **rentre**. L'huile de la chambre fond retourne via A et T.
+
+----
+
+7. Interprétation des résultats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Transformation de l'énergie hydraulique en énergie mécanique :**
+
+Le vérin double effet est un **convertisseur d'énergie** qui transforme l'énergie
+hydraulique (pression × débit) en énergie mécanique de translation (force × déplacement).
+La force développée est proportionnelle à la pression et à la surface du piston :
+
+.. math::
+
+   F = P \times S
+
+   \text{avec : } F \text{ = Force (N)}, \quad P \text{ = Pression (Pa)}, \quad S \text{ = Section piston (m}^2\text{)}
+
+**Comportement de la pression selon la phase :**
+
++----------------------------------+-------------------------------------------+
+| Phase du cycle                   | Comportement de la pression               |
++==================================+===========================================+
+| Vérin en mouvement (sortie)      | Pression modérée — débit en circulation   |
++----------------------------------+-------------------------------------------+
+| Vérin en mouvement (rentrée)     | Pression légèrement plus élevée           |
+|                                  | (surface annulaire côté tige plus petite) |
++----------------------------------+-------------------------------------------+
+| Vérin en butée fin de course     | Pression maximale — piston bloqué         |
++----------------------------------+-------------------------------------------+
+| Distributeur en position neutre  | Pression nulle ou minimale                |
++----------------------------------+-------------------------------------------+
+
+.. note::
+
+   La pression de rentrée est légèrement supérieure à la pression de sortie pour un
+   effort identique : la **surface effective côté tige** est réduite par la section
+   de la tige elle-même. Pour la même force, une pression plus élevée est nécessaire.
+
+----
+
+8. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+   **Q1.** En observant le manomètre, quelle pression avez-vous relevée lors de la
+   **sortie** du vérin ? Et lors de la **rentrée** ? Expliquez pourquoi ces deux
+   valeurs sont différentes.
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+
+   **Q2.** Calculez la **force théorique** développée par le vérin en sortie si la
+   pression mesurée est P = 4 bar et que la surface du piston est S = 4,91 cm².
+   *(Rappel : 1 bar = 10⁵ Pa ; 1 cm² = 10⁻⁴ m²)*
+
+   .. line-block::
+
+      Calcul : F = P × S = _______ × _______ = _______ N
+
+   **Q3.** Dans une application industrielle réelle, pourquoi préfèrerait-on remplacer
+   ce distributeur à commande manuelle par un électrodistributeur commandé par API ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+----
+
+9. Conclusion
+~~~~~~~~~~~~~
+
+Ce premier TP a établi les bases de l'hydraulique industrielle. Les compétences acquises :
+
+- Identifier les 4 orifices d'un distributeur 4/2 et leur rôle dans le circuit
+- Tracer un schéma hydraulique normalisé dans FluidSIM et le simuler
+- Relier la position du distributeur, la circulation du fluide et le sens du mouvement
+- Lire les variations de pression au manomètre et les interpréter physiquement
+- Appliquer la formule F = P × S pour calculer la force d'un vérin hydraulique
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP1.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+----
+
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp1.mp4">
+    </video>
+
+----
+
+TP 2 : Réglage de la vitesse d'un vérin double effet par régulateur de débit
+-----------------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter **lunettes** et **gants anti-huile** pendant toute la séance
+   - ✅ Vérifier que la **tension d'alimentation est coupée** avant tout câblage électrique
+   - ✅ Ne jamais alimenter une bobine sans avoir vérifié que les raccords hydrauliques sont serrés
+   - ✅ Le circuit électrique fonctionne en **24 V DC** — respecter la polarité des branchements
+   - ✅ Ne jamais appuyer sur le bouton poussoir si un tuyau est déconnecté ou dénudé
+   - ✅ En cas de fuite hydraulique : relâcher immédiatement le bouton, stopper la pompe
+   - ✅ En cas d'urgence : **arrêt d'urgence** (champignon rouge) ou couper le disjoncteur
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce TP porte sur le réglage de la vitesse d'un **vérin double effet** dans un circuit
+**électro-hydraulique** commandé par un **électrodistributeur 4/2**.
+
+Par rapport au TP 1 (distributeur manuel), deux nouveautés fondamentales sont introduites :
+
+- La **commande électrique** par bouton poussoir 24 V DC — premier pas vers l'automatisation
+- Le **régulateur de débit avec clapet anti-retour** (vanne de régulation de vitesse) —
+  contrôle précis de la vitesse de déplacement du vérin
+
+L'ensemble du système est piloté par un **automate Delta DVP-12SE** et supervisé en
+temps réel grâce à une **interface graphique DOPSoft** installée sur le PC.
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Câbler un bouton poussoir NO sur une bobine d'électrodistributeur 4/2 (24 V DC)
+- Expliquer le principe de la régulation de vitesse **meter-out**
+- Comparer la vitesse de sortie (régulée) et la vitesse de rentrée (libre)
+- Établir la relation v = Q / S entre débit, section et vitesse du piston
+- Analyser le comportement de la pression avec et sans régulateur
+- **Concevoir une interface de supervision DOPSoft** liée au programme LADDER
+- Visualiser en temps réel l'état des entrées/sorties via l'interface graphique
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
++-----------------------------------------------------------+----------------------------------------------+
+| Composant                                                 | Caractéristiques / Rôle                      |
++===========================================================+==============================================+
+| Pompe hydraulique                                         | Génération du débit d'huile sous pression    |
++-----------------------------------------------------------+----------------------------------------------+
+| Réservoir d'huile hydraulique                             | Stockage et retour du fluide                 |
++-----------------------------------------------------------+----------------------------------------------+
+| Électrodistributeur 4/2 monostable                        | Commande électrique du sens du vérin         |
+|                                                           | (rappel par ressort)                         |
++-----------------------------------------------------------+----------------------------------------------+
+| Vérin double effet                                        | Conversion énergie hydraulique → translation |
++-----------------------------------------------------------+----------------------------------------------+
+| Régulateur de débit avec clapet anti-retour               | Débit de consigne : **Q = 1 L/min**          |
+| (vanne de régulation de vitesse)                          | Montage meter-out — contrôle vitesse         |
++-----------------------------------------------------------+----------------------------------------------+
+| Manomètre                                                 | Mesure et affichage de la pression           |
++-----------------------------------------------------------+----------------------------------------------+
+| Automate Delta DVP-12SE                                   | Pilotage de l'électrovanne (Ladder ISPSoft)  |
++-----------------------------------------------------------+----------------------------------------------+
+| PC avec ISPSoft + DOPSoft                                 | Programmation API + supervision graphique    |
++-----------------------------------------------------------+----------------------------------------------+
+| Alimentation électrique                                   | Tension : **24 V DC**                        |
++-----------------------------------------------------------+----------------------------------------------+
+| Bouton poussoir NO                                        | Commande manuelle de l'électrodistributeur   |
++-----------------------------------------------------------+----------------------------------------------+
+| Tuyaux et raccords de connexion                           | Liaisons hydrauliques                        |
++-----------------------------------------------------------+----------------------------------------------+
+
+.. note::
+
+   Le **régulateur de débit avec clapet anti-retour** est réglé à **Q = 1 L/min**.
+   Il agit uniquement dans le sens de sortie (meter-out). Dans le sens inverse,
+   le clapet anti-retour intégré s'ouvre — le retour est libre et rapide.
+
+----
+
+4. Schéma du circuit électro-hydraulique
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp2.png
+   :align: center
+   :width: 80%
+
+   Schéma électro-hydraulique : pompe, réservoir, manomètre, électrodistributeur 4/2
+   monostable, régulateur de débit meter-out (Q = 1 L/min) et vérin double effet.
+
+**Description du schéma :**
+
+- L'électrodistributeur 4/2 monostable est commandé par la bobine Y1 (24 V DC)
+- Le régulateur de débit est placé sur la **ligne de retour** du vérin (meter-out)
+- Le circuit électrique : 24 V → bouton NO → bobine Y1 → 0 V
+
+----
+
+5. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Créer le schéma électro-hydraulique dans **FluidSIM**.
+2. Placer le **régulateur de débit** sur la ligne de retour (entre chambre tige et orifice T).
+3. Régler le débit à **Q = 1 L/min**.
+4. Câbler le circuit électrique : 24 V → bouton NO → bobine Y1 → 0 V.
+5. Charger le programme LADDER dans l'API Delta DVP via ISPSoft.
+6. Lancer l'**interface de supervision DOPSoft** sur le PC.
+7. Appuyer sur le bouton → observer la sortie de la tige à vitesse réduite.
+8. Vérifier que l'interface DOPSoft affiche bien le changement d'état du vérin et de Y0.
+9. Relever la pression en cours de mouvement et en fin de course.
+10. Relâcher le bouton → observer le retour rapide (clapet anti-retour ouvert).
+11. Comparer vitesse de sortie (régulée) et vitesse de rentrée (libre).
+
+----
+
+6. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Sortie régulée — Q = 1 L/min
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/vitesse_rapide2.png
+   :align: center
+   :width: 80%
+
+   Bouton appuyé : la bobine est alimentée en 24 V DC. Le régulateur limite le débit
+   sortant de la chambre tige à 1 L/min → vitesse de sortie lente et contrôlée.
+
+Retour libre — Clapet anti-retour ouvert
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. figure:: images/vitesse_lente2.png
+   :align: center
+   :width: 80%
+
+   Bouton relâché : le ressort ramène le distributeur. L'huile alimente la chambre tige.
+   Le clapet anti-retour s'ouvre → retour **rapide et non bridé**.
+
+----
+
+7. Interprétation des résultats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Relation débit — vitesse du vérin :**
+
+.. math::
+
+   v = \frac{Q}{S}
+
+   \text{avec : } v \text{ = vitesse piston (m/s)}, \quad Q \text{ = débit (m}^3\text{/s)}, \quad S \text{ = section piston (m}^2\text{)}
+
+**Comportement asymétrique du régulateur :**
+
++---------------------------+--------------------------------------------------+
+| Sens de circulation       | Comportement du régulateur                       |
++===========================+==================================================+
+| Sortie du vérin           | Débit limité à Q = 1 L/min → vitesse lente       |
++---------------------------+--------------------------------------------------+
+| Rentrée du vérin          | Clapet anti-retour ouvert → passage libre        |
++---------------------------+--------------------------------------------------+
+
+**Comportement de la pression :**
+
++--------------------------------------+--------------------------------------------+
+| Phase                                | Pression                                   |
++======================================+============================================+
+| Sortie régulée                       | Élevée — restriction du régulateur         |
++--------------------------------------+--------------------------------------------+
+| Rentrée libre                        | Modérée — passage libre                    |
++--------------------------------------+--------------------------------------------+
+| En butée (fin de course)             | Maximale — piston bloqué                   |
++--------------------------------------+--------------------------------------------+
+
+----
+
+8. Programme LADDER (ISPSoft)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Correspondance API :**
+
++-----+------+--------------------------------------------------+
+| X   | Nom  | Rôle                                             |
++=====+======+==================================================+
+| X7  | BP   | Bouton poussoir de commande (NO)                 |
++-----+------+--------------------------------------------------+
+
++-----+------+--------------------------------------------------+
+| Y   | Nom  | Rôle                                             |
++=====+======+==================================================+
+| Y0  | Y1   | Commande bobine électrodistributeur (sortie)     |
++-----+------+--------------------------------------------------+
+
+**Network 1 — Commande directe :**
+
+.. code-block:: text
+
+   X7 ──┤ ├──────────────────────────────── ( ) Y0
+
+.. note::
+
+   La sortie Y0 est une **bobine normale** (non mémorisée) : elle suit l'état de X7
+   en temps réel. Le retour du vérin est assuré par le ressort du distributeur
+   monostable sans commande API supplémentaire.
+
+.. figure:: images/ladder_complet2.png
+   :align: center
+   :width: 80%
+
+   Programme LADDER TP 2 : commande directe par bouton X7.
+
+**Tableau d'analyse :**
+
++------------------+----------+-----------------------------------------------+
+| État X7          | État Y0  | Comportement du système                       |
++==================+==========+===============================================+
+| 0 — relâché      | 0        | Distributeur repos — vérin rentre             |
++------------------+----------+-----------------------------------------------+
+| 1 — appuyé       | 1        | Distributeur activé — vérin sort (Q=1 L/min)  |
++------------------+----------+-----------------------------------------------+
+
+----
+
+9. Interface de supervision DOPSoft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour faciliter le suivi du fonctionnement et permettre une visualisation
+intuitive du système, une **interface de supervision graphique** a été
+développée à l'aide du logiciel **DOPSoft** fourni par Delta Electronics.
+Cette interface, exécutée en parallèle du programme LADDER, joue le rôle
+d'une HMI virtuelle sur le PC : elle affiche en temps réel l'état des
+entrées et des sorties de l'automate ainsi que la position du vérin.
+
+Conception de l'interface
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'interface a été créée dans l'environnement DOPSoft. Chaque élément
+graphique (bouton, voyant, indicateur) est associé à une adresse de
+l'automate Delta : le bouton poussoir lit X7, l'indicateur Y0 reflète
+l'état de la sortie, et le voyant « état du vérin » change de couleur
+selon la position attendue.
+
+.. figure:: images/dopsoft_conception_tp2.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft en cours de conception : disposition des éléments graphiques
+   (bouton, voyant, image de l'électrodistributeur et image du vérin).
+
+État initial — Bouton relâché (X7 = 0, Y0 = OFF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand l'opérateur n'appuie pas sur le bouton, l'entrée X7 est à 0 et la
+sortie Y0 reste désactivée. L'interface affiche :
+
+- Le **bouton poussoir** en **rouge** (état repos)
+- L'indicateur Y0 affiche **OFF**
+- Le voyant « vérin rentré » s'allume en **rouge**
+
+.. figure:: images/dopsoft_etat_off_tp2.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft en simulation — état OFF : le bouton est relâché,
+   la sortie Y0 est désactivée et le vérin est en position rentrée.
+
+État actif — Bouton appuyé (X7 = 1, Y0 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dès que l'opérateur appuie sur le bouton, le programme LADDER active la
+sortie Y0 qui alimente la bobine de l'électrodistributeur. L'interface
+DOPSoft se met à jour instantanément :
+
+- Le **bouton poussoir** devient **vert** (appuyé)
+- L'indicateur Y0 affiche **ON**
+- Le voyant « vérin sorti » s'allume en **vert**
+
+.. figure:: images/dopsoft_etat_on_tp2.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft en simulation — état ON : le bouton est appuyé,
+   la sortie Y0 est activée et le vérin sort à la vitesse régulée (Q = 1 L/min).
+
+.. note::
+
+   L'interface DOPSoft fonctionne ici en **mode émulateur**
+   (Delta DOP-107EV Emulator) : elle reproduit le comportement d'une HMI
+   physique sans avoir besoin du matériel correspondant. Cette approche
+   permet à l'étudiant de tester rapidement son programme et son interface
+   avant la mise en service sur le banc réel.
+
+----
+
+10. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+
+   **Q1.** Si l'on réduit le réglage du régulateur de Q = 1 L/min à Q = 0,5 L/min,
+   que va-t-il se passer sur la vitesse de sortie du vérin ? Et sur la pression ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q2.** Le régulateur est monté en **meter-out** (sur la ligne de retour).
+   Quel avantage ce montage offre-t-il par rapport au montage **meter-in** (ligne d'alimentation) ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q3.** Le vérin sort à Q = 1 L/min et S = 4,91 cm². Calculez la vitesse théorique
+   de sortie du piston. *(Rappel : 1 L/min = 1,67 × 10⁻⁵ m³/s)*
+
+   .. line-block::
+
+      Calcul : v = Q / S = _______ / _______ = _______ m/s
+
+   **Q4.** Dans le programme LADDER, pourquoi la sortie Y0 est-elle une **bobine normale**
+   et non une **bobine mémorisée (SET)** ? Quelle différence de comportement cela implique-t-il ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q5.** Quel est l'intérêt d'utiliser une interface DOPSoft en parallèle du programme
+   LADDER pour ce TP ? Citez au moins deux avantages par rapport au mode supervision
+   basique d'ISPSoft.
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+----
+
+11. Conclusion
+~~~~~~~~~~~~~~
+
+Ce TP a permis de maîtriser : la régulation de vitesse meter-out, le câblage d'un
+électrodistributeur par bouton poussoir 24 V DC, la relation v = Q/S, la programmation
+d'une commande directe en LADDER, ainsi que la **conception d'une interface de
+supervision DOPSoft** liée à l'automate Delta DVP. Il constitue le lien entre la
+commande hydraulique manuelle (TP 1) et la commande séquentielle par API et GRAFCET
+qui sera abordée dans les TP suivants.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP2.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+----
+
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp2.mp4">
+    </video>
+
+----
+
+TP 3 : Limitation et contrôle de pression dans un circuit hydraulique
+----------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter **lunettes** et **gants anti-huile** pendant toute la séance
+   - ✅ La soupape de décharge est réglée à **20 bar** — ne jamais tenter de la forcer au-delà
+   - ✅ Ne jamais alimenter simultanément les deux bobines Y1 et Y2 du distributeur 4/3
+   - ✅ Vérifier que le câblage électrique est correct **avant** la mise sous tension
+   - ✅ En cas de montée de pression anormale, couper la pompe immédiatement
+   - ✅ En cas d'urgence : **arrêt d'urgence** (champignon rouge)
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce TP porte sur l'étude de la **limitation et du contrôle de la pression** dans un
+circuit hydraulique à l'aide d'une **soupape de décharge pilotée**.
+
+Deux composants fondamentaux sont introduits :
+
+- Le **distributeur 4/3 électrohydraulique à centre fermé** (Y1, Y2) — bloque le fluide
+  en position neutre et permet la commande dans les deux sens
+- La **soupape de décharge pilotée** (réglée à 20 bar) — s'ouvre automatiquement dès
+  que la pression atteint la valeur de consigne
+
+L'ensemble est piloté par un **automate Delta DVP-12SE** programmé en LADDER via
+**ISPSoft**, et supervisé en temps réel par une **interface graphique DOPSoft**
+qui visualise l'état des deux bobines et le verrouillage anti-conflit.
+
+.. note::
+
+   **Rappel :** un distributeur **à centre fermé** bloque tous les orifices en position
+   neutre. La pompe continue de refouler mais ne peut évacuer l'huile nulle part — la
+   pression monte immédiatement jusqu'au seuil de la soupape de décharge.
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Expliquer pourquoi le distributeur 4/3 à centre fermé provoque une montée en pression
+- Identifier les deux situations qui déclenchent l'ouverture de la soupape de décharge
+- Lire les variations de pression au manomètre dans chaque phase du cycle
+- Câbler et simuler un circuit avec distributeur 4/3 bistable (deux bobines) avec interlock
+- Expliquer la différence entre soupape directe et soupape pilotée
+- **Concevoir une interface de supervision DOPSoft** avec deux boutons et deux voyants
+- **Visualiser le verrouillage anti-conflit** (interlock) en temps réel sur l'interface
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
++----------------------------------------------+--------------------------------------------------+
+| Composant                                    | Caractéristiques / Rôle                          |
++==============================================+==================================================+
+| Pompe hydraulique                            | Génération du débit sous pression                |
++----------------------------------------------+--------------------------------------------------+
+| Réservoir d'huile hydraulique                | Stockage et retour du fluide                     |
++----------------------------------------------+--------------------------------------------------+
+| Soupape de décharge pilotée                  | Protection anti-surpression — **seuil : 20 bar** |
++----------------------------------------------+--------------------------------------------------+
+| Manomètre                                    | Mesure en temps réel de la pression              |
++----------------------------------------------+--------------------------------------------------+
+| Distributeur 4/3 à centre fermé (Y1, Y2)     | Commande du vérin dans les deux sens             |
++----------------------------------------------+--------------------------------------------------+
+| Vérin double effet                           | Actionneur hydraulique                           |
++----------------------------------------------+--------------------------------------------------+
+| Automate Delta DVP-12SE                      | Pilotage des bobines (Ladder ISPSoft)            |
++----------------------------------------------+--------------------------------------------------+
+| PC avec ISPSoft + DOPSoft                    | Programmation API + supervision graphique        |
++----------------------------------------------+--------------------------------------------------+
+| Alimentation électrique                      | **24 V DC**                                      |
++----------------------------------------------+--------------------------------------------------+
+| Boutons poussoirs NO (×2)                    | Commande des bobines Y1 et Y2                    |
++----------------------------------------------+--------------------------------------------------+
+
+----
+
+4. Description des composants clés
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**La soupape de décharge pilotée :**
+
++--------------------------------+--------------------------------------------------+
+| Pression dans le circuit       | État de la soupape                               |
++================================+==================================================+
+| P < 20 bar                     | **Fermée** — circuit alimenté normalement        |
++--------------------------------+--------------------------------------------------+
+| P = 20 bar (seuil atteint)     | **S'ouvre** — décharge vers le réservoir         |
++--------------------------------+--------------------------------------------------+
+| P > 20 bar                     | Impossible — la soupape maintient P ≤ 20 bar     |
++--------------------------------+--------------------------------------------------+
+
+.. note::
+
+   La soupape **pilotée** (2 étages) offre une meilleure précision de réglage et une
+   courbe pression/débit plus stable que la soupape directe. C'est le standard industriel.
+
+----
+
+5. Schéma du circuit électro-hydraulique
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp3.png
+   :align: center
+   :width: 80%
+
+   Schéma complet : soupape de décharge pilotée (20 bar) en parallèle, distributeur
+   4/3 à centre fermé (Y1/Y2) et vérin double effet.
+
+----
+
+6. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Créer le schéma dans **FluidSIM** avec distributeur 4/3, soupape de décharge, manomètre.
+2. Régler la **soupape de décharge pilotée** à **20 bar**.
+3. Câbler Y1 sur bouton 1 et Y2 sur bouton 2 (24 V DC) — avec **interlock électrique**.
+4. Charger le programme LADDER avec interlock dans l'API Delta DVP via ISPSoft.
+5. Lancer l'**interface de supervision DOPSoft** sur le PC.
+6. Observer la pression **en position neutre** (Y1=Y2=0) → noter la valeur.
+7. Activer **Y1** → observer la sortie du vérin et la pression.
+8. Vérifier sur DOPSoft que le voyant A+ s'allume en vert.
+9. Laisser le vérin atteindre sa **fin de course avance** → noter la pression.
+10. Activer **Y2** → observer la rentrée et la mise à jour de l'interface.
+11. Laisser le vérin atteindre sa **fin de course retour** → noter la pression.
+
+----
+
+7. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp31.png
+   :align: center
+   :width: 80%
+
+   Vue d'ensemble du montage FluidSIM.
+
+.. figure:: images/verin_avance3.png
+   :align: center
+   :width: 80%
+
+   Y1 activé : vérin en sortie — P < 20 bar, soupape fermée.
+
+.. figure:: images/fin_course_avance3.png
+   :align: center
+   :width: 80%
+
+   Fin de course avance : piston bloqué, pression monte à 20 bar, soupape s'ouvre.
+
+.. figure:: images/verin_retour3.png
+   :align: center
+   :width: 80%
+
+   Y2 activé : vérin en rentrée — P < 20 bar, soupape fermée.
+
+.. figure:: images/fin_course_retour3.png
+   :align: center
+   :width: 80%
+
+   Fin de course retour : pression remonte à 20 bar, soupape s'ouvre à nouveau.
+
+----
+
+8. Interprétation des résultats
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Deux situations déclenchent l'ouverture de la soupape :**
+
++------------------------------------------+--------------------------------------------+
+| Situation                                | Explication                                |
++==========================================+============================================+
+| Distributeur en position neutre          | Tous orifices bloqués — débit pompe sans   |
+| (Y1=0 ET Y2=0)                           | issue → pression monte jusqu'à 20 bar      |
++------------------------------------------+--------------------------------------------+
+| Vérin en fin de course (avance ou retour)| Piston bloqué — débit ne peut plus entrer  |
+|                                          | dans la chambre → pression monte à 20 bar  |
++------------------------------------------+--------------------------------------------+
+
+**Comportement de la pression selon la phase :**
+
++----------------------------------------------+----------------------------------------------+
+| Phase du cycle                               | Pression                                     |
++==============================================+==============================================+
+| Position neutre (Y1=Y2=0)                    | Monte à **20 bar** — soupape s'ouvre         |
++----------------------------------------------+----------------------------------------------+
+| Vérin en mouvement (Y1 ou Y2 actif)          | **< 20 bar** — soupape fermée                |
++----------------------------------------------+----------------------------------------------+
+| Fin de course (avance ou retour)             | Remonte à **20 bar** — soupape s'ouvre       |
++----------------------------------------------+----------------------------------------------+
+
+----
+
+9. Programme LADDER (ISPSoft)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Correspondance API :**
+
++-----+------+-----------------------------------------------+
+| X   | Nom  | Rôle                                          |
++=====+======+===============================================+
+| X6  | BP1  | Bouton poussoir commande sortie vérin (NO)    |
++-----+------+-----------------------------------------------+
+| X7  | BP2  | Bouton poussoir commande rentrée vérin (NO)   |
++-----+------+-----------------------------------------------+
+
++-----+------+------------------------------------------------------+
+| Y   | Nom  | Rôle                                                 |
++=====+======+======================================================+
+| Y0  | Y1   | Commande bobine 1 — distributeur 4/3 (vérin sort)    |
++-----+------+------------------------------------------------------+
+| Y1  | Y2   | Commande bobine 2 — distributeur 4/3 (vérin rentre)  |
++-----+------+------------------------------------------------------+
+
+**Networks avec interlock anti-conflit :**
+
+.. code-block:: text
+
+   Network 1 — Sortie vérin (bobine Y1) :
+   X6 ──┤ ├──── Y1 ──┤ /├──────────────── ( ) Y0
+
+   Network 2 — Rentrée vérin (bobine Y2) :
+   X7 ──┤ ├──── Y0 ──┤ /├──────────────── ( ) Y1
+
+.. warning::
+
+   Le **verrouillage (interlock)** entre Y0 et Y1 est indispensable : si les deux
+   bobines étaient alimentées simultanément, le distributeur resterait dans sa
+   dernière position et le comportement serait imprévisible.
+
+.. figure:: images/ladder_complet3.png
+   :align: center
+   :width: 80%
+
+   Programme LADDER TP 3 avec verrouillage anti-conflit.
+
+**Tableau d'analyse :**
+
++----------+----------+----------+----------+------------------------------------+
+| État X6  | État X7  | État Y0  | État Y1  | Comportement du système            |
++==========+==========+==========+==========+====================================+
+| 0        | 0        | 0        | 0        | Distributeur neutre — vérin fixe   |
++----------+----------+----------+----------+------------------------------------+
+| 1        | 0        | 1        | 0        | Bobine Y1 activée — vérin sort     |
++----------+----------+----------+----------+------------------------------------+
+| 0        | 1        | 0        | 1        | Bobine Y2 activée — vérin rentre   |
++----------+----------+----------+----------+------------------------------------+
+| 1        | 1        | —        | —        | Interlock actif — état inchangé    |
++----------+----------+----------+----------+------------------------------------+
+
+.. note::
+
+   En position neutre du distributeur 4/3 à **centre fermé** (X6=0 ET X7=0),
+   la pression monte jusqu'à **20 bar** et la soupape de décharge s'ouvre.
+   C'est le phénomène central observé dans ce TP.
+
+----
+
+10. Interface de supervision DOPSoft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour faciliter le suivi du fonctionnement et permettre une visualisation
+intuitive du verrouillage anti-conflit, une **interface de supervision
+graphique** a été développée à l'aide du logiciel **DOPSoft** fourni par
+Delta Electronics. Cette interface, exécutée en parallèle du programme
+LADDER, joue le rôle d'une HMI virtuelle sur le PC : elle affiche en
+temps réel l'état des deux boutons, des deux voyants et des deux bobines
+de l'automate.
+
+Description de l'interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'interface comprend plusieurs éléments graphiques associés aux adresses
+de l'automate :
+
+- **BP1** : bouton poussoir lié à l'entrée X6 (commande sortie vérin)
+- **BP2** : bouton poussoir lié à l'entrée X7 (commande rentrée vérin)
+- **Voyant A-** : indicateur visuel de la position vérin rentré
+- **Voyant A+** : indicateur visuel de la position vérin sorti
+- **Indicateurs Y0 et Y1** : état logique des bobines de l'électrodistributeur
+- **Image du distributeur 4/3** : représentation graphique du composant
+
+État repos — Aucune commande active (X6=0, X7=0)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Au démarrage, aucun bouton n'est appuyé : les deux bobines sont
+désactivées et le distributeur 4/3 reste en position neutre. C'est dans
+cet état que la pression du circuit monte jusqu'à **20 bar** et que la
+soupape de décharge s'ouvre.
+
+.. figure:: images/dopsoft_etat_repos_tp3.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — état repos : les deux boutons (BP1 et BP2) sont
+   relâchés (rouges), aucune bobine n'est activée. Le distributeur 4/3
+   reste en position neutre.
+
+Sortie du vérin — BP1 appuyé (X6=1, Y0=ON, Y1=OFF)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'appui sur BP1 active la sortie Y0 qui alimente la bobine de sortie du
+distributeur. Le verrouillage anti-conflit empêche Y1 d'être activée
+simultanément. L'interface DOPSoft affiche :
+
+- **BP1** en **vert** (appuyé)
+- **BP2** en **rouge** (relâché)
+- **Voyant A+** allumé en **vert** (vérin en sortie)
+- **Indicateur Y0** en **vert** (bobine active)
+- **Indicateur Y1** désactivé (interlock)
+
+.. figure:: images/dopsoft_verin_sort_tp3.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — BP1 appuyé : la bobine Y0 est activée, le vérin
+   sort. L'interlock désactive Y1, ce qui est visible dans le Network 2
+   du programme LADDER (contact Y0 normalement fermé).
+
+Rentrée du vérin — BP2 appuyé (X7=1, Y0=OFF, Y1=ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'appui sur BP2 active la sortie Y1 qui alimente la bobine de rentrée.
+Le verrouillage anti-conflit empêche cette fois Y0 d'être activée.
+L'interface DOPSoft affiche :
+
+- **BP1** en **rouge** (relâché)
+- **BP2** en **vert** (appuyé)
+- **Voyant A-** allumé en **vert** (vérin en rentrée)
+- **Indicateur Y1** en **vert** (bobine active)
+- **Indicateur Y0** désactivé (interlock)
+
+.. figure:: images/dopsoft_verin_rentre_tp3.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — BP2 appuyé : la bobine Y1 est activée, le vérin
+   rentre. L'interlock désactive Y0, ce qui est visible dans le
+   Network 1 du programme LADDER (contact Y1 normalement fermé).
+
+.. note::
+
+   L'interface DOPSoft permet ici de **visualiser concrètement le
+   verrouillage anti-conflit** programmé dans le LADDER. En appuyant
+   simultanément sur les deux boutons, on peut observer que la bobine
+   précédemment activée se désactive et qu'aucune nouvelle bobine ne
+   s'active : c'est exactement le comportement attendu pour protéger le
+   distributeur 4/3 d'un conflit de commande.
+
+----
+
+11. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+
+   **Q1.** Expliquez en une phrase pourquoi le distributeur **à centre fermé** est
+   utilisé dans ce TP et non un distributeur **à centre ouvert**.
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q2.** Quelle est la différence entre la soupape de décharge **directe** et la
+   soupape **pilotée** ? Pourquoi la version pilotée est-elle préférée en industrie ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q3.** Sans soupape de décharge, que se passerait-il si le vérin atteignait sa
+   fin de course mécanique et que la pompe continuait de débiter ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q4.** Expliquez le rôle du **verrouillage anti-conflit (interlock)** dans le
+   programme LADDER. Comment ce verrouillage se traduit-il visuellement sur
+   l'interface DOPSoft quand on appuie sur les deux boutons en même temps ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+----
+
+12. Conclusion
+~~~~~~~~~~~~~~
+
+Ce TP a établi la notion de sécurité hydraulique par soupape de décharge et
+introduit la programmation d'un système avec verrouillage anti-conflit. Compétences
+acquises : identifier les deux situations de surpression (position neutre + fin de
+course), comprendre le distributeur 4/3 à centre fermé, câbler un interlock électrique,
+programmer un LADDER bistable, **concevoir une interface DOPSoft à deux boutons et deux
+voyants**, et interpréter visuellement le comportement du verrouillage anti-conflit.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP3.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+
+----
+
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp3.mp4">
+    </video>
+
+----
+
+TP 4 : Commande séquentielle de deux vérins double effet avec API et GRAFCET
+-----------------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter **lunettes** et **gants anti-huile** pendant toute la séance
+   - ✅ Vérifier le câblage du **pressostat** (contact NC) sur I4 avant la mise sous tension
+   - ✅ Ne jamais lancer le cycle si le pressostat indique une pression anormale (X4 = 0)
+   - ✅ Vérifier que les **capteurs fins de course** sont correctement positionnés
+   - ✅ En cas d'arrêt inattendu du cycle, identifier la cause avant de redémarrer
+   - ✅ Ne jamais modifier le câblage pendant que l'API est sous tension
+   - ✅ En cas d'urgence : **arrêt d'urgence** (champignon rouge)
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce TP consiste à réaliser la commande automatique de **deux vérins double effet** par
+automate programmable (API) en utilisant le langage **GRAFCET**.
+
+Deux notions fondamentales sont introduites :
+
+- La **sécurité par pressostat** : toute commande de sortie est conditionnée par la
+  validation de la pression du circuit (X4 = 1)
+- La **régulation du débit** par deux étrangleurs indépendants pour contrôler
+  la vitesse de chaque vérin individuellement
+
+L'ensemble du système est piloté par un **automate Delta DVP-12SE** programmé en
+LADDER via **ISPSoft**, et supervisé en temps réel par une **interface graphique
+DOPSoft** qui visualise l'avancement du GRAFCET étape par étape.
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Programmer un GRAFCET séquentiel en LADDER par la méthode SET/RESET sur API Delta DVP
+- Intégrer un pressostat comme dispositif de sécurité actif conditionné sur toutes les sorties
+- Expliquer la complémentarité entre limiteur de pression hydraulique et pressostat électrique
+- Vérifier le cycle automatique en simulation FluidSIM
+- Tester la sécurité pressostat en simulant une surpression (X4 = 0)
+- **Concevoir une interface DOPSoft à deux vérins** avec voyants de position et indicateurs E/S
+- **Visualiser l'avancement du GRAFCET** étape par étape sur l'interface graphique
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
++----------------------------------------------+----------------------------------------+
+| Composant                                    | Caractéristiques / Rôle                |
++==============================================+========================================+
+| Groupe hydraulique (moteur + pompe)          | Génération du débit sous pression      |
++----------------------------------------------+----------------------------------------+
+| Limiteur de pression (soupape de décharge)   | Protection circuit — **seuil : 60 bar**|
++----------------------------------------------+----------------------------------------+
+| Pressostat (contact NC)                      | Sécurité électrique —**seuil : 60 bar**|
++----------------------------------------------+----------------------------------------+
+| Étrangleur n°1                               | Régulation vitesse vérin A             |
++----------------------------------------------+----------------------------------------+
+| Étrangleur n°2                               | Régulation vitesse vérin B             |
++----------------------------------------------+----------------------------------------+
+| Vérin double effet A                         | Fins de course S0 (rentré), S1 (sorti) |
++----------------------------------------------+----------------------------------------+
+| Vérin double effet B                         | Fins de course S2 (rentré), S3 (sorti) |
++----------------------------------------------+----------------------------------------+
+| Distributeur 4/2 (Y1/Y2)                     | Commande vérin A                       |
++----------------------------------------------+----------------------------------------+
+| Distributeur 4/2 (Y3/Y4)                     | Commande vérin B                       |
++----------------------------------------------+----------------------------------------+
+| Capteurs fins de course (×4)                 | Détection position vérins A et B       |
++----------------------------------------------+----------------------------------------+
+| API Delta DVP-12SE                           | Programmation LADDER / GRAFCET         |
++----------------------------------------------+----------------------------------------+
+| PC avec ISPSoft + DOPSoft                    | Programmation API + supervision        |
++----------------------------------------------+----------------------------------------+
+| Alimentation 24 V DC                         | Alimentation commande                  |
++----------------------------------------------+----------------------------------------+
+
+----
+
+4. Affectation des entrées/sorties de l'API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entrées :
+
++------+-----+-----------------------------------------------------+
+| I/O  | Nom | Description                                         |
++======+=====+=====================================================+
+| I0   | S0  | Vérin A en position rentrée (fin de course)         |
++------+-----+-----------------------------------------------------+
+| I1   | S1  | Vérin A en position sortie (fin de course)          |
++------+-----+-----------------------------------------------------+
+| I2   | S2  | Vérin B en position rentrée (fin de course)         |
++------+-----+-----------------------------------------------------+
+| I3   | S3  | Vérin B en position sortie (fin de course)          |
++------+-----+-----------------------------------------------------+
+| I4   | —   | Pressostat — sécurité pression (contact NC)         |
++------+-----+-----------------------------------------------------+
+| I7   | S7  | Bouton de démarrage — contact NO                    |
++------+-----+-----------------------------------------------------+
+
+Sorties :
+
++------+-----+-------------------------------------------+
+| I/O  | Nom | Description                               |
++======+=====+===========================================+
+| Q0   | Y1  | Commande sortie vérin A (A+)              |
++------+-----+-------------------------------------------+
+| Q1   | Y2  | Commande retour vérin A (A-)              |
++------+-----+-------------------------------------------+
+| Q2   | Y3  | Commande sortie vérin B (B+)              |
++------+-----+-------------------------------------------+
+| Q3   | Y4  | Commande retour vérin B (B-)              |
++------+-----+-------------------------------------------+
+
+.. note::
+
+   Le pressostat (I4) est câblé en **contact NC** : I4 = 1 en fonctionnement normal,
+   I4 = 0 en cas de surpression → toutes les sorties sont immédiatement désactivées.
+
+----
+
+5. Schémas du système
+~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp4.png
+   :align: center
+   :width: 80%
+
+   Vue d'ensemble du système à deux vérins double effet.
+
+.. figure:: images/schema_hydraulique_tp4.png
+   :align: center
+   :width: 80%
+
+   Schéma hydraulique détaillé avec distributeurs 4/2, étrangleurs et limiteur
+   de pression.
+
+.. figure:: images/schema_electrique_tp4.png
+   :align: center
+   :width: 80%
+
+   Câblage API : fins de course S0–S3 sur I0–I3, pressostat NC sur I4, S7 sur I7,
+   électrovannes Y1–Y4 sur Q0–Q3.
+
+.. figure:: images/grafcet_tp4.png
+   :align: center
+   :width: 60%
+
+   GRAFCET de la séquence A+ → A- → B+ → B-.
+
+----
+
+6. Cycle de fonctionnement
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Séquence :**
+
+.. code-block:: text
+
+   DÉMARRAGE (X7 ET X4 validé)
+       │
+       ▼ Étape 6 (M0) — État initial
+       │ → Transition : X7 ET X4
+       ▼ Étape 7 (M1) — A+ : Vérin A sort         [Q0/Y1 actif]
+       │ → Transition : X1 (S1 — A sorti)
+       ▼ Étape 8 (M2) — A- : Vérin A rentre        [Q1/Y2 actif]
+       │ → Transition : X0 (S0 — A rentré)
+       ▼ Étape 9 (M3) — B+ : Vérin B sort          [Q2/Y3 actif]
+       │ → Transition : X3 (S3 — B sorti)
+       ▼ Étape 10 (M4) — B- : Vérin B rentre       [Q3/Y4 actif]
+       │ → Transition : X2 (S2 — B rentré)
+       └──────────────────────────────────► Retour Étape 7 (cycle automatique)
+
+**Tableaux GRAFCET :**
+
++-----------+-----+--------+-----------------------------------------------+
+| Étape     | M   | Action | Description                                   |
++===========+=====+========+===============================================+
+| Étape 6   | M0  | —      | État initial — attente démarrage              |
++-----------+-----+--------+-----------------------------------------------+
+| Étape 7   | M1  | Q0/Y1  | A+ : sortie du vérin A                        |
++-----------+-----+--------+-----------------------------------------------+
+| Étape 8   | M2  | Q1/Y2  | A- : retour du vérin A                        |
++-----------+-----+--------+-----------------------------------------------+
+| Étape 9   | M3  | Q2/Y3  | B+ : sortie du vérin B                        |
++-----------+-----+--------+-----------------------------------------------+
+| Étape 10  | M4  | Q3/Y4  | B- : retour du vérin B                        |
++-----------+-----+--------+-----------------------------------------------+
+
++----------------------+------------------------------------------------------+
+| Transition           | Condition                                            |
++======================+======================================================+
+| Étape 6 → Étape 7    | X7 ET X4 — Démarrage ET pression validée             |
++----------------------+------------------------------------------------------+
+| Étape 7 → Étape 8    | X1 — S1 : vérin A sorti                              |
++----------------------+------------------------------------------------------+
+| Étape 8 → Étape 9    | X0 — S0 : vérin A rentré                             |
++----------------------+------------------------------------------------------+
+| Étape 9 → Étape 10   | X3 — S3 : vérin B sorti                              |
++----------------------+------------------------------------------------------+
+| Étape 10 → Étape 7   | X2 — S2 : vérin B rentré (cycle automatique)         |
++----------------------+------------------------------------------------------+
+
++----------+--------+------------------------------------------------------+
+| Étape    | Sortie | Condition complète (sécurité pressostat)             |
++==========+========+======================================================+
+| Étape 7  | Y0     | M1 ET X4                                             |
++----------+--------+------------------------------------------------------+
+| Étape 8  | Y1     | M2 ET X4                                             |
++----------+--------+------------------------------------------------------+
+| Étape 9  | Y2     | M3 ET X4                                             |
++----------+--------+------------------------------------------------------+
+| Étape 10 | Y3     | M4 ET X4                                             |
++----------+--------+------------------------------------------------------+
+
+----
+
+7. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Réaliser le schéma FluidSIM complet (2 vérins, 2 distributeurs 4/2, 2 étrangleurs,
+   limiteur de pression, pressostat).
+2. Placer les fins de course S0, S1 sur le vérin A et S2, S3 sur le vérin B.
+3. Câbler : S0→I0, S1→I1, S2→I2, S3→I3, pressostat (NC)→I4, S7→I7.
+4. Ouvrir **ISPSoft** — saisir la table E/S.
+5. Programmer le GRAFCET en LADDER (méthode **SET/RESET**, mémoires M0 à M4).
+6. Conditionner toutes les sorties physiques par **X4** en série.
+7. Compiler, téléverser dans l'API Delta DVP.
+8. Lancer l'**interface DOPSoft** pour la supervision graphique.
+9. Lancer la simulation — appuyer sur S7 — observer la séquence complète.
+10. Suivre visuellement chaque étape du GRAFCET sur l'interface DOPSoft.
+11. **Test sécurité** : simuler X4 = 0 en cours de cycle → vérifier l'arrêt immédiat.
+
+----
+
+8. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/A_plus4.png
+   :align: center
+
+   Étape 7 (A+) : Y1 actif, pressostat X4 validé, étrangleur régule la vitesse.
+
+.. figure:: images/A_moins4.png
+   :align: center
+
+   Étape 8 (A-) : Y2 actif, vérin A rentre jusqu'à S0.
+
+.. figure:: images/B_plus4.png
+   :align: center
+
+   Étape 9 (B+) : Y3 actif, vérin B sort, étrangleur B contrôle la vitesse.
+
+.. figure:: images/B_moins4.png
+   :align: center
+
+   Étape 10 (B-) : Y4 actif — à l'activation de S2, cycle repart automatiquement.
+
+----
+
+9. Programme LADDER complet (ISPSoft)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Correspondance API :**
+
++-----+-----+----------------------------------------------------+
+| X   | Nom | Rôle                                               |
++=====+=====+====================================================+
+| X0  | S0  | Vérin A rentré (fin de course)                     |
++-----+-----+----------------------------------------------------+
+| X1  | S1  | Vérin A sorti (fin de course)                      |
++-----+-----+----------------------------------------------------+
+| X2  | S2  | Vérin B rentré (fin de course)                     |
++-----+-----+----------------------------------------------------+
+| X3  | S3  | Vérin B sorti (fin de course)                      |
++-----+-----+----------------------------------------------------+
+| X4  | —   | Pressostat — sécurité (NC : 1 = pression normale)  |
++-----+-----+----------------------------------------------------+
+| X7  | S7  | Bouton de démarrage (NO)                           |
++-----+-----+----------------------------------------------------+
+
++-----+--------+----------------------------------------------+
+| Y   | Q/Y    | Rôle                                         |
++=====+========+==============================================+
+| Y0  | Q0/Y1  | Sortie vérin A (A+)                          |
++-----+--------+----------------------------------------------+
+| Y1  | Q1/Y2  | Retour vérin A (A-)                          |
++-----+--------+----------------------------------------------+
+| Y2  | Q2/Y3  | Sortie vérin B (B+)                          |
++-----+--------+----------------------------------------------+
+| Y3  | Q3/Y4  | Retour vérin B (B-)                          |
++-----+--------+----------------------------------------------+
+
+**Mémoires internes (étapes GRAFCET) :**
+
++-----+--------------------------------------------+
+| M0  | Étape 6 — État initial                     |
++-----+--------------------------------------------+
+| M1  | Étape 7 — A+                               |
++-----+--------------------------------------------+
+| M2  | Étape 8 — A-                               |
++-----+--------------------------------------------+
+| M3  | Étape 9 — B+                               |
++-----+--------------------------------------------+
+| M4  | Étape 10 — B-                              |
++-----+--------------------------------------------+
+
+**Networks LADDER :**
+
+.. code-block:: text
+
+   N1 — Initialisation :
+   M1002 ──┤ ├──────────────────────────── ( S ) M0
+
+   N2 — Démarrage (M0 + X7 + X4) :
+   M0 ──┤ ├──── X7 ──┤ ├──── X4 ──┤ ├─── ( S ) M1
+   ─────────────────────────────────────── ( R ) M0
+
+   N3 — Transition 7→8 (M1 + X1) :
+   M1 ──┤ ├──── X1 ──┤ ├────────────────── ( S ) M2
+   ─────────────────────────────────────── ( R ) M1
+
+   N4 — Transition 8→9 (M2 + X0) :
+   M2 ──┤ ├──── X0 ──┤ ├────────────────── ( S ) M3
+   ─────────────────────────────────────── ( R ) M2
+
+   N5 — Transition 9→10 (M3 + X3) :
+   M3 ──┤ ├──── X3 ──┤ ├────────────────── ( S ) M4
+   ─────────────────────────────────────── ( R ) M3
+
+   N6 — Retour automatique (M4 + X2) :
+   M4 ──┤ ├──── X2 ──┤ ├────────────────── ( S ) M1
+   ─────────────────────────────────────── ( R ) M4
+
+   N7 — Sortie Y0 (A+) conditionnée pressostat :
+   M1 ──┤ ├──── X4 ──┤ ├────────────────── ( ) Y0
+
+   N8 — Sortie Y1 (A-) :
+   M2 ──┤ ├──── X4 ──┤ ├────────────────── ( ) Y1
+
+   N9 — Sortie Y2 (B+) :
+   M3 ──┤ ├──── X4 ──┤ ├────────────────── ( ) Y2
+
+   N10 — Sortie Y3 (B-) :
+   M4 ──┤ ├──── X4 ──┤ ├────────────────── ( ) Y3
+
+.. figure:: images/ladder_complet4.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet4.4.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet4.44.png
+   :align: center
+   :width: 80%
+
+----
+
+10. Interface de supervision DOPSoft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour permettre une visualisation graphique et intuitive du cycle automatique,
+une **interface de supervision** a été conçue avec le logiciel **DOPSoft** de
+Delta Electronics. Cette interface joue le rôle d'une HMI virtuelle qui
+s'exécute sur le PC en parallèle du programme LADDER. Elle affiche en temps
+réel l'avancement du GRAFCET étape par étape, ce qui constitue un outil
+pédagogique précieux pour suivre la séquence A+ → A- → B+ → B-.
+
+Conception de l'interface dans DOPSoft (mode édition)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Avant la simulation, l'interface est entièrement conçue dans l'environnement
+**DOPSoft** (logiciel de programmation des écrans tactiles Delta DOP).
+L'éditeur permet de positionner librement les éléments graphiques sur la
+zone d'écran cible (modèle **DOP-107WV**, 65 536 couleurs) :
+
+- **Onglet General** : opérations courantes (Paste, Find, Replace, Select all)
+  et gestion des écrans (New Screen, Screen Macro)
+- **Panneau Project** (à gauche) : structure du projet HMI avec les
+  ressources associées (Screen, Communication, Data Exchange, Tag, OPC UA
+  Server, Alarm, Recipe, History Buffer, Multi-language, Account Settings,
+  Configuration, Text Bank, Picture Bank, Program/Main)
+- **Panneau Macro Manager** (à droite) : gestion des macros et écrans
+  (NewHMI, Screen ID:1 pour l'écran principal)
+- **Barre de configuration** : police (Arial 16), agencement des images,
+  rotations, langue (Language1), état du composant
+
+Les éléments visibles sur l'interface en cours de conception sont :
+
+- Un **bouton poussoir** rouge (Bouton de démarrage) lié à l'entrée X7 de l'API
+- Un **bouton poussoir** rouge (Pressostat) lié à l'entrée X4 de l'API
+- Deux **images de vérins** (A noir double effet, B rouge double effet) avec
+  leurs étiquettes de position (A-, A+, B-, B+) — implémentées sous forme
+  d'**indicateurs multi-états** (Multistate Indicator) qui changent de
+  couleur selon la valeur du bit associé (X0, X1, X2, X3)
+- Deux **images de distributeurs 4/2** avec les étiquettes des bobines
+  (Y0, Y1, Y2, Y3)
+
+.. figure:: images/dopsoft_edition_interface_tp4.png
+   :align: center
+   :width: 80%
+
+   Environnement DOPSoft en mode édition : conception graphique de
+   l'interface HMI sur l'écran tactile DOP-107WV (65 536 couleurs). Tous
+   les éléments visuels (vérins, distributeurs, boutons) sont positionnés
+   avant le téléversement vers l'écran et le démarrage de la simulation.
+
+Description de l'interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'interface regroupe l'ensemble des éléments nécessaires à la supervision du
+système :
+
+- **Bouton de démarrage** : représente l'entrée X7 — **rouge** au repos
+  (cycle non lancé), **vert** au moment de l'appui qui valide la transition
+  ``M0 · X7 · X4 → SET M1``
+- **Pressostat** : indicateur visuel de l'état de la sécurité (X4) —
+  **rouge** tant que la pression n'est pas validée, **vert** avec la mention
+  **"pression normale"** lorsque X4 = 1
+- **Vérin A** (couleur noire) : représentation graphique avec deux voyants
+  A- et A+ liés aux fins de course S0 (X0) et S1 (X1)
+- **Vérin B** (couleur rouge) : représentation graphique avec deux voyants
+  B- et B+ liés aux fins de course S2 (X2) et S3 (X3)
+- **Indicateurs Y0 à Y3** : état logique des quatre bobines de l'API
+  commandant les électrodistributeurs
+- **Images des distributeurs 4/2** : représentation des composants pilotés
+
+À chaque étape du GRAFCET correspond une configuration visuelle distincte sur
+l'interface, ce qui permet à l'étudiant de suivre la séquence sans avoir à
+analyser le programme LADDER ligne par ligne.
+
+
+Appui sur le bouton de démarrage — Lancement du cycle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Lorsque l'opérateur appuie sur le **bouton de démarrage** et que la pression
+est validée simultanément, la transition ``M0 · X7 · X4 → SET M1`` du
+Network 2 est validée. Le programme bascule de l'étape M0 vers l'étape M1
+(A+) :
+
+- Le **bouton de démarrage** passe en **vert** au moment précis de l'appui
+  (X7 actif)
+- Le **pressostat** passe en **vert** avec la mention **"pression normale"**
+  (X4 = 1, sécurité validée)
+- L'étape M1 est activée (SET M1 visible sur le Network 2)
+- L'étape M0 est désactivée (RESET M0 sur le Network 3)
+- Le contact M1 est désormais fermé, et combiné avec X4 fermé, alimente la
+  bobine Y0 via le Network 4 (``M1 · X4 → Y0``)
+- Network 5 est armé en attente de ``M1 · X1 → SET M2`` pour basculer vers
+  l'étape A-
+
+.. figure:: images/dopsoft_appui_demarrage_tp4.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Appui sur le bouton de démarrage : la transition
+   ``M0 · X7 · X4`` est validée, l'étape M1 devient active et la bobine
+   Y0 est alimentée via le Network 4 (``M1 · X4 → Y0``). Le bouton vert
+   et le pressostat vert "pression normale" confirment que le cycle est
+   en cours de démarrage.
+
+.. note::
+
+   Ce moment marque le **début effectif du cycle automatique** : à partir
+   de cet instant, le programme va dérouler la séquence
+   A+ → A- → B+ → B- → (boucle A+) sans nouvelle intervention de
+   l'opérateur, tant que la sécurité X4 reste validée.
+
+Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Une fois l'appui sur le bouton de démarrage relâché, le bouton retourne à
+sa couleur rouge mais l'étape M1 reste mémorisée (méthode SET/RESET). La
+bobine Y0 reste alimentée tant que M1 est actif et que X4 est validé :
+
+- Le **bouton de démarrage** est revenu en **rouge** (X7 = 0, mais M1 est
+  mémorisé grâce à la fonction SET)
+- Le **pressostat** reste en **vert** "pression normale" (X4 validé)
+- Le **voyant A-** s'allume en **vert** (vérin A initialement rentré)
+- Le **voyant B-** est allumé en **vert** (vérin B en position rentrée)
+- Lorsque le vérin A atteint sa position sortie, le **voyant A+** s'allume
+  en **vert** à son tour
+- Le Network 4 affiche ``M1 · X4 → Y0`` actif (les deux contacts M1 et X4
+  fermés alimentent la bobine Y0)
+- Network 5 (``M1 · X1 → SET M2``) est en attente du fin de course X1
+
+.. figure:: images/dopsoft_etape_A_plus_tp4.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 1 (A+) : la bobine Y0 est activée, le vérin A
+   sort. Le programme LADDER montre le Network 4 (``M1 · X4 → Y0``) actif
+   et le Network 5 (``M1 · X1 → SET M2``) armé en attente du fin de course
+   X1. Le voyant A+ s'allume une fois la position sortie atteinte.
+
+Étape 2 — A- : rentrée du vérin A (M2 actif, Y1 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dès que le fin de course S1 (X1) détecte la position sortie du vérin A, la
+transition ``M1 · X1 → SET M2`` est validée. M1 est réinitialisé (RESET M1)
+et le Network 7 active alors la bobine Y1 (retour A-) :
+
+- Le **bouton de démarrage** reste en **rouge**
+- Le **pressostat** reste en **vert** "pression normale" (X4 validé)
+- Le **voyant A-** reste allumé en **vert** (vérin A en cours de rentrée)
+- Le **voyant B-** reste allumé en **vert** (vérin B toujours rentré)
+- Le Network 7 (``M2 · X4 → Y1``) est actif → la bobine Y1 alimente le
+  retour A-
+- Network 8 est armé en attente de ``M2 · X0 → SET M3`` pour passer à
+  l'étape B+
+
+.. figure:: images/dopsoft_etape_A_moins_tp4.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 2 (A-) : la bobine Y1 est activée, le vérin A
+   rentre. Le programme LADDER montre le Network 7 (``M2 · X4 → Y1``) actif
+   et la transition ``M2 · X0 → SET M3`` armée sur le Network 8.
+
+Étape 3 — B+ : sortie du vérin B (M3 actif, Y2 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Lorsque le fin de course S0 (X0) détecte le retour complet du vérin A, la
+transition ``M2 · X0 → SET M3`` est validée. M2 est réinitialisé et le
+Network 10 active la bobine Y2 pour faire sortir le vérin B :
+
+- Le **bouton de démarrage** reste en **rouge**
+- Le **pressostat** reste en **vert** "pression normale"
+- Le **voyant A-** est allumé en **vert** (vérin A rentré, capteur S0 actif)
+- Le **voyant B+** s'allume en **vert** dès que le fin de course S3 (X3)
+  détecte la sortie complète du vérin B
+- Le Network 10 (``M3 · X4 → Y2``) est actif → la bobine Y2 alimente la
+  sortie B+
+- Network 11 est armé en attente de ``M3 · X3 → SET M4`` pour basculer vers
+  l'étape B-
+
+.. figure:: images/dopsoft_etape_B_plus_tp4.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 3 (B+) : la bobine Y2 est activée, le vérin B
+   sort. Le programme LADDER montre le Network 10 (``M3 · X4 → Y2``) actif
+   et la transition ``M3 · X3 → SET M4`` armée sur le Network 11.
+
+Étape 4 — B- : rentrée du vérin B (M4 actif, Y3 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand le fin de course S3 (X3) détecte la position sortie du vérin B, la
+transition ``M3 · X3 → SET M4`` est validée. M3 est réinitialisé et le
+Network 13 active alors la bobine Y3 (retour B-) :
+
+- Le **bouton de démarrage** reste en **rouge**
+- Le **pressostat** reste en **vert** "pression normale"
+- Le **voyant A-** reste allumé en **vert** (vérin A toujours rentré)
+- Le **voyant B-** s'allume en **vert** dès que le fin de course S2 (X2)
+  détecte le retour complet du vérin B
+- Le Network 13 (``M4 · X4 → Y3``) est actif → la bobine Y3 alimente le
+  retour B-
+- Network 14 valide la transition ``M4 · X2 → SET M0`` pour redémarrer un
+  nouveau cycle
+- Une fois M0 réactivé, le programme attend de nouveau l'appui sur X7 pour
+  relancer le cycle (voir note ci-dessous)
+
+.. figure:: images/dopsoft_etape_B_moins_tp4.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 4 (B-) : la bobine Y3 est activée, le vérin B
+   rentre. Le programme LADDER montre le Network 13 (``M4 · X4 → Y3``) actif
+   et la transition de bouclage ``M4 · X2 → SET M0`` sur le Network 14 pour
+   redémarrer un nouveau cycle (l'étudiant peut adapter le bouclage vers
+   SET M1 pour un fonctionnement totalement automatique sans nouvel appui
+   sur X7).
+
+.. note::
+
+   La couleur **verte** du pressostat avec la mention **"pression normale"**
+   est visible sur les captures pendant tout le cycle : cela confirme que
+   la sécurité X4 est validée pendant toute la durée d'exécution. En
+   simulant X4 = 0 (pressostat rouge), l'étudiant peut vérifier que toutes
+   les sorties Y0 à Y3 sont immédiatement désactivées (car le contact X4
+   conditionne chaque Network de sortie : Networks 4, 7, 10 et 13). Les
+   mémoires M0 à M4 conservent leur dernier état, de sorte que le cycle
+   reprend à l'étape interrompue dès le retour de X4 = 1.
+
+.. tip::
+
+   **Repères visuels sur l'interface DOPSoft :**
+
+   - **Bouton de démarrage rouge** = état de repos OU cycle en cours
+     d'exécution (X7 relâché ou non actif)
+   - **Bouton de démarrage vert** = moment précis de l'appui sur S7 qui
+     déclenche la transition M0 → M1
+   - **Pressostat rouge** = pression non validée (X4 = 0), aucune sortie
+     ne peut être alimentée
+   - **Pressostat vert "pression normale"** = X4 = 1, toutes les sorties
+     peuvent être alimentées par leur Network respectif
+   - **Voyants A-/A+/B-/B+** = retour visuel direct de l'état physique
+     des capteurs fins de course S0, S1, S2, S3
+
+----
+
+11. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+
+   **Q1.** Que se passe-t-il si X4 = 0 en cours de cycle (surpression simulée) ?
+   Les mémoires internes M1 à M4 sont-elles réinitialisées ? Le cycle reprend-il
+   depuis le début ou depuis l'étape en cours quand X4 redevient 1 ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q2.** Expliquez la différence entre la protection hydraulique (limiteur de pression)
+   et la protection électrique (pressostat). Ces deux dispositifs sont-ils redondants
+   ou complémentaires ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q3.** Pourquoi la transition initiale (Étape 6 → Étape 7) est-elle conditionnée
+   à la fois par **X7 ET X4** et non seulement par X7 ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q4.** En observant les quatre captures DOPSoft des étapes A+, A-, B+ et B-,
+   expliquez comment la méthode **SET/RESET** garantit qu'une seule mémoire M est
+   active à la fois. Pourquoi cette propriété est-elle essentielle pour le bon
+   fonctionnement d'un GRAFCET ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+----
+
+12. Conclusion
+~~~~~~~~~~~~~~
+
+Ce TP a permis de maîtriser la programmation séquentielle SET/RESET sur API Delta DVP,
+l'intégration du pressostat comme sécurité active, la complémentarité entre protection
+hydraulique et électrique, et la **conception d'une interface DOPSoft de supervision
+graphique** capable de visualiser l'avancement du GRAFCET étape par étape. Le système
+final est stable, automatique et sécurisé, et l'interface graphique constitue un outil
+pédagogique puissant pour l'analyse du fonctionnement.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP4.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+
+----
+
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp4.mp4">
+    </video>
+
+----
+
+TP 5 : Commande séquentielle avec temporisation et régulation hydraulique
+--------------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter **lunettes** et **gants anti-huile** pendant toute la séance
+   - ✅ Vérifier que le **réducteur de pression** est correctement réglé à 30 bar avant démarrage
+   - ✅ Ne pas modifier le réglage du réducteur pendant le fonctionnement du cycle
+   - ✅ Vérifier que les **4 voyants lumineux** sont câblés en parallèle sur Q0–Q3 avant mise sous tension
+   - ✅ S'assurer que les capteurs inductifs (vérin A) et magnétiques (vérin B) sont positionnés
+   - ✅ En cas d'urgence : **arrêt d'urgence** (champignon rouge)
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce TP réalise la commande automatique de **deux vérins double effet** avec trois éléments
+de régulation essentiels :
+
+- Un **réducteur de pression** (30 bar) — alimentation à pression réduite du vérin B
+- Une **vanne d'étranglement** (ouverture 10) — contrôle vitesse du vérin A
+- Deux **temporisations** (T0 = 2 s, T1 = 3 s) — phases de maintien en position
+
+L'ensemble du système est piloté par un **automate Delta DVP-12SE** programmé en
+LADDER via **ISPSoft**, et supervisé en temps réel par une **interface graphique
+DOPSoft** qui visualise l'avancement du GRAFCET et l'écoulement des temporisations.
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Programmer deux temporisateurs TMR dans un GRAFCET LADDER (méthode SET/RESET)
+- Expliquer le rôle du réducteur de pression sur l'effort du vérin B
+- Différencier un étrangleur simple d'un réducteur de pression
+- Interpréter la signalisation par voyants lumineux (une sortie active à la fois)
+- Analyser la pression du circuit pendant et entre les temporisations
+- **Concevoir une interface DOPSoft à deux vérins avec compteurs de temporisation**
+- **Visualiser l'écoulement des temporisations T0 et T1** en temps réel sur l'interface
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
++----------------------------------------------+------------------------------+
+| Composant                                    | Caractéristiques             |
++==============================================+==============================+
+| Groupe hydraulique (moteur + pompe)          | Alimentation circuit         |
++----------------------------------------------+------------------------------+
+| Limiteur de pression (soupape de décharge)   | **Réglage : 60 bar**         |
++----------------------------------------------+------------------------------+
+| Réducteur de pression                        | **Réglage : 30 bar**         |
++----------------------------------------------+------------------------------+
+| Vanne d'étranglement                         | **Degré d'ouverture : 10**   |
++----------------------------------------------+------------------------------+
+| Vérin double effet A                         | Capteurs inductifs S0, S1    |
++----------------------------------------------+------------------------------+
+| Vérin double effet B                         | Capteurs magnétiques S2, S3  |
++----------------------------------------------+------------------------------+
+| Distributeurs 4/2 (×2)                       | Y1/Y2 (vérin A), Y3/Y4 (B)   |
++----------------------------------------------+------------------------------+
+| Voyants lumineux                             | **4 unités** (Q0 à Q3)       |
++----------------------------------------------+------------------------------+
+| API Delta DVP-12SE                           | Programmation LADDER         |
++----------------------------------------------+------------------------------+
+| PC avec ISPSoft + DOPSoft                    | Programmation + supervision  |
++----------------------------------------------+------------------------------+
+| Alimentation 24 V DC                         | Alimentation commande        |
++----------------------------------------------+------------------------------+
+
+----
+
+4. Affectation des entrées/sorties de l'API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entrées :
+
++------+-----+--------------------------------------------------+
+| I/O  | Nom | Description                                      |
++======+=====+==================================================+
+| I0   | S0  | Vérin A rentré (capteur inductif)                |
++------+-----+--------------------------------------------------+
+| I1   | S1  | Vérin A sorti (capteur inductif)                 |
++------+-----+--------------------------------------------------+
+| I2   | S2  | Vérin B rentré (capteur magnétique)              |
++------+-----+--------------------------------------------------+
+| I3   | S3  | Vérin B sorti (capteur magnétique)               |
++------+-----+--------------------------------------------------+
+| I7   | S7  | Bouton de démarrage — contact NO                 |
++------+-----+--------------------------------------------------+
+
+Sorties :
+
++------+-----+----------+-------------------------------------------+
+| I/O  | Nom | LADDER   | Description                               |
++======+=====+==========+===========================================+
+| Q0   | Y1  | Y0       | Commande sortie vérin A (A+)              |
++------+-----+----------+-------------------------------------------+
+| Q1   | Y2  | Y1       | Commande retour vérin A (A-)              |
++------+-----+----------+-------------------------------------------+
+| Q2   | Y3  | Y2       | Commande sortie vérin B (B+)              |
++------+-----+----------+-------------------------------------------+
+| Q3   | Y4  | Y3       | Commande retour vérin B (B-)              |
++------+-----+----------+-------------------------------------------+
+
+.. note::
+
+   **Correspondance entre nomenclature FluidSIM et nomenclature LADDER :**
+
+   Sur le schéma FluidSIM, les bobines des distributeurs sont nommées **Y1, Y2,
+   Y3, Y4** (numérotation hydraulique habituelle). Dans le programme LADDER de
+   l'API Delta DVP, ces mêmes sorties Q0 à Q3 sont référencées sous les noms
+   internes **Y0, Y1, Y2, Y3** (numérotation octale du DVP commençant à zéro).
+   L'interface DOPSoft utilise les noms LADDER (Y0 à Y3).
+
+Voyants lumineux (câblés en parallèle sur les sorties) :
+
++----------+------+----------------------------------------------+
+| Voyant   | Q    | Signalisation                                |
++==========+======+==============================================+
+| Voyant 1 | Q0   | Vérin A en sortie (A+)                       |
++----------+------+----------------------------------------------+
+| Voyant 2 | Q1   | Vérin A en retour (A-)                       |
++----------+------+----------------------------------------------+
+| Voyant 3 | Q2   | Vérin B en sortie (B+)                       |
++----------+------+----------------------------------------------+
+| Voyant 4 | Q3   | Vérin B en retour (B-)                       |
++----------+------+----------------------------------------------+
+
+----
+
+5. Schémas du système
+~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp5.png
+   :align: center
+   :width: 80%
+
+   Vue d'ensemble du circuit hydraulique.
+
+.. figure:: images/schema_hydraulique_tp5.png
+   :align: center
+   :width: 80%
+
+   Schéma détaillé : circuit vérin A avec étrangleur (ouv. 10), circuit vérin B
+   avec réducteur de pression (30 bar).
+
+.. figure:: images/schema_electrique_tp5.png
+   :align: center
+   :width: 80%
+
+   Câblage API et voyants lumineux.
+
+.. figure:: images/grafcet_tp5.png
+   :align: center
+   :width: 60%
+
+   GRAFCET : A+ → [2 s] → B+ → [3 s] → B- → A-.
+
+----
+
+6. Cycle de fonctionnement
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Séquence :**
+
+.. code-block:: text
+
+   DÉMARRAGE (X7)
+       │
+       ▼ M0 — État initial
+       ▼ M1 — A+ : Vérin A sort (étrangleur régule la vitesse) — Y0 actif
+       │ → X1 (S1 — A sorti)
+       ▼ M2 — Temporisation T0 = 2 s (maintien A sorti — Y0 reste actif)
+       │ → T0 expiré
+       ▼ M3 — B+ : Vérin B sort (réducteur pression 30 bar) — Y2 actif
+       │ → X3 (S3 — B sorti)
+       ▼ M4 — Temporisation T1 = 3 s (maintien B sorti — Y2 reste actif)
+       │ → T1 expiré
+       ▼ M5 — B- : Vérin B rentre — Y3 actif
+       │ → X2 (S2 — B rentré)
+       ▼ M6 — A- : Vérin A rentre — Y1 actif
+       │ → X0 (S0 — A rentré)
+       └──────────────────────────────────► Retour M1 (cycle automatique)
+
+.. note::
+
+   **Maintien des sorties pendant les temporisations :**
+
+   Pendant l'étape M2 (temporisation T0), la sortie Y0 reste activée pour
+   maintenir le vérin A en position sortie. De même, pendant l'étape M4
+   (temporisation T1), la sortie Y2 reste activée pour maintenir le vérin B
+   sorti. Dans le programme LADDER, ces sorties sont conditionnées par
+   ``(M1 OU M2)`` pour Y0 et ``(M3 OU M4)`` pour Y2.
+
+**Tableaux GRAFCET :**
+
++----------+-----+--------+-----------------------------------------------+
+| Étape    | M   | Action | Description                                   |
++==========+=====+========+===============================================+
+| Étape 0  | M0  | —      | État initial                                  |
++----------+-----+--------+-----------------------------------------------+
+| Étape 1  | M1  | Y0     | A+ : sortie vérin A                           |
++----------+-----+--------+-----------------------------------------------+
+| Étape 2  | M2  | Y0     | Temporisation T0 — 2 s (A maintenu sorti)     |
++----------+-----+--------+-----------------------------------------------+
+| Étape 3  | M3  | Y2     | B+ : sortie vérin B                           |
++----------+-----+--------+-----------------------------------------------+
+| Étape 4  | M4  | Y2     | Temporisation T1 — 3 s (B maintenu sorti)     |
++----------+-----+--------+-----------------------------------------------+
+| Étape 5  | M5  | Y3     | B- : retour vérin B                           |
++----------+-----+--------+-----------------------------------------------+
+| Étape 6  | M6  | Y1     | A- : retour vérin A                           |
++----------+-----+--------+-----------------------------------------------+
+
++--------------------+------------------------------------------+
+| Transition         | Condition                                |
++====================+==========================================+
+| M0 → M1            | X7 (démarrage)                           |
++--------------------+------------------------------------------+
+| M1 → M2            | X1 (A sorti)                             |
++--------------------+------------------------------------------+
+| M2 → M3            | T0 expiré (2 s)                          |
++--------------------+------------------------------------------+
+| M3 → M4            | X3 (B sorti)                             |
++--------------------+------------------------------------------+
+| M4 → M5            | T1 expiré (3 s)                          |
++--------------------+------------------------------------------+
+| M5 → M6            | X2 (B rentré)                            |
++--------------------+------------------------------------------+
+| M6 → M1            | X0 (A rentré — cycle automatique)        |
++--------------------+------------------------------------------+
+
+----
+
+7. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Réaliser le schéma FluidSIM (2 vérins, 2 distributeurs 4/2, étrangleur, réducteur).
+2. Câbler : S0→I0, S1→I1, S2→I2, S3→I3, S7→I7.
+3. Câbler les 4 voyants en parallèle sur Q0–Q3.
+4. Programmer en LADDER (méthode SET/RESET, M0 à M6).
+5. Ajouter **TMR T0, K20** (2 s) au réseau étape M2.
+6. Ajouter **TMR T1, K30** (3 s) au réseau étape M4.
+7. Compiler, téléverser dans l'API Delta DVP via ISPSoft.
+8. Lancer l'**interface DOPSoft** pour la supervision graphique.
+9. Vérifier l'allumage séquentiel des voyants et l'écoulement des temporisations.
+10. Vérifier le redémarrage automatique du cycle après le retour du vérin A.
+
+----
+
+8. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/repos_tp5.png
+   :align: center
+
+   État initial : deux vérins en position rentrée.
+
+.. figure:: images/A_plus5.png
+   :align: center
+
+   M1 (A+) : Y1 actif, étrangleur régule la vitesse — Voyant 1 allumé.
+
+.. figure:: images/S1_active_tp5.png
+   :align: center
+
+   S1 (capteur inductif) détecte A sorti → T0 lancé (2 s).
+
+.. note::
+
+   Le capteur **S1 est de type inductif** : il génère un champ électromagnétique et
+   détecte la présence métallique du piston sans contact physique.
+
+.. figure:: images/B_plus5.png
+   :align: center
+
+   M3 (B+) : T0 expiré, Y3 actif, réducteur limite à 30 bar — Voyant 3 allumé.
+
+.. figure:: images/S3_active_tp5.png
+   :align: center
+
+   S3 (capteur magnétique) détecte B sorti → T1 lancé (3 s).
+
+.. note::
+
+   Le capteur **S3 est de type magnétique** : il détecte le champ de l'aimant intégré
+   dans le piston, monté dans la rainure externe du corps du vérin.
+
+.. figure:: images/B_moins5.png
+   :align: center
+
+   M5 (B-) : T1 expiré, Y4 actif — Voyant 4 allumé.
+
+.. figure:: images/A_moins5.png
+   :align: center
+
+   M6 (A-) : Y2 actif, A rentre — Voyant 2 allumé. Dès S0, cycle repart à M1.
+
+----
+
+9. Programme LADDER complet (ISPSoft)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Correspondance API :**
+
++-----+--------+----------------------------------------------+
+| X   | Nom    | Rôle                                         |
++=====+========+==============================================+
+| X0  | S0     | Vérin A rentré (inductif)                    |
++-----+--------+----------------------------------------------+
+| X1  | S1     | Vérin A sorti (inductif)                     |
++-----+--------+----------------------------------------------+
+| X2  | S2     | Vérin B rentré (magnétique)                  |
++-----+--------+----------------------------------------------+
+| X3  | S3     | Vérin B sorti (magnétique)                   |
++-----+--------+----------------------------------------------+
+| X7  | S7     | Bouton démarrage (NO)                        |
++-----+--------+----------------------------------------------+
+
+**Bobines de sortie (LADDER) :**
+
++-----+--------+----------+----------------------------------+
+| Y   | Q      | FluidSIM | Rôle                             |
++=====+========+==========+==================================+
+| Y0  | Q0     | Y1       | Sortie vérin A (A+)              |
++-----+--------+----------+----------------------------------+
+| Y1  | Q1     | Y2       | Retour vérin A (A-)              |
++-----+--------+----------+----------------------------------+
+| Y2  | Q2     | Y3       | Sortie vérin B (B+)              |
++-----+--------+----------+----------------------------------+
+| Y3  | Q3     | Y4       | Retour vérin B (B-)              |
++-----+--------+----------+----------------------------------+
+
+**Temporisateurs :**
+
++-----+--------------------------------------------+
+| T0  | TMR T0, K20 — 20 × 100 ms = **2 s**        |
++-----+--------------------------------------------+
+| T1  | TMR T1, K30 — 30 × 100 ms = **3 s**        |
++-----+--------------------------------------------+
+
+**Transitions LADDER :**
+
++-------------------------------------+--------------------------------+
+| Condition                           | Action LADDER                  |
++=====================================+================================+
+| M1002                               | SET M0                         |
++-------------------------------------+--------------------------------+
+| M0 ET X7                            | SET M1, RESET M0               |
++-------------------------------------+--------------------------------+
+| M1 ET X1                            | SET M2, RESET M1               |
++-------------------------------------+--------------------------------+
+| M2 ET T0 expiré                     | SET M3, RESET M2               |
++-------------------------------------+--------------------------------+
+| M3 ET X3                            | SET M4, RESET M3               |
++-------------------------------------+--------------------------------+
+| M4 ET T1 expiré                     | SET M5, RESET M4               |
++-------------------------------------+--------------------------------+
+| M5 ET X2                            | SET M6, RESET M5               |
++-------------------------------------+--------------------------------+
+| M6 ET X0                            | SET M1, RESET M6               |
++-------------------------------------+--------------------------------+
+
+.. figure:: images/ladder_complet5.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet5.5.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet5.55.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet5.555.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet5.5555.png
+   :align: center
+   :width: 80%
+
+----
+
+10. Interface de supervision DOPSoft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour permettre une visualisation graphique et intuitive du cycle automatique avec
+temporisations, une **interface de supervision** a été conçue avec le logiciel
+**DOPSoft** de Delta Electronics. Cette interface joue le rôle d'une HMI virtuelle
+qui s'exécute sur le PC en parallèle du programme LADDER. Elle affiche en temps
+réel l'avancement du GRAFCET, l'état des deux vérins, l'allumage des indicateurs
+Y0 à Y3 et permet de suivre visuellement l'écoulement des temporisations T0 et T1.
+
+Description de l'interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'interface regroupe l'ensemble des éléments nécessaires à la supervision du
+système :
+
+- **Bouton de démarrage** : représente l'entrée X7 — **rouge** au repos
+  (cycle non lancé), **vert** dès que le cycle est en cours d'exécution
+- **Deux compteurs numériques TMR T0 et TMR T1** : affichent en temps réel la
+  valeur courante des temporisations (en dixièmes de seconde)
+- **Vérin A** (couleur noire) : représentation graphique avec deux voyants
+  **A-** et **A+** liés aux capteurs S0 (X0) et S1 (X1)
+- **Vérin B** (couleur rouge) : représentation graphique avec deux voyants
+  **B-** et **B+** liés aux capteurs S2 (X2) et S3 (X3)
+- **Indicateurs Y0 à Y3** : état logique des quatre bobines de l'API pilotant
+  les électrodistributeurs 4/2
+- **Images des distributeurs 4/2** : représentation graphique des deux
+  composants pilotés (un par vérin)
+
+L'interface met particulièrement en valeur l'écoulement des temporisations
+grâce aux deux compteurs numériques qui s'incrémentent toutes les 100 ms, ce
+qui permet à l'étudiant de visualiser concrètement la notion de TMR dans le
+programme LADDER.
+
+État initial — M0 actif, aucune sortie active
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+À la mise sous tension, le programme initialise l'étape M0 grâce à l'impulsion
+M1002 (Network 1 : SET M0). Tant que l'opérateur n'appuie pas sur le bouton de
+démarrage, le système reste en attente :
+
+- Le **bouton de démarrage** est en **rouge** (X7 = 0, prêt à être actionné)
+- Les **voyants A-** et **B-** sont allumés en **vert** (les deux vérins sont
+  en position rentrée initiale)
+- **Aucune bobine** Y0, Y1, Y2, Y3 n'est activée
+- Les **deux compteurs TMR T0 et TMR T1** affichent **0**
+- Network 2 montre la branche d'armement : ``X7 · M0 → SET M1``
+
+.. figure:: images/dopsoft_etat_initial_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — État initial : le programme attend l'appui sur X7 pour
+   démarrer le cycle. Network 1 a activé M0 via M1002, Network 2 est armé en
+   attente de la transition ``X7 · M0``.
+
+Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Après l'appui sur le bouton de démarrage, la transition ``X7 · M0`` est
+validée : SET M1 et RESET M0. Le Network 4 alimente alors la bobine Y0
+(sortie A+) :
+
+- Le **bouton de démarrage** passe en **vert** (cycle en cours)
+- L'**indicateur Y0** passe en **vert**
+- Le vérin A commence sa course de sortie (l'étrangleur à ouverture 10 régule
+  la vitesse)
+- Aucun voyant de vérin n'est encore allumé (A est en mouvement entre A- et A+)
+- Network 5 est armé en attente de ``X1 · M1`` pour passer à M2
+
+.. figure:: images/dopsoft_etape_A_plus_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 1 (A+) : la bobine Y0 est activée, le vérin A
+   sort à vitesse régulée par l'étrangleur. Le programme LADDER montre le
+   Network 4 (``M1 → Y0``) actif et le Network 5 en attente du capteur X1.
+
+Étape 2 — Temporisation T0 = 2 s (M2 actif, Y0 maintenu)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dès que le capteur S1 (X1) détecte la sortie complète du vérin A, la
+transition ``X1 · M1 → SET M2`` est validée et M1 est réinitialisé. Le bloc
+TMR T0 (K20 = 2 s) démarre le décompte :
+
+- Le **voyant A+** s'allume en **vert** (vérin A en position sortie)
+- L'**indicateur Y0** reste **vert** (la sortie Y0 est conditionnée par
+  ``M1 OU M2`` pour maintenir A sorti pendant la temporisation)
+- Le **compteur TMR T0** commence à s'incrémenter de 0 vers 20 (2 s)
+- Le bloc TMR du Network 7 affiche la valeur de consigne **K20**, soit
+  20 × 100 ms = **2 secondes**
+- Network 9 est armé en attente de ``T0 · M2`` pour passer à M3
+
+.. figure:: images/dopsoft_tempo_T0_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 2 : le vérin A est en position sortie (voyant
+   A+ vert), la temporisation T0 est en cours (bloc TMR T0 avec consigne
+   K20 = 2 s). La sortie Y0 reste active pour maintenir le vérin A sorti
+   pendant les 2 secondes.
+
+Étapes 3 et 4 — B+ puis Temporisation T1 = 3 s (M3 puis M4, Y2 maintenu)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+À l'expiration de la temporisation T0, le Network 9 valide la transition
+``T0 · M2 → SET M3``. Le Network 10 active alors la bobine Y2 (sortie B+) :
+
+- L'**indicateur Y2** passe en **vert**
+- L'**indicateur Y0** s'éteint (le vérin A reste mécaniquement en position
+  car le distributeur 4/2 est bistable et conserve son état)
+- Le vérin B sort sous pression réduite (30 bar grâce au réducteur)
+- Le **voyant A+** reste **vert** (vérin A toujours sorti physiquement)
+
+Quand le capteur S3 (X3) détecte la sortie complète du vérin B, la transition
+``X3 · M3 → SET M4`` est validée. Le bloc TMR T1 (K30 = 3 s) démarre alors le
+décompte :
+
+- Les **voyants A+** et **B+** sont allumés en **vert** simultanément (les
+  deux vérins sont en position sortie)
+- L'**indicateur Y2** reste **vert** (sortie maintenue pour B sorti pendant
+  la temporisation — Y2 est conditionnée par ``M3 OU M4``)
+- Le **compteur TMR T1** commence à s'incrémenter de 0 vers 30 (3 s)
+- Le bloc TMR du Network 13 affiche la valeur de consigne **K30**, soit
+  30 × 100 ms = **3 secondes**
+- Network 15 est armé en attente de ``T1 · M4`` pour passer à M5
+
+.. figure:: images/dopsoft_tempo_T1_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étapes M3 (B+) et M4 (Tempo T1) : la bobine Y2 est
+   activée, les deux vérins sont en position sortie (voyants A+ et B+ verts),
+   la temporisation T1 est en cours (bloc TMR T1 avec consigne K30 = 3 s).
+
+Étape 5 — B- : rentrée du vérin B (M5 actif, Y3 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+À l'expiration de la temporisation T1, la transition ``T1 · M4 → SET M5``
+est validée. Le Network 16 active alors la bobine Y3 (retour B-) :
+
+- L'**indicateur Y3** passe en **vert**
+- L'**indicateur Y2** s'éteint
+- Le **voyant B-** s'allume en **vert** dès que le capteur S2 (X2) détecte
+  le retour complet du vérin B
+- Le **voyant A+** reste **vert** (le vérin A est toujours en position sortie)
+- Network 17 est armé en attente de ``X2 · M5`` pour passer à M6
+
+.. figure:: images/dopsoft_etape_B_moins_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 5 (B-) : la bobine Y3 est activée, le vérin B
+   rentre jusqu'à atteindre le capteur S2.
+
+Étape 6 — A- : rentrée du vérin A (M6 actif, Y1 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand le capteur S2 (X2) confirme le retour du vérin B, la transition
+``X2 · M5 → SET M6`` est validée. Le Network 19 active la bobine Y1
+(retour A-) :
+
+- L'**indicateur Y1** passe en **vert**
+- L'**indicateur Y3** s'éteint
+- Le **voyant A-** s'allume en **vert** dès que le capteur S0 (X0) détecte
+  le retour complet du vérin A
+- Network 21 valide la transition de bouclage ``X0 · M6 → SET M1`` : le cycle
+  reprend automatiquement à l'étape **A+** pour un fonctionnement en boucle
+  continue
+
+.. figure:: images/dopsoft_etape_A_moins_tp5.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 6 (A-) : la bobine Y1 est activée, le vérin A
+   rentre. Le Network 21 (``X0 · M6 → SET M1``) assure le bouclage
+   automatique vers l'étape A+ pour un fonctionnement cyclique.
+
+.. note::
+
+   La principale nouveauté de l'interface DOPSoft pour ce TP est l'ajout de
+   **deux compteurs numériques** qui affichent en temps réel les valeurs
+   des temporisations T0 et T1. Cette visualisation rend tangible la notion
+   de temporisation : l'étudiant voit concrètement les 20 unités s'écouler
+   pour T0 (soit 2 secondes) et les 30 unités pour T1 (soit 3 secondes), ce
+   qui est beaucoup plus parlant qu'une simple description textuelle.
+
+.. tip::
+
+   **Repères visuels sur l'interface DOPSoft :**
+
+   - **Bouton de démarrage rouge** = système en attente d'un démarrage
+   - **Bouton de démarrage vert** = cycle en cours d'exécution
+   - **TMR T0 qui s'incrémente** = phase de temporisation à l'étape M2
+     (vérin A maintenu sorti)
+   - **TMR T1 qui s'incrémente** = phase de temporisation à l'étape M4
+     (les deux vérins sont sortis)
+   - **Voyants A-/A+ et B-/B+** = retour visuel direct de l'état physique
+     des capteurs de fin de course
+
+----
+
+
+11. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+
+   **Q1.** Le réducteur de pression alimente le vérin B à 30 bar tandis que la pompe
+   fournit jusqu'à 60 bar. Calculez la **force maximale** développée par le vérin B
+   si S = 4,91 cm². Comparez avec la force maximale possible sans réducteur.
+
+   .. line-block::
+
+      F (avec réducteur) = _______ N
+      F (sans réducteur) = _______ N
+      Rapport : _______
+
+
+   **Q2.** La transition **M6 → M1** (et non M6 → M0) assure le cycle automatique.
+   Expliquez pourquoi revenir à M0 stopperait le cycle et exigerait un nouvel appui sur S7.
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q3.** Le voyant 2 (Q1 — A-) et le voyant 4 (Q3 — B-) s'allument à tour de rôle
+   et jamais en même temps. Pourquoi ? Est-ce lié au câblage ou à la programmation LADDER ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q4.** En observant les captures DOPSoft, on remarque que les temporisations T0
+   et T1 utilisent une unité de **0,1 seconde** (T0 = K20 pour 2 s, T1 = K30 pour 3 s).
+   Quelle serait la valeur K à programmer pour obtenir une temporisation de **8 secondes** ?
+   Et pour **0,5 seconde** ?
+
+   .. line-block::
+
+      K pour 8 s = _______
+      K pour 0,5 s = _______
+
+----
+
+12. Conclusion
+~~~~~~~~~~~~~~
+
+Ce TP a permis d'intégrer des temporisateurs dans un GRAFCET LADDER, de comprendre le
+rôle du réducteur de pression sur l'effort du vérin, de valider la signalisation
+par voyants et de **concevoir une interface DOPSoft avec compteurs de temporisation**.
+L'interface graphique rend particulièrement visible la notion de temporisation grâce
+aux deux compteurs numériques qui s'écoulent en temps réel, et constitue ainsi un
+outil pédagogique très efficace pour comprendre le fonctionnement des blocs TMR.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP5.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+
+----
+
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp5.mp4">
+    </video>
+
+----
+
+TP 6 : Commande séquentielle d'un système hydraulique à trois actionneurs
+--------------------------------------------------------------------------
+
+.. danger::
+
+   **FICHE DE SÉCURITÉ OBLIGATOIRE — À LIRE AVANT TOUTE MANIPULATION**
+
+   - ✅ Porter **lunettes** et **gants anti-huile** pendant toute la séance
+   - ✅ Vérifier le câblage de l'**arrêt d'urgence S9** (contact NC) sur I6 avant démarrage
+   - ✅ Tester l'arrêt d'urgence avant le premier cycle : appuyer sur S9 → vérifier que toutes
+     les sorties sont à 0
+   - ✅ Le vérin A reste sorti en permanence une fois lancé — ne pas intervenir manuellement
+     pendant le cycle
+   - ✅ Vérifier le **clapet anti-retour piloté** : ne pas essayer de rentrer le vérin A
+     manuellement sans démonter le clapet
+   - ✅ En cas d'urgence : **bouton S9** (champignon rouge sur la rampe de commande)
+
+----
+
+1. Introduction
+~~~~~~~~~~~~~~~
+
+Ce TP réalise la commande automatique d'un système hydraulique composé de **trois actionneurs** :
+
+- Un **vérin simple effet A** (rappel par ressort, distributeur 3/2, clapet anti-retour piloté)
+- Un **vérin double effet B** (distributeur 4/2, étrangleur ouverture 30)
+- Un **vérin double effet C** (distributeur 4/3, vanne de régulation de vitesse Q = 1 L/min)
+
+La particularité de ce système : le vérin A est sorti **une seule fois** au premier cycle,
+puis maintenu sorti en permanence par le **clapet anti-retour piloté**. Seuls B et C
+effectuent des mouvements alternés en production.
+
+Le système intègre un **arrêt d'urgence matériel (S9)** câblé sur l'entrée X6 de l'API.
+
+----
+
+2. Objectifs
+~~~~~~~~~~~~
+
+À l'issue de ce TP, vous serez capable de :
+
+- Analyser un circuit hydraulique à trois actionneurs de technologies différentes
+- Expliquer le rôle du clapet anti-retour piloté sur le maintien permanent du vérin A
+- Concevoir un GRAFCET fidèle à un comportement réel avec sortie permanente
+- Intégrer un arrêt d'urgence matériel dans le programme LADDER (X6 NC)
+- Distinguer le distributeur 3/2 (vérin simple effet) du 4/2 (vérin double effet)
+
+----
+
+3. Matériel utilisé
+~~~~~~~~~~~~~~~~~~~
+
+- **Unité d'entraînement** (moteur + pompe) — moteur 400 W à **1500 tr/min**,
+  pompe à engrenages 10 L/min, **pression d'ouverture 16 bar** 
+- Réservoir d'huile hydraulique
+- Soupape de décharge (limiteur de pression principal) — seuil : 16 bar
+- Manomètre de contrôle
+- **Clapet anti-retour piloté** — maintien vérin A en sortie (réf. N°12)
+- **Étrangleur** (degré d'ouverture : 30) — circuit vérin B
+- **Vanne de régulation de vitesse** (Q = 1 L/min, clapet anti-retour intégré) — circuit vérin C
+- Vérin **simple effet A** (rappel par ressort) + capteur S0 (position sortie)
+- Vérin **double effet B** + capteurs S1 (rentré), S2 (sorti)
+- Vérin **double effet C** + capteurs S3 (rentré), S4 (sorti)
+- Distributeur **3/2** (Y1, rappel par ressort) — vérin A
+- Distributeur **4/2** (Y2, Y3) — vérin B
+- Distributeur **4/3** (Y4, Y5) — vérin C
+- API Delta DVP + alimentation 24 V DC
+- Disjoncteur
+- Bouton démarrage S7 (NO) + Arrêt urgence S9 (NC)
+
+----
+
+4. Affectation des entrées/sorties de l'API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Entrées :
+
++------+-----+----------------------------------------------------------+
+| I/O  | Nom | Description                                              |
++======+=====+==========================================================+
+| I0   | S0  | Vérin A en position sortie (capteur fin de course NO)    |
++------+-----+----------------------------------------------------------+
+| I1   | S1  | Vérin B en position rentrée                              |
++------+-----+----------------------------------------------------------+
+| I2   | S2  | Vérin B en position sortie                               |
++------+-----+----------------------------------------------------------+
+| I3   | S3  | Vérin C en position rentrée                              |
++------+-----+----------------------------------------------------------+
+| I4   | S4  | Vérin C en position sortie                               |
++------+-----+----------------------------------------------------------+
+| I6   | S9  | Arrêt d'urgence — contact **NC**                         |
++------+-----+----------------------------------------------------------+
+| I7   | S7  | Bouton de démarrage — contact NO                         |
++------+-----+----------------------------------------------------------+
+
+Sorties :
+
++------+-----+---------------------------------------------------------+
+| I/O  | Nom | Description                                             |
++======+=====+=========================================================+
+| Q0   | Y1  | Commande sortie vérin A (A+) — maintien par clapet      |
++------+-----+---------------------------------------------------------+
+| Q2   | Y2  | Commande sortie vérin B (B+)                            |
++------+-----+---------------------------------------------------------+
+| Q4   | Y3  | Commande retour vérin B (B-)                            |
++------+-----+---------------------------------------------------------+
+| Q6   | Y4  | Commande sortie vérin C (C+)                            |
++------+-----+---------------------------------------------------------+
+| Q7   | Y5  | Commande retour vérin C (C-)                            |
++------+-----+---------------------------------------------------------+
+
+.. note::
+
+   Le **vérin A est simple effet** : l'électrovanne Y1 commande uniquement la sortie.
+   Le retour est assuré par le ressort de rappel. Une fois sorti, le **clapet anti-retour
+   piloté** bloque l'huile dans la chambre et maintient le vérin sorti en permanence.
+
+.. note::
+
+   **Correspondance entre nomenclature FluidSIM et nomenclature LADDER :**
+
+   Sur le schéma FluidSIM, la bobine de retour du vérin B est appelée **Y3** et
+   raccordée à la sortie **Q4** de l'API. Dans le programme LADDER de l'API
+   Delta DVP, cette même sortie Q4 est référencée sous le nom interne **Y4**
+   (l'adresse logique de Q4 correspond à Y4 dans l'adressage octal du DVP).
+   La même remarque vaut pour les sorties du vérin C : **Y4 (FluidSIM) = Y6
+   (LADDER)** sur Q6 et **Y5 (FluidSIM) = Y7 (LADDER)** sur Q7.
+
+----
+
+5. Schémas du système
+~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/schema_tp6.png
+   :align: center
+   :width: 80%
+
+   Vue d'ensemble du circuit à trois actionneurs.
+
+.. figure:: images/schema_hydraulique_tp6.png
+   :align: center
+   :width: 80%
+
+   Schéma hydraulique détaillé : distributeur 3/2 + clapet piloté (vérin A),
+   distributeur 4/2 + étrangleur (vérin B), distributeur 4/3 + régulateur (vérin C).
+
+.. figure:: images/schema_electrique_tp6.png
+   :align: center
+   :width: 80%
+
+   Câblage API : capteurs S0–S4 sur I0–I4, S9 (NC) sur I6, S7 sur I7,
+   sorties Y1–Y5 sur Q0, Q2, Q4, Q6, Q7.
+
+.. figure:: images/grafcet_tp6.png
+   :align: center
+   :width: 55%
+
+   GRAFCET : A+ (une fois) → B+ → [3 s] → C+ → C- → B- → (cycle B+…)
+
+----
+
+6. Cycle de fonctionnement
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Séquence :**
+
+.. code-block:: text
+
+   DÉMARRAGE (X7)
+       │
+       ▼ M0 — État initial
+       ▼ M1 — A+ : Vérin A sort (clapet piloté maintient la sortie)
+       │ → X0 (S0 — A sorti)
+       ▼ M2 — B+ : Vérin B sort (débit limité par étrangleur)
+       │ → X2 (S2 — B sorti)
+       ▼ M3 — Temporisation T0 = 3 s (maintien B sorti)
+       │ → T0 expiré
+       ▼ M4 — C+ : Vérin C sort (vitesse régulée par régulateur)
+       │ → X4 (S4 — C sorti)
+       ▼ M5 — C- : Vérin C rentre (retour libre clapet ouvert)
+       │ → X3 (S3 — C rentré)
+       ▼ M6 — B- : Vérin B rentre
+       │ → X1 (S1 — B rentré)
+       └──────────────────────────────────► Retour M2 (vérin A toujours sorti)
+
+.. note::
+
+   La transition **M6 → M2** (et non vers M0) traduit le cycle automatique.
+   Le vérin A reste sorti en permanence grâce au clapet anti-retour piloté.
+   Y1 reste actif pendant toute la durée du cycle de production.
+
+**Tableaux GRAFCET :**
+
++----------+-----+--------+------------------------------------------------------+
+| Étape    | M   | Action | Description                                          |
++==========+=====+========+======================================================+
+| Étape 0  | M0  | —      | État initial — attente démarrage                     |
++----------+-----+--------+------------------------------------------------------+
+| Étape 1  | M1  | Q0/Y1  | A+ : sortie et maintien vérin A                      |
++----------+-----+--------+------------------------------------------------------+
+| Étape 2  | M2  | Q2/Y2  | B+ : sortie vérin B (débit limité)                   |
++----------+-----+--------+------------------------------------------------------+
+| Étape 3  | M3  | —      | Temporisation T0 = 3 s (B sorti maintenu)            |
++----------+-----+--------+------------------------------------------------------+
+| Étape 4  | M4  | Q6/Y4  | C+ : sortie vérin C (vitesse régulée)                |
++----------+-----+--------+------------------------------------------------------+
+| Étape 5  | M5  | Q7/Y5  | C- : retour vérin C                                  |
++----------+-----+--------+------------------------------------------------------+
+| Étape 6  | M6  | Q4/Y3  | B- : retour vérin B                                  |
++----------+-----+--------+------------------------------------------------------+
+
++--------------------+------------------------------------------+
+| Transition         | Condition                                |
++====================+==========================================+
+| M0 → M1            | X7 (démarrage)                           |
++--------------------+------------------------------------------+
+| M1 → M2            | X0 (S0 — vérin A sorti)                  |
++--------------------+------------------------------------------+
+| M2 → M3            | X2 (S2 — vérin B sorti)                  |
++--------------------+------------------------------------------+
+| M3 → M4            | T0 expiré (3 s)                          |
++--------------------+------------------------------------------+
+| M4 → M5            | X4 (S4 — vérin C sorti)                  |
++--------------------+------------------------------------------+
+| M5 → M6            | X3 (S3 — vérin C rentré)                 |
++--------------------+------------------------------------------+
+| M6 → M2            | X1 (S1 — vérin B rentré — cycle auto)    |
++--------------------+------------------------------------------+
+
+----
+
+7. Procédure expérimentale
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Réaliser le schéma FluidSIM complet (3 circuits, distributeurs 3/2, 4/2, 4/3,
+   étrangleur, régulateur de débit, clapet anti-retour piloté).
+2. Placer S0 sur vérin A, S1 et S2 sur vérin B, S3 et S4 sur vérin C.
+3. Câbler : S0→I0, S1→I1, S2→I2, S3→I3, S4→I4, S9 (NC)→I6, S7→I7.
+4. Câbler le voyant lumineux en parallèle sur S0.
+5. Programmer en LADDER (méthode SET/RESET, M0 à M6).
+6. Ajouter **TMR T0, K30** (3 s) au réseau de l'étape M3.
+7. **Conditionner toutes les sorties physiques par X6** (arrêt d'urgence NC) en série.
+8. Compiler, téléverser, lancer la simulation.
+9. **Test arrêt d'urgence** : appuyer sur S9 en cours de cycle → vérifier l'arrêt
+   immédiat de toutes les sorties.
+
+----
+
+8. Résultats de simulation
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. figure:: images/repos_tp6.png
+   :align: center
+
+   État initial : les trois vérins en position rentrée.
+
+.. figure:: images/A_plus6.png
+   :align: center
+
+   M1 (A+) : Y1 actif, distributeur 3/2 alimente le vérin A. Le clapet piloté
+   s'ouvre et laisse l'huile remplir la chambre. S0 détecte la sortie.
+   Le clapet se referme → vérin A maintenu sorti **en permanence**.
+
+.. figure:: images/B_plus6.png
+   :align: center
+
+   M2 (B+) : Y2 actif, distributeur 4/2 alimente chambre avant vérin B.
+   L'étrangleur (ouverture 30) régule le débit.
+
+.. figure:: images/C_plus6.png
+   :align: center
+
+   M4 (C+) : T0 expiré, Y4 actif, distributeur 4/3 alimente chambre avant vérin C.
+   Le régulateur de débit (Q = 1 L/min) assure une vitesse constante.
+
+.. figure:: images/C_moins6.png
+   :align: center
+
+   M5 (C-) : Y5 actif, distributeur 4/3 inverse le sens. Le clapet anti-retour
+   intégré au régulateur s'ouvre → retour libre et rapide.
+
+.. figure:: images/B_moins6.png
+   :align: center
+
+   M6 (B-) : Y3 actif (Q4), distributeur 4/2 alimente chambre arrière vérin B.
+   Dès S1 activé → cycle repart à M2 (vérin A toujours maintenu sorti).
+
+----
+
+9. Programme LADDER complet (ISPSoft)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**Correspondance API :**
+
++-----+------+--------------------------------------------------+
+| X   | Nom  | Rôle                                             |
++=====+======+==================================================+
+| X0  | S0   | Vérin A sorti (fin de course NO)                 |
++-----+------+--------------------------------------------------+
+| X1  | S1   | Vérin B rentré                                   |
++-----+------+--------------------------------------------------+
+| X2  | S2   | Vérin B sorti                                    |
++-----+------+--------------------------------------------------+
+| X3  | S3   | Vérin C rentré                                   |
++-----+------+--------------------------------------------------+
+| X4  | S4   | Vérin C sorti                                    |
++-----+------+--------------------------------------------------+
+| X6  | S9   | Arrêt d'urgence (NC — ouvert = urgence)          |
++-----+------+--------------------------------------------------+
+| X7  | S7   | Bouton de démarrage (NO)                         |
++-----+------+--------------------------------------------------+
+
++-----+--------+----------------------------------------------+
+| Y   | Q/Y    | Rôle                                         |
++=====+========+==============================================+
+| Y0  | Q0/Y1  | Sortie vérin A (A+) — maintien par clapet    |
++-----+--------+----------------------------------------------+
+| Y2  | Q2/Y2  | Sortie vérin B (B+)                          |
++-----+--------+----------------------------------------------+
+| Y4  | Q4/Y3  | Retour vérin B (B-)                          |
++-----+--------+----------------------------------------------+
+| Y6  | Q6/Y4  | Sortie vérin C (C+)                          |
++-----+--------+----------------------------------------------+
+| Y7  | Q7/Y5  | Retour vérin C (C-)                          |
++-----+--------+----------------------------------------------+
+
+**Temporisateur :**
+
++-----+------------------------------------------+
+| T0  | TMR T0, K30 — 30 × 100 ms = **3 s**      |
++-----+------------------------------------------+
+
+**Transitions LADDER :**
+
++-------------------------------------+--------------------------------+
+| Condition                           | Action LADDER                  |
++=====================================+================================+
+| M1002                               | SET M0                         |
++-------------------------------------+--------------------------------+
+| M0 ET X7                            | SET M1, RESET M0               |
++-------------------------------------+--------------------------------+
+| M1 ET X0                            | SET M2, RESET M1               |
++-------------------------------------+--------------------------------+
+| M2 ET X2                            | SET M3, RESET M2               |
++-------------------------------------+--------------------------------+
+| M3 ET T0 expiré                     | SET M4, RESET M3               |
++-------------------------------------+--------------------------------+
+| M4 ET X4                            | SET M5, RESET M4               |
++-------------------------------------+--------------------------------+
+| M5 ET X3                            | SET M6, RESET M5               |
++-------------------------------------+--------------------------------+
+| M6 ET X1                            | SET M2, RESET M6 (cycle auto)  |
++-------------------------------------+--------------------------------+
+
+**Sorties conditionnées par l'arrêt d'urgence X6 :**
+
+.. code-block:: text
+
+   M1 ──┤ ├──── X6 ──┤ ├──── ( ) Y0  (A+)
+   M2 ──┤ ├──── X6 ──┤ ├──── ( ) Y2  (B+)
+   M6 ──┤ ├──── X6 ──┤ ├──── ( ) Y4  (B-)
+   M4 ──┤ ├──── X6 ──┤ ├──── ( ) Y6  (C+)
+   M5 ──┤ ├──── X6 ──┤ ├──── ( ) Y7  (C-)
+
+.. figure:: images/ladder_complet6.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet6.5.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet6.555.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet6.5555.png
+   :align: center
+   :width: 80%
+
+.. figure:: images/ladder_complet6.55555.png
+   :align: center
+   :width: 80%
+
+
+----
+
+10. Interface de supervision DOPSoft
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Pour permettre une visualisation graphique et intuitive du cycle automatique
+à trois actionneurs, une **interface de supervision** a été conçue avec le
+logiciel **DOPSoft** de Delta Electronics. Cette interface joue le rôle d'une
+HMI virtuelle qui s'exécute sur le PC en parallèle du programme LADDER. Elle
+affiche en temps réel l'avancement du GRAFCET étape par étape, ce qui
+constitue un outil pédagogique précieux pour suivre la séquence complexe
+A+ → B+ → [3 s] → C+ → C- → B- → (boucle B+…).
+
+Conception de l'interface dans DOPSoft (mode édition)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Avant la simulation, l'interface est entièrement conçue dans l'environnement
+**DOPSoft** (logiciel de programmation des écrans tactiles Delta DOP).
+L'éditeur permet de positionner librement les éléments graphiques sur la
+zone d'écran cible (modèle **DOP-107WV**, 65 536 couleurs) :
+
+- **Onglet Elements** : palette d'outils contenant les composants à insérer
+  (Button, Meter, Bar, Pipe, Pie, Indicator, Data Display, Graphic Display,
+  Input, Curve, Keypad, List, Analog, Frame and Multimedia, Basic Shapes,
+  Drawing)
+- **Panneau Project** (à gauche) : structure du projet HMI avec les
+  ressources associées (Screen, Communication, Data Exchange, Tag, OPC UA
+  Server, Alarm, Recipe, History Buffer, Multi-language, Account Settings,
+  Configuration, Text Bank, Picture Bank, Program/Main)
+- **Panneau Macro Manager** (à droite) : gestion des macros et écrans
+  (Screen ID:1 pour l'écran principal)
+- **Fenêtre Output** : liste de tous les objets placés sur l'écran
+  (rectangles, textes, indicateurs multi-états, afficheurs numériques,
+  images, etc.)
+
+Les éléments visibles sur l'interface sont :
+
+- Trois **images de vérins** (A orange, B noir, C rouge) avec leurs
+  étiquettes de position (A+, B-, B+, C-, C+) — implémentées sous forme
+  d'**indicateurs multi-états** (Multistate Indicator) qui changent de
+  couleur selon la valeur du bit associé (X0, X1, X2, X3, X4)
+- Trois **images de distributeurs** (3/2 monostable, 4/2 et 4/3) avec les
+  étiquettes des bobines (Y0, Y2, Y4, Y6, Y7)
+- Un **bouton poussoir** (Bouton de démarrage) lié à l'entrée X7 de l'API
+- Un **bouton poussoir** (Arrêt d'urgence) représentant l'entrée X6 (NC)
+- Un **afficheur numérique** (Numeric Display) montrant la valeur courante
+  du temporisateur TMR T0 — sur la capture en mode édition, la valeur de
+  test "1234" est affichée pour vérifier le formatage à 4 chiffres
+
+.. figure:: images/dopsoft_edition_interface_tp6.png
+   :align: center
+   :width: 80%
+
+   Environnement DOPSoft en mode édition : conception graphique de
+   l'interface HMI sur l'écran tactile DOP-107WV (65 536 couleurs). Tous
+   les éléments visuels (vérins, distributeurs, boutons, afficheur TMR)
+   sont positionnés avant le téléversement vers l'écran et le démarrage de
+   la simulation.
+
+.. note::
+
+   La valeur **"1234"** affichée dans l'afficheur **TMR T0** en mode édition
+   n'est qu'une **valeur de test** utilisée par le concepteur pour vérifier
+   le format d'affichage (4 chiffres). Lors de la simulation réelle, cet
+   afficheur est lié au registre du temporisateur T0 et affichera la valeur
+   courante du compteur (de 0 à 30 pour une consigne K30 = 3 s).
+
+État initial — M0 actif, aucune sortie active
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Une fois l'interface conçue et téléversée, on lance la simulation en mode
+**Delta DOP-107WV Emulator (Offline Mode)**. À la mise sous tension, le
+programme initialise l'étape M0 grâce à l'impulsion M1002 (Network 1 :
+SET M0). Tant que l'opérateur n'appuie pas sur le bouton de démarrage, le
+système reste en attente :
+
+- Le **bouton de démarrage** est en **vert** (X7 = 0, prêt à être actionné)
+- L'**arrêt d'urgence** est en **rouge** (X6 = 1 lorsque l'urgence n'est
+  pas activée, le contact NC étant fermé au repos)
+- Les **voyants B-** et **C-** sont allumés en **vert** (vérins B et C en
+  position rentrée initiale)
+- **Aucune bobine** Y0, Y2, Y4, Y6, Y7 n'est activée
+- Le **TMR T0** affiche **0**
+- Network 1 a activé M0 via l'impulsion M1002
+- Network 2 montre la branche d'armement : ``M0 · X7 → SET M1`` (prête à
+  basculer dès l'appui sur X7)
+
+.. figure:: images/dopsoft_etat_initiall_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft en mode simulation — État initial : le programme
+   attend l'appui sur X7 pour démarrer le cycle. Network 1 a activé M0 via
+   M1002, Network 2 est armé en attente de la transition ``M0 · X7``. Le
+   bouton de démarrage est vert (système au repos), l'afficheur TMR T0 est
+   à 0 et les voyants B- et C- sont allumés.
+
+Appui sur le bouton de démarrage — Lancement du cycle
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Lorsque l'opérateur appuie sur le **bouton de démarrage**, l'entrée X7 passe
+à 1 et la transition ``M0 · X7 → SET M1`` du Network 2 est validée. Le
+programme bascule immédiatement de l'étape M0 vers l'étape M1 et active la
+bobine Y0 (sortie A+) via le Network 4 :
+
+- Le **bouton de démarrage** passe en **rouge** (cycle démarré, X7 actif)
+- L'**indicateur Y0** s'allume en **vert** (bobine de sortie A activée)
+- Le contact **X6** apparaît en **vert** dans le Network 4 (sécurité NC
+  validée, le contact est fermé au repos)
+- Le contact **M1** est désormais fermé dans le Network 4, ce qui combiné
+  avec X6 alimente la bobine Y0
+- Le distributeur 3/2 commute → l'huile commence à pousser le piston A
+- L'**arrêt d'urgence** reste en rouge (visualisation permanente du
+  dispositif de sécurité)
+- L'afficheur **TMR T0** reste à **0** (la temporisation n'est pas encore
+  active, elle ne le sera qu'à l'étape M3)
+
+.. figure:: images/dopsoft_appui_demarrage_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Appui sur le bouton de démarrage : la transition
+   ``M0 · X7 → SET M1`` est validée, l'étape M1 devient active et la
+   bobine Y0 est alimentée via le Network 4 (``M1 · X6 → Y0``). Le contact
+   X6 fermé (vert) confirme que la chaîne de sécurité est intacte.
+
+.. note::
+
+   Ce moment marque le **début effectif du cycle automatique** : à partir
+   de cet instant, le programme va dérouler la séquence
+   A+ → B+ → [3 s] → C+ → C- → B- → (boucle B+) sans nouvelle intervention
+   de l'opérateur, sauf en cas d'arrêt d'urgence (X6 = 0). Si le contact
+   X6 apparaissait **ouvert (rouge)** dans le LADDER, cela signifierait
+   que l'arrêt d'urgence est activé et **aucune sortie ne pourrait être
+   alimentée** quelle que soit l'étape M en cours.
+
+Description de l'interface
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+L'interface regroupe l'ensemble des éléments nécessaires à la supervision du
+système à trois actionneurs hétérogènes :
+
+- **Bouton de démarrage** : représente l'entrée X7 — **vert** au repos
+  (cycle non lancé), **rouge** dès que le cycle est en cours d'exécution
+- **Arrêt d'urgence** : représente l'entrée X6 (contact NC) — visualisé en
+  rouge pour rappeler la nature critique de cette sécurité
+- **TMR T0** : afficheur numérique montrant la valeur courante du
+  temporisateur (3 s = K30) utilisé à l'étape M3
+- **Vérin A** (couleur orange) : vérin **simple effet** avec un seul voyant
+  **A+** lié au capteur S0 (X0) — pas de voyant A- car le retour est assuré
+  par ressort
+- **Vérin B** (couleur noire) : vérin **double effet** avec deux voyants
+  **B-** et **B+** liés aux fins de course S1 (X1) et S2 (X2)
+- **Vérin C** (couleur rouge) : vérin **double effet** avec deux voyants
+  **C-** et **C+** liés aux fins de course S3 (X3) et S4 (X4)
+- **Indicateurs Y0, Y2, Y4, Y6, Y7** : état logique des cinq bobines de
+  l'API pilotant les électrodistributeurs (3/2 pour A, 4/2 pour B, 4/3
+  pour C)
+- **Images des distributeurs** : distributeur **3/2 monostable** (vérin A,
+  rappel par ressort), distributeur **4/2** (vérin B), distributeur **4/3**
+  (vérin C)
+
+À chaque étape du GRAFCET correspond une configuration visuelle distincte
+sur l'interface, ce qui permet à l'étudiant de suivre la séquence sans
+avoir à analyser le programme LADDER ligne par ligne.
+
+Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Après l'appui sur le bouton de démarrage, la transition ``M0 · X7`` est
+validée : SET M1 et RESET M0. Le Network 4 alimente alors la bobine Y0
+(sortie A+) via le contact M1 et la sécurité X6 (arrêt d'urgence) :
+
+- Le **bouton de démarrage** passe en **rouge** (cycle en cours)
+- L'**indicateur Y0** passe en **vert**
+- Le **voyant A+** s'allume en **vert** dès que le capteur S0 (X0) détecte
+  la sortie complète du vérin A
+- Le distributeur 3/2 commute → l'huile pousse le piston A
+- Une fois A sorti, le **clapet anti-retour piloté** se verrouille et
+  maintient A en position sortie même quand Y0 sera désactivé
+- Network 5 est armé en attente de ``M1 · X0`` pour passer à M2
+
+.. figure:: images/dopsoft_etape_A_plus_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 1 (A+) : la bobine Y0 est activée, le vérin A
+   sort. Le programme LADDER montre le Network 4 (``M1 · X6 → Y0``) actif
+   et le Network 5 (``M1 · X0 → SET M2``) en attente du capteur de fin
+   de course.
+
+Étape 2 — B+ : sortie du vérin B (M2 actif, Y2 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Dès que le capteur S0 (X0) confirme la sortie du vérin A, la transition
+``M1 · X0 → SET M2`` est validée et M1 est réinitialisé. Le Network 8
+active alors la bobine Y2 (sortie B+) :
+
+- Le **bouton de démarrage** reste en **rouge**
+- Le **voyant A+** reste **vert** (vérin A maintenu sorti par le clapet
+  piloté, même si Y0 est désactivé)
+- L'**indicateur Y2** passe en **vert**
+- L'**indicateur Y0** s'éteint (mais A reste sorti — c'est précisément le
+  rôle du clapet anti-retour piloté)
+- Le **voyant B+** s'allume en **vert** dès que le fin de course S2 (X2)
+  détecte la sortie complète
+- L'étrangleur régule le débit (ouverture 30) → vitesse de sortie modérée
+- Network 9 est armé en attente de ``M2 · X2`` pour basculer vers M3
+
+.. figure:: images/dopsoft_etape_B_plus_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 2 (B+) : la bobine Y2 est activée, le vérin B
+   sort. Le voyant A+ reste allumé — le vérin A est maintenu sorti par le
+   clapet anti-retour piloté malgré la désactivation de Y0.
+
+Étape 3 — Temporisation T0 = 3 s (M3 actif, aucune sortie)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand le fin de course S2 (X2) détecte la sortie du vérin B, la transition
+``M2 · X2 → SET M3`` est validée. M3 active le temporisateur TMR T0
+(K30 = 3 s) au Network 10 :
+
+- Le **bouton de démarrage** reste en **rouge**
+- **Aucune bobine de sortie n'est activée** pendant la temporisation
+- Le **TMR T0** affiche la valeur courante du compteur (s'incrémente de 0
+  jusqu'à 30, soit 3 s en pas de 100 ms)
+- Les vérins A et B restent en position sortie pendant les 3 secondes
+- À l'expiration de T0, la transition ``M3 · T0 → SET M4`` (Network 11)
+  bascule le programme vers l'étape M4
+
+.. note::
+
+   Pendant cette phase, **aucun mouvement n'est visible** sur l'interface
+   DOPSoft. C'est une étape silencieuse mais essentielle qui simule un
+   temps de pose ou de maintien en production réelle.
+
+Étape 4 — C+ : sortie du vérin C (M4 actif, Y6 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+À l'expiration de la temporisation T0, le Network 13 active la bobine Y6
+(sortie C+) :
+
+- Le **voyant A+** reste **vert** (A toujours maintenu sorti)
+- Le **voyant B+** reste **vert** (B maintenu sorti par Y2)
+- L'**indicateur Y6** passe en **vert**
+- Le **voyant C+** s'allume en **vert** dès que le fin de course S4 (X4)
+  est atteint
+- Le distributeur **4/3** alimente la chambre avant du vérin C
+- Le régulateur de débit (Q = 1 L/min) assure une **vitesse constante**
+- Network 15 est armé en attente de ``M4 · X4`` pour passer à M5
+
+.. figure:: images/dopsoft_etape_C_plus_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 4 (C+) : la bobine Y6 est activée, le vérin C
+   sort à vitesse régulée. Les trois voyants A+, B+ et C+ sont allumés
+   simultanément — c'est l'état où tous les vérins sont sortis.
+
+Étape 5 — C- : rentrée du vérin C (M5 actif, Y7 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand le capteur S4 (X4) détecte la sortie complète du vérin C, la
+transition ``M4 · X4 → SET M5`` est validée. Le Network 16 active alors
+la bobine Y7 (retour C-) :
+
+- L'**indicateur Y7** passe en **vert**
+- L'**indicateur Y6** s'éteint
+- Le **voyant C-** s'allume en **vert** dès que le fin de course S3 (X3)
+  détecte le retour complet
+- Le distributeur 4/3 inverse le sens : la chambre arrière est alimentée
+- Le clapet anti-retour intégré au régulateur s'ouvre → **retour libre
+  et rapide**
+- Les voyants **A+** et **B+** restent allumés
+- Network 17 est armé en attente de ``M5 · X3`` pour passer à M6
+
+.. figure:: images/dopsoft_etape_C_moins_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 5 (C-) : la bobine Y7 est activée, le vérin C
+   rentre rapidement (le régulateur n'agit qu'en sortie grâce à son clapet
+   anti-retour intégré).
+
+Étape 6 — B- : rentrée du vérin B (M6 actif, Y4 = ON)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Quand le capteur S3 (X3) confirme le retour du vérin C, la transition
+``M5 · X3 → SET M6`` est validée. Le Network 19 active la bobine **Y4**
+(retour B-, correspondant à la sortie Q4/Y3 du schéma FluidSIM) :
+
+- L'**indicateur Y4** passe en **vert**
+- L'**indicateur Y7** s'éteint
+- Le **voyant B-** s'allume en **vert** dès que le fin de course S1 (X1)
+  détecte le retour complet
+- Le **voyant A+** reste **vert** (A toujours maintenu sorti — clapet piloté)
+- Network 20 valide la transition de bouclage ``M6 · X1 → SET M2`` : le
+  cycle reprend directement à l'étape **B+** (et non à A+), conformément
+  au GRAFCET, car le vérin A est déjà sorti et maintenu par le clapet
+  anti-retour piloté
+
+.. figure:: images/dopsoft_etape_B_moins_tp6.png
+   :align: center
+   :width: 80%
+
+   Interface DOPSoft — Étape 6 (B-) : la bobine Y4 est activée, le vérin B
+   rentre. Le Network 20 (``M6 · X1 → SET M2``) assure le bouclage
+   automatique vers l'étape B+ sans repasser par A+ — le vérin A reste
+   maintenu sorti par le clapet anti-retour piloté pendant toute la durée
+   de production.
+
+.. note::
+
+   Le **bouton arrêt d'urgence** (X6) conditionne **toutes** les sorties Y0,
+   Y2, Y4, Y6 et Y7 (Networks 4, 8, 13, 16 et 19). En simulant X6 = 0
+   (contact NC ouvert), l'étudiant peut vérifier que **toutes les
+   électrovannes se désactivent instantanément**, quel que soit l'état du
+   GRAFCET en cours. Les mémoires M0 à M6 conservent leur dernier état,
+   de sorte que le cycle reprend à l'étape interrompue dès le retour de
+   X6 = 1.
+
+   ⚠️ **Cas particulier du vérin A** : même en cas d'arrêt d'urgence, le
+   vérin A reste sorti grâce au clapet anti-retour piloté — cela peut être
+   un risque si l'opérateur s'attend à ce que tous les vérins reviennent en
+   position de sécurité. Une procédure de purge manuelle du clapet doit être
+   prévue.
+
+.. tip::
+
+   **Repères visuels sur l'interface DOPSoft :**
+
+   - **Bouton de démarrage vert** = système en attente d'un démarrage
+   - **Bouton de démarrage rouge** = cycle en cours d'exécution
+   - **Voyant A+ allumé en permanence après le premier cycle** = preuve
+     visuelle du fonctionnement du clapet anti-retour piloté
+   - **TMR T0 qui s'incrémente** = phase de temporisation à l'étape M3
+   - **Voyants C+/C- alternants pendant que A+ reste fixe** =
+     caractéristique du cycle de production où seuls B et C bougent
+
+
+----
+
+11. Questions de réflexion
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. admonition:: À rendre complété à la fin de la séance
+
+   **Q1.** Expliquez pourquoi le vérin A sort **une seule fois** et reste maintenu sorti
+   ensuite. Quel composant assure ce maintien ? Comment fonctionne-t-il physiquement ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q2.** Lors du test de l'arrêt d'urgence (X6 = 0), que se passe-t-il
+   sur les sorties Y0 à Y7 ? Les mémoires internes M1 à M6 sont-elles affectées ?
+   Que se passe-t-il quand X6 repasse à 1 (urgence levée) ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q3.** Le distributeur 3/2 est utilisé pour le vérin A (simple effet) et le
+   distributeur 4/2 pour le vérin B (double effet). Expliquez pourquoi un 4/2
+   ne conviendrait pas pour commander un vérin simple effet.
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q4.** La transition M6 → M2 (et non M6 → M0) assure le cycle automatique.
+   Pourquoi revenir à M2 et non à M1 ? Que se passerait-il si on revenait à M1 ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+   **Q5.** Le vérin C utilise un distributeur **4/3** alors que le vérin B utilise
+   un **4/2**. Quelle est la différence entre ces deux distributeurs ?
+   Quel avantage offre le 4/3 dans le contexte du vérin C ?
+
+   .. line-block::
+
+      Réponse : ___________________________________________________________
+      ___________________________________________________________
+
+----
+
+12. Conclusion
+~~~~~~~~~~~~~~
+
+Ce TP a permis de maîtriser la gestion d'un circuit multi-actionneurs hétérogènes,
+l'intégration d'un clapet anti-retour piloté pour maintien permanent, la programmation
+LADDER avec arrêt d'urgence conditionné sur toutes les sorties, et la distinction
+entre distributeurs 3/2, 4/2 et 4/3. Système le plus complexe du programme — stable,
+automatique et sécurisé.
+
+.. raw:: html
+
+   <div style="text-align: center; margin-top: 40px;">
+       <a href="_static/TP6.pdf" download
+          style="background: linear-gradient(90deg,#3498db,#2980b9);
+                 color:white; padding:14px 30px; text-decoration:none;
+                 border-radius:10px; font-size:18px; font-weight:bold;">
+           ⬇️ Télécharger le TP en PDF
+       </a>
+   </div>
+
+
+----
+   
+
+Simulation du circuit (FluidSIM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. raw:: html
+
+    <video width="600" controls>
+        <source src="_static/tp6.mp4">
+    </video>
+
+
+Corrigé des questions de réflexion
+====================================
+ 
+.. admonition:: Note à l'enseignant
+ 
+   Cette section présente les réponses attendues pour chaque question de réflexion
+   des TP 1 à TP 6. Les réponses sont données à titre indicatif — toute reformulation
+   correcte sur le fond doit être acceptée.
+ 
+----
+ 
+Corrigé TP 1 — Distributeur 4/2 à commande manuelle
+------------------------------------------------------
+ 
+**Q1.** La pression de rentrée est légèrement supérieure à la pression de sortie.
+Lors de la sortie, l'huile pousse sur la **surface pleine** du piston (S = 4,91 cm²).
+Lors de la rentrée, l'huile pousse sur la **surface annulaire** (S moins la section
+de la tige), ce qui est plus petit. Pour développer la même force, il faut donc
+une pression plus élevée : P = F / S_annulaire > F / S_pleine.
+ 
+**Q2.** Application numérique :
+ 
+.. code-block:: text
+ 
+   P = 4 bar = 4 × 10⁵ Pa
+   S = 4,91 cm² = 4,91 × 10⁻⁴ m²
+   F = P × S = 4 × 10⁵ × 4,91 × 10⁻⁴ = 196,4 N ≈ 196 N
+ 
+**Q3.** Un électrodistributeur commandé par API permet l'**automatisation complète**
+du cycle : le distributeur change de position automatiquement en réponse aux signaux
+des capteurs, sans intervention humaine. Cela offre reproductibilité, vitesse de réaction
+et possibilité d'intégration dans une chaîne de production.
+ 
+----
+ 
+Corrigé TP 2 — Régulation de vitesse meter-out
+------------------------------------------------
+ 
+**Q1.** Si Q passe de 1 L/min à 0,5 L/min, la vitesse de sortie du vérin est
+**divisée par deux** (v = Q/S — relation de proportionnalité directe).
+La pression augmente car la restriction est plus forte — l'énergie hydraulique
+se dissipe davantage dans l'étrangleur.
+ 
+**Q2.** Le montage **meter-out** (sur la ligne de retour) est plus stable que le
+meter-in car il maintient une **contre-pression** dans la chambre active du vérin.
+Cette contre-pression empêche le vérin de s'emballer si la charge tire sur la tige
+(charge négative). En meter-in, une charge tirant provoquerait une accélération
+incontrôlée car la chambre de retour serait à basse pression.
+ 
+**Q3.** Application numérique :
+ 
+.. code-block:: text
+ 
+   Q = 1 L/min = 1,67 × 10⁻⁵ m³/s
+   S = 4,91 cm² = 4,91 × 10⁻⁴ m²
+   v = Q / S = 1,67 × 10⁻⁵ / 4,91 × 10⁻⁴ ≈ 0,034 m/s ≈ 3,4 cm/s
+ 
+**Q4.** La sortie Y0 est une **bobine normale** (non mémorisée) car le comportement
+souhaité est direct : le vérin doit sortir tant qu'on appuie, et rentrer dès qu'on
+relâche. Si Y0 était une bobine mémorisée (SET), le vérin resterait sorti même après
+avoir relâché le bouton — il faudrait un second bouton pour commander le RESET,
+ce qui n'est pas le cas dans ce circuit monostable à rappel par ressort.
+ 
+----
+ 
+Corrigé TP 3 — Limitation et contrôle de pression
+----------------------------------------------------
+ 
+**Q1.** Le distributeur **à centre fermé** est utilisé car en position neutre,
+tous les orifices sont bloqués, ce qui force la montée en pression et permet
+d'observer le fonctionnement de la soupape de décharge. Un distributeur à centre
+ouvert permettrait à l'huile de circuler librement de P vers T en position neutre —
+la pression ne monterait pas et l'objectif pédagogique serait manqué.
+ 
+**Q2.** La soupape **directe** agit par contact direct entre la pression et le
+ressort de tarage : précision moyenne, légère variation de la pression de décharge
+avec le débit (phénomène de "chasse"). La soupape **pilotée** utilise deux étages :
+un pilote de faible débit et un clapet principal — la pression de décharge est
+rigoureusement constante quel que soit le débit. Elle est préférée en industrie pour
+sa précision, sa stabilité et sa capacité à gérer des débits élevés.
+ 
+**Q3.** Sans soupape de décharge, lorsque le piston arrive en butée mécanique,
+la pompe continue de refouler sans que le fluide puisse s'écouler nulle part.
+La pression monterait sans limite jusqu'à la rupture d'un flexible, la destruction
+des joints du vérin ou la surcharge irréversible de la pompe.
+ 
+----
+ 
+Corrigé TP 4 — Commande séquentielle GRAFCET
+----------------------------------------------
+ 
+**Q1.** Quand X4 = 0 (surpression simulée) : les sorties Y0 à Y3 sont immédiatement
+désactivées (les électrovannes se ferment, les vérins s'arrêtent). Les **mémoires
+internes M0 à M4 ne sont pas réinitialisées** — le GRAFCET conserve son état courant.
+Quand X4 repasse à 1, le cycle **reprend automatiquement depuis l'étape en cours**
+car les sorties sont de nouveau autorisées (condition M_n ET X4 est de nouveau vraie).
+ 
+**Q2.** Le **limiteur de pression hydraulique** agit mécaniquement et en permanence :
+dès que la pression dépasse 60 bar, il décharge l'huile vers le réservoir.
+Le **pressostat électrique** agit sur la commande : il coupe les signaux électriques
+vers les électrovannes dès que le seuil est atteint. Ces deux dispositifs sont
+**complémentaires** — le limiteur protège le circuit hydraulique (tuyaux, vérins),
+le pressostat protège le cycle automatique (arrêt propre sans endommagement).
+ 
+**Q3.** La condition X7 ET X4 au démarrage garantit que le cycle ne peut pas
+s'enclencher si la pression est déjà anormale. Si seul X7 suffisait, un opérateur
+pourrait lancer le cycle alors que le circuit est en surpression, ce qui activerait
+immédiatement les électrovannes dans un circuit déjà sous contrainte — risque de
+rupture de flexible ou de dommage sur les actionneurs.
+ 
+----
+ 
+Corrigé TP 5 — Temporisation et régulation
+--------------------------------------------
+ 
+**Q1.** Application numérique :
+ 
+.. code-block:: text
+ 
+   Avec réducteur (30 bar) :
+   P = 30 bar = 30 × 10⁵ Pa   S = 4,91 × 10⁻⁴ m²
+   F = 30 × 10⁵ × 4,91 × 10⁻⁴ = 1 473 N
+ 
+   Sans réducteur (60 bar) :
+   F = 60 × 10⁵ × 4,91 × 10⁻⁴ = 2 946 N
+ 
+   Rapport : F_sans / F_avec = 2 (le réducteur divise la force par 2)
+ 
+**Q2.** Si la transition était M6 → M0 (état initial), M0 attendrait un nouvel
+appui sur X7 pour redémarrer. En revenant à M1, le système repart directement
+à A+ sans attente — c'est le **cycle automatique continu** qui reproduit
+un fonctionnement industriel en série. M0 ne sert qu'au tout premier démarrage.
+ 
+**Q3.** C'est lié à la **programmation LADDER** : dans un GRAFCET séquentiel
+SET/RESET, une seule mémoire Mx est active à la fois. Les sorties étant directement
+liées aux mémoires (M1→Y0, M2→Y1, M3→Y2, M4→Y3, M5→Y3, M6→Y1), une seule
+sortie peut être active simultanément. Les voyants étant câblés en parallèle sur
+les sorties, ils reflètent exactement cet état — un seul peut donc être allumé.
+ 
+----
+ 
+Corrigé TP 6 — Trois actionneurs + clapet piloté + arrêt d'urgence
+--------------------------------------------------------------------
+ 
+**Q1.** Le vérin A sort lors de l'étape M1 (Y1 actif). Dès que le piston atteint
+sa fin de course, le **clapet anti-retour piloté** bloque hermétiquement la chambre
+active : l'huile ne peut plus en sortir (sens B→A bloqué, sauf si X est piloté).
+Même si Y1 est ensuite désactivé, l'huile reste emprisonnée — le vérin demeure
+sorti par pression hydraulique interne. Le seul moyen de le rentrer serait d'appliquer
+une pression de pilotage sur l'orifice X, ce que le programme ne fait pas.
+ 
+**Q2.** Quand X6 = 0 (S9 enfoncé) : toutes les sorties (Y0, Y2, Y3, Y6, Y7) passent
+immédiatement à 0 car chacune est conditionnée par X6 en série. Les **mémoires internes
+M0 à M6 ne sont pas affectées** — le GRAFCET conserve son état courant. Quand X6
+repasse à 1 (S9 déverrouillé), les sorties correspondant aux étapes actives sont
+immédiatement rétablies et le cycle reprend depuis l'étape où il s'était arrêté.
+ 
+**Q3.** Un distributeur 4/2 possède 4 orifices (P, T, A, B) — il alimente
+alternativement les deux chambres d'un vérin double effet. Pour un vérin simple
+effet, il n'y a qu'une seule chambre à alimenter ; l'autre sens (retour) est assuré
+par le ressort. Un 4/2 laisserait l'orifice B non connecté, ce qui n'est pas
+acceptable (fuite ouverte). Le distributeur **3/2** n'a que 3 orifices (P, T, A) :
+il alimente la chambre unique en position travail et la relie au réservoir en
+position repos — parfaitement adapté au vérin simple effet.
+ 
+**Q4.** Revenir à M2 (B+) et non à M1 (A+) est essentiel : le vérin A est déjà
+sorti et maintenu par le clapet piloté — il n'y a aucune raison de refaire l'étape A+.
+Si on revenait à M1, Y1 serait réactivé à chaque cycle : cela créerait une
+surpression inutile dans le circuit du vérin A (pompe poussant contre un clapet fermé)
+et userait prématurément l'électrovanne Y1.
+ 
+**Q5.** Le distributeur **4/2** a 2 positions : il dirige l'huile soit vers A
+(vérin sort), soit vers B (vérin rentre) — pas de position neutre. Le distributeur
+**4/3** a 3 positions : A+, position neutre (centre), et B-. En position neutre,
+les chambres du vérin C sont bloquées (centre fermé) ou reliées au réservoir
+(centre ouvert) selon le modèle. L'avantage pour le vérin C : la position neutre
+permet d'arrêter le vérin en pleine course sans le laisser dériver, et offre
+une meilleure flexibilité de séquençage.

@@ -1,0 +1,27 @@
+.. Banc électro-hydraulique documentation master file, created by
+   sphinx-quickstart on Tue Mar 31 18:01:31 2026.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+Banc électro-hydraulique documentation
+======================================
+
+
+
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Contents:
+
+   introduction
+   chaine_energie
+   actionneurs
+   distributeurs
+   capteurs
+   commande
+   regulation
+   securite
+   retenue
+   accessoires
+   Travaux_Pratiques
+
