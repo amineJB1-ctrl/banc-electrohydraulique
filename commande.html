@@ -1,0 +1,1409 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Automatisation et commande &mdash; Documentation Banc électro-hydraulique 1.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+    <link rel="canonical" href="https://amineJB1-ctrl.github.io/banc-electrohydraulique/commande.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7a28dfa3"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Organes de régulation" href="regulation.html" />
+    <link rel="prev" title="Capteurs et instrumentation" href="capteurs.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Banc électro-hydraulique
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="introduction.html">Introduction générale</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#contexte-et-motivation">Contexte et motivation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#presentation-du-banc-didactique">Présentation du banc didactique</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#objectifs-pedagogiques">Objectifs pédagogiques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#prerequis">Prérequis</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#organisation-du-cours">Organisation du cours</a></li>
+<li class="toctree-l2"><a class="reference internal" href="introduction.html#documentation-et-outils-utilises">Documentation et outils utilisés</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="chaine_energie.html">Chaîne d’énergie</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#vue-d-ensemble-de-la-chaine-d-energie">Vue d’ensemble de la chaîne d’énergie</a></li>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#moteur-electrique-asynchrone-avec-variateur-de-vitesse">1. Moteur électrique asynchrone avec variateur de vitesse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#principe-de-fonctionnement">1.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#structure-interne-du-moteur">1.4 Structure interne du moteur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#symboles-normalises-iso-1219-iec-60617-s6">1.5 Symboles normalisés (ISO 1219 / IEC 60617) <span>[S6]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#connexions">1.6 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#caracteristiques-techniques">1.7 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#pompe-hydraulique-a-engrenages-externes">2. Pompe hydraulique à engrenages externes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id7">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id8">2.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id9">2.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#symbole-normalise-iso-1219-s10">2.4 Symbole normalisé ISO 1219 <span>[S10]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id12">2.5 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id13">2.6 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#reservoir-d-huile-hydraulique-principal">3. Réservoir d’huile hydraulique principal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id14">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id16">3.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id17">3.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#symbole-normalise-iso-1219-s6">3.4 Symbole normalisé ISO 1219 <span>[S6]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id20">3.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#reservoir-auxiliaire">4. Réservoir auxiliaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#description-et-role">4.1 Description et rôle</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#fonctionnement">4.2 Fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chaine_energie.html#id21">4.3 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="chaine_energie.html#bilan-de-la-chaine-d-energie-tableau-recapitulatif">5. Bilan de la chaîne d’énergie — tableau récapitulatif</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="actionneurs.html">Actionneurs hydrauliques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#formules-fondamentales-des-verins-hydrauliques">1. Formules fondamentales des vérins hydrauliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#verin-hydraulique-double-effet-avec-butee-de-fin-de-course">2. Vérin hydraulique double effet avec butée de fin de course</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#description">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#role-dans-le-systeme">2.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#principe-de-fonctionnement">2.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#constitution-interne">2.4 Constitution interne</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#symbole-normalise-iso-1219-s14">2.5 Symbole normalisé ISO 1219 <span>[S14]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#connexions">2.6 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#caracteristiques-techniques-banc-tds-didactic">2.7 Caractéristiques techniques (banc TDS DIDACTIC)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#verin-simple-effet-a-rappel-par-ressort">3. Vérin simple effet à rappel par ressort</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id6">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id8">3.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id9">3.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id12">3.4 Symbole normalisé ISO 1219 <span>[S14]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id13">3.5 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#caracteristiques-techniques">3.6 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#plaque-d-arret-de-verin">4. Plaque d’arrêt de vérin</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id14">4.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id16">4.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#id17">4.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="actionneurs.html#utilisation-sur-le-banc">4.4 Utilisation sur le banc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="actionneurs.html#tableau-recapitulatif-actionneurs-du-banc-tds-didactic">5. Tableau récapitulatif — actionneurs du banc TDS DIDACTIC</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="distributeurs.html">Distributeurs et électrodistributeurs hydrauliques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="distributeurs.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="distributeurs.html#partie-1-distributeurs-hydrauliques-a-commande-manuelle">PARTIE 1 — Distributeurs hydrauliques à commande manuelle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#distributeur-4-2">1. Distributeur 4/2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#description">1.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#fonctionnement-des-deux-positions-s16">1.3 Fonctionnement des deux positions <span>[S16]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#commande-electrique">1.4 Commande électrique</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#symbole-normalise-iso-1219-s18">1.5 Symbole normalisé ISO 1219 <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#connexions">1.6 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#distributeur-4-3">2. Distributeur 4/3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id8">2.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#fonctionnement-des-trois-positions-s16">2.2 Fonctionnement des trois positions <span>[S16]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id12">2.3 Symbole normalisé ISO 1219 <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id13">2.4 Connexions</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="distributeurs.html#partie-2-electrovannes">PARTIE 2 — Électrovannes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#electrovanne-2-2">3. Électrovanne 2/2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id14">3.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id17">3.2 Symbole normalisé ISO 1219 <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id18">3.3 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#electrovanne-4-2">4. Électrovanne 4/2</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id19">4.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#fonctionnement">4.2 Fonctionnement</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id22">4.3 Symbole normalisé ISO 1219 <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id23">4.4 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#electrovanne-4-3">5. Électrovanne 4/3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id24">5.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id27">5.2 Symbole normalisé ISO 1219 <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#commande-electrique-depuis-l-api-s17">5.3 Commande électrique depuis l’API <span>[S17]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id29">5.4 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="distributeurs.html#electrovanne-5-3">6. Électrovanne 5/3</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#id30">6.1 Description</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#les-trois-types-de-centre">6.2 Les trois types de centre</a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#symboles-normalises-des-trois-centres-s18">6.3 Symboles normalisés des trois centres <span>[S18]</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="distributeurs.html#connexions-et-correspondance-numerique">6.4 Connexions et correspondance numérique</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="distributeurs.html#tableau-comparatif-tous-les-distributeurs-du-module">7. Tableau comparatif — tous les distributeurs du module</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="capteurs.html">Capteurs et instrumentation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#fin-de-course-mecanique">1. Fin de course mécanique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#principe-de-fonctionnement-commun">1.3 Principe de fonctionnement commun</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#fin-de-course-nf-normalement-ferme">1.4 Fin de course NF — normalement fermé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#fin-de-course-no-normalement-ouvert">1.5 Fin de course NO — normalement ouvert</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#connexions-electriques">1.6 Connexions électriques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#detecteur-inductif-de-proximite">2. Détecteur inductif de proximité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id4">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id6">2.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#principe-de-fonctionnement">2.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#symbole-normalise-s24">2.4 Symbole normalisé <span>[S24]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#cablage-3-fils-vers-l-api-s22">2.5 Câblage 3 fils vers l’API <span>[S22]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#caracteristiques-techniques">2.6 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#capteur-magnetique-a-led-forme-a">3. Capteur magnétique à LED (forme A)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id10">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id12">3.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id13">3.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id16">3.4 Symbole normalisé <span>[S24]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id18">3.5 Câblage 3 fils vers l’API <span>[S22]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#positionnement-sur-le-verin">3.6 Positionnement sur le vérin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id20">3.7 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#pressostat-electrique">4. Pressostat électrique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id21">4.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id23">4.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id24">4.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#symboles-normalises-iso-1219-s26">4.4 Symboles normalisés ISO 1219 <span>[S26]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#connexions">4.5 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id27">4.6 Caractéristiques techniques</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#manometre">5. Manomètre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id28">5.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id30">5.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#principe-de-fonctionnement-tube-de-bourdon">5.3 Principe de fonctionnement — tube de Bourdon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#symbole-normalise-iso-1219-s28">5.4 Symbole normalisé ISO 1219 <span>[S28]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#id33">5.5 Connexions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="capteurs.html#lecture-pratique-sur-le-banc">5.6 Lecture pratique sur le banc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="capteurs.html#tableau-recapitulatif-tous-les-capteurs-du-banc-tds-didactic">6. Tableau récapitulatif — tous les capteurs du banc TDS DIDACTIC</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Automatisation et commande</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#vue-d-ensemble-de-la-couche-commande">Vue d’ensemble de la couche commande</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#automate-programmable-industriel-api-delta-dvp">1. Automate programmable industriel — API DELTA DVP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cycle-de-fonctionnement-de-l-api-s31">1.3 Cycle de fonctionnement de l’API <span>[S31]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tableau-d-adressage-e-s-du-banc-tds-didactic-s30">1.4 Tableau d’adressage E/S du banc TDS DIDACTIC <span>[S30]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#exemple-de-grafcet-cycle-automatique-simple-s31">1.5 Exemple de GRAFCET — cycle automatique simple <span>[S31]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logiciel-de-programmation">1.6 Logiciel de programmation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#caracteristiques-techniques-s30">1.7 Caractéristiques techniques <span>[S30]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#modules-d-entrees-sorties-i-o">2. Modules d’entrées/sorties (I/O)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id8">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules-d-entrees-numeriques">2.2 Modules d’entrées numériques</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#modules-de-sorties-numeriques-relais">2.3 Modules de sorties numériques (relais)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#relais-electrique">3. Relais électrique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id12">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#principe-de-fonctionnement-s34">3.2 Principe de fonctionnement <span>[S34]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symboles-normalises-s34">3.3 Symboles normalisés <span>[S34]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connexions">3.4 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#relais-temporise">4. Relais temporisé</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id15">4.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-deux-types-de-temporisation-s35">4.2 Les deux types de temporisation <span>[S35]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">4.3 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#bouton-poussoir">5. Bouton poussoir</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id18">5.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#les-deux-types-de-contact-s36">5.2 Les deux types de contact <span>[S36]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id20">5.3 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#voyant-lumineux">6. Voyant lumineux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id21">6.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">6.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#principe-de-fonctionnement">6.3 Principe de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#symbole-et-connexions-s36">6.4 Symbole et connexions <span>[S36]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#interface-d-alimentation">7. Interface d’alimentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id24">7.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#architecture-d-alimentation-s37">7.2 Architecture d’alimentation <span>[S37]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#tableau-recapitulatif-composants-de-la-couche-commande">9. Tableau récapitulatif — composants de la couche commande</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="regulation.html">Organes de régulation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#partie-1-regulation-de-pression">PARTIE 1 — Régulation de pression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#limiteur-de-pression-a-action-directe-soupape-de-decharge">1. Limiteur de pression à action directe (= soupape de décharge)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-s40">1.3 Principe de fonctionnement <span>[S40]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#symbole-normalise-iso-1219-s39">1.4 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#connexions">1.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#limiteur-de-pression-pilote">2. Limiteur de pression piloté</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id6">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-en-deux-etages-s41">2.2 Principe de fonctionnement en deux étages <span>[S41]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#avantage-sur-le-limiteur-direct">2.3 Avantage sur le limiteur direct</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id11">2.4 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id12">2.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#reducteur-de-pression">3. Réducteur de pression</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id13">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#difference-fondamentale-avec-le-limiteur">3.2 Différence fondamentale avec le limiteur</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-s42">3.3 Principe de fonctionnement <span>[S42]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id17">3.4 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id18">3.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#partie-2-regulation-de-debit">PARTIE 2 — Régulation de débit</a></li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#vanne-d-etranglement-etrangleur">4. Vanne d’étranglement (étrangleur)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id19">4.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#role-et-limite">4.2 Rôle et limite</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-s43">4.3 Principe de fonctionnement <span>[S43]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id23">4.4 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id24">4.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#vanne-de-regulation-de-vitesse">5. Vanne de régulation de vitesse</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id25">5.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-s44">5.2 Principe de fonctionnement <span>[S44]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#avantage-sur-l-etrangleur-simple">5.3 Avantage sur l’étrangleur simple</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id30">5.4 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#connexions-et-montages">5.5 Connexions et montages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#vanne-sequentielle">6. Vanne séquentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id31">6.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#principe-de-fonctionnement-s45">6.2 Principe de fonctionnement <span>[S45]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id35">6.3 Symbole normalisé ISO 1219 <span>[S39]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="regulation.html#id36">6.4 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="regulation.html#tableau-comparatif-organes-de-regulation-de-pression">7. Tableau comparatif — organes de régulation de pression</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="securite.html">Organes de sécurité</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="securite.html#vue-d-ensemble-chaine-de-securite-du-banc-tds-didactic">Vue d’ensemble — chaîne de sécurité du banc TDS DIDACTIC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="securite.html#disjoncteur-differentiel">1. Disjoncteur différentiel</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#principe-de-fonctionnement-s47">1.3 Principe de fonctionnement <span>[S47]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#symbole-normalise-s48">1.4 Symbole normalisé <span>[S48]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#connexions">1.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="securite.html#interrupteur-a-cle">2. Interrupteur à clé</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id7">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id8">2.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#principe-de-fonctionnement-s49">2.3 Principe de fonctionnement <span>[S49]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id11">2.4 Symbole normalisé <span>[S48]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id12">2.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="securite.html#arret-d-urgence">3. Arrêt d’urgence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id13">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id15">3.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#principe-de-fonctionnement-s50">3.3 Principe de fonctionnement <span>[S50]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#pourquoi-le-contact-nf-est-obligatoire-s51">3.4 Pourquoi le contact NF est obligatoire <span>[S51]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#procedure-de-rearmement-s50">3.5 Procédure de réarmement <span>[S50]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id21">3.6 Symbole normalisé <span>[S48]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="securite.html#id22">3.7 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="securite.html#architecture-complete-de-la-chaine-de-securite">4. Architecture complète de la chaîne de sécurité</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="retenue.html">Organes de retenue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="retenue.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="retenue.html#clapet-anti-retour-simple">1. Clapet anti-retour simple</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#role-dans-le-systeme">1.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#principe-de-fonctionnement-s53">1.3 Principe de fonctionnement <span>[S53]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#symbole-normalise-iso-1219-s54-s56">1.4 Symbole normalisé ISO 1219 <span>[S54]</span> <span>[S56]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#connexions">1.5 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="retenue.html#clapet-pilote">2. Clapet piloté</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#id8">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#role-dans-le-systeme-maintien-de-charge-s55">2.2 Rôle dans le système — maintien de charge <span>[S55]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#principe-de-fonctionnement-s55">2.3 Principe de fonctionnement <span>[S55]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#symbole-normalise-iso-1219-s54">2.4 Symbole normalisé ISO 1219 <span>[S54]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="retenue.html#connexions-et-cablage-hydraulique-s55">2.5 Connexions et câblage hydraulique <span>[S55]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="retenue.html#tableau-comparatif-clapet-anti-retour-vs-clapet-pilote">3. Tableau comparatif — clapet anti-retour vs clapet piloté</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="accessoires.html">Connexions et accessoires</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#vue-d-ensemble">Vue d’ensemble</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#partie-1-connexions-hydrauliques">PARTIE 1 — Connexions hydrauliques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#raccord-3-voies">1. Raccord 3 voies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#description">1.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#role-dans-le-circuit">1.2 Rôle dans le circuit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#symbole-normalise-iso-1219-s58">1.3 Symbole normalisé ISO 1219 <span>[S58]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#connexions">1.4 Connexions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#raccord-4-voies">2. Raccord 4 voies</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id4">2.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id7">2.2 Symbole normalisé ISO 1219 <span>[S58]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#tuyaux-hydrauliques-flexibles">3. Tuyaux hydrauliques flexibles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id8">3.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#role-dans-le-systeme">3.2 Rôle dans le système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#symboles-normalises-iso-1219-s58">3.3 Symboles normalisés ISO 1219 <span>[S58]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#regles-de-montage-et-de-securite-s59">3.4 Règles de montage et de sécurité <span>[S59]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#raccords-rapides-anti-fuite-s57">3.5 Raccords rapides anti-fuite <span>[S57]</span></a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#partie-2-connexions-electriques">PARTIE 2 — Connexions électriques</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#cables-electriques">4. Câbles électriques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id13">4.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#categories-de-cables-presents-sur-le-banc-s60">4.2 Catégories de câbles présents sur le banc <span>[S60]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#symbole-normalise-s60">4.3 Symbole normalisé <span>[S60]</span></a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#regles-de-cablage-sur-le-banc">4.4 Règles de câblage sur le banc</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#partie-3-fixation-et-outillage">PARTIE 3 — Fixation et outillage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#plaque-de-fixation-et-grille-profilee">5. Plaque de fixation et grille profilée</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id17">5.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#role-pedagogique-de-la-grille">5.2 Rôle pédagogique de la grille</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#regles-de-fixation">5.3 Règles de fixation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="accessoires.html#outils">6. Outils</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#id20">6.1 Description</a></li>
+<li class="toctree-l3"><a class="reference internal" href="accessoires.html#outils-principaux-et-leur-usage-sur-le-banc">6.2 Outils principaux et leur usage sur le banc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Travaux_Pratiques.html">Travaux Pratiques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-1-commande-d-un-verin-double-effet-par-distributeur-hydraulique-4-2-a-commande-manuelle">TP 1 : Commande d’un vérin double effet par distributeur hydraulique 4/2 à commande manuelle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#introduction">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#objectifs">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#materiel-utilise">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#schema-du-circuit-hydraulique">4. Schéma du circuit hydraulique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#procedure-experimentale">5. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#resultats-de-simulation">6. Résultats de simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#sortie-du-verin-distributeur-en-position-1">Sortie du vérin — Distributeur en position 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#rentree-du-verin-distributeur-en-position-2">Rentrée du vérin — Distributeur en position 2</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#interpretation-des-resultats">7. Interprétation des résultats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#questions-de-reflexion">8. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#conclusion">9. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#simulation-du-circuit-fluidsim">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-2-reglage-de-la-vitesse-d-un-verin-double-effet-par-regulateur-de-debit">TP 2 : Réglage de la vitesse d’un vérin double effet par régulateur de débit</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id1">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id2">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id3">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#schema-du-circuit-electro-hydraulique">4. Schéma du circuit électro-hydraulique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id4">5. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id5">6. Résultats de simulation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#sortie-regulee-q-1-l-min">Sortie régulée — Q = 1 L/min</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#retour-libre-clapet-anti-retour-ouvert">Retour libre — Clapet anti-retour ouvert</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id6">7. Interprétation des résultats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#programme-ladder-ispsoft">8. Programme LADDER (ISPSoft)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#interface-de-supervision-dopsoft">9. Interface de supervision DOPSoft</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#conception-de-l-interface">Conception de l’interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etat-initial-bouton-relache-x7-0-y0-off">État initial — Bouton relâché (X7 = 0, Y0 = OFF)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etat-actif-bouton-appuye-x7-1-y0-on">État actif — Bouton appuyé (X7 = 1, Y0 = ON)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id7">10. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id8">11. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id9">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-3-limitation-et-controle-de-pression-dans-un-circuit-hydraulique">TP 3 : Limitation et contrôle de pression dans un circuit hydraulique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id10">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id11">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id12">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#description-des-composants-cles">4. Description des composants clés</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id13">5. Schéma du circuit électro-hydraulique</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id14">6. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id15">7. Résultats de simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id16">8. Interprétation des résultats</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id17">9. Programme LADDER (ISPSoft)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id18">10. Interface de supervision DOPSoft</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#description-de-l-interface">Description de l’interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etat-repos-aucune-commande-active-x6-0-x7-0">État repos — Aucune commande active (X6=0, X7=0)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#sortie-du-verin-bp1-appuye-x6-1-y0-on-y1-off">Sortie du vérin — BP1 appuyé (X6=1, Y0=ON, Y1=OFF)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#rentree-du-verin-bp2-appuye-x7-1-y0-off-y1-on">Rentrée du vérin — BP2 appuyé (X7=1, Y0=OFF, Y1=ON)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id19">11. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id20">12. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id21">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-4-commande-sequentielle-de-deux-verins-double-effet-avec-api-et-grafcet">TP 4 : Commande séquentielle de deux vérins double effet avec API et GRAFCET</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id22">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id23">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id24">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#affectation-des-entrees-sorties-de-l-api">4. Affectation des entrées/sorties de l’API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#schemas-du-systeme">5. Schémas du système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#cycle-de-fonctionnement">6. Cycle de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id25">7. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id26">8. Résultats de simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#programme-ladder-complet-ispsoft">9. Programme LADDER complet (ISPSoft)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id27">10. Interface de supervision DOPSoft</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#conception-de-l-interface-dans-dopsoft-mode-edition">Conception de l’interface dans DOPSoft (mode édition)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id28">Description de l’interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#appui-sur-le-bouton-de-demarrage-lancement-du-cycle">Appui sur le bouton de démarrage — Lancement du cycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-1-a-sortie-du-verin-a-m1-actif-y0-on">Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-2-a-rentree-du-verin-a-m2-actif-y1-on">Étape 2 — A- : rentrée du vérin A (M2 actif, Y1 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-3-b-sortie-du-verin-b-m3-actif-y2-on">Étape 3 — B+ : sortie du vérin B (M3 actif, Y2 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-4-b-rentree-du-verin-b-m4-actif-y3-on">Étape 4 — B- : rentrée du vérin B (M4 actif, Y3 = ON)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id29">11. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id30">12. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id31">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-5-commande-sequentielle-avec-temporisation-et-regulation-hydraulique">TP 5 : Commande séquentielle avec temporisation et régulation hydraulique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id32">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id33">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id34">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id35">4. Affectation des entrées/sorties de l’API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id36">5. Schémas du système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id37">6. Cycle de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id38">7. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id39">8. Résultats de simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id40">9. Programme LADDER complet (ISPSoft)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id41">10. Interface de supervision DOPSoft</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id42">Description de l’interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etat-initial-m0-actif-aucune-sortie-active">État initial — M0 actif, aucune sortie active</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id43">Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-2-temporisation-t0-2-s-m2-actif-y0-maintenu">Étape 2 — Temporisation T0 = 2 s (M2 actif, Y0 maintenu)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etapes-3-et-4-b-puis-temporisation-t1-3-s-m3-puis-m4-y2-maintenu">Étapes 3 et 4 — B+ puis Temporisation T1 = 3 s (M3 puis M4, Y2 maintenu)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-5-b-rentree-du-verin-b-m5-actif-y3-on">Étape 5 — B- : rentrée du vérin B (M5 actif, Y3 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-6-a-rentree-du-verin-a-m6-actif-y1-on">Étape 6 — A- : rentrée du vérin A (M6 actif, Y1 = ON)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id44">11. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id45">12. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id46">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#tp-6-commande-sequentielle-d-un-systeme-hydraulique-a-trois-actionneurs">TP 6 : Commande séquentielle d’un système hydraulique à trois actionneurs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id47">1. Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id48">2. Objectifs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id49">3. Matériel utilisé</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id50">4. Affectation des entrées/sorties de l’API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id51">5. Schémas du système</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id52">6. Cycle de fonctionnement</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id53">7. Procédure expérimentale</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id54">8. Résultats de simulation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id55">9. Programme LADDER complet (ISPSoft)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id56">10. Interface de supervision DOPSoft</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id57">Conception de l’interface dans DOPSoft (mode édition)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id58">État initial — M0 actif, aucune sortie active</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id59">Appui sur le bouton de démarrage — Lancement du cycle</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id60">Description de l’interface</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id61">Étape 1 — A+ : sortie du vérin A (M1 actif, Y0 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-2-b-sortie-du-verin-b-m2-actif-y2-on">Étape 2 — B+ : sortie du vérin B (M2 actif, Y2 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-3-temporisation-t0-3-s-m3-actif-aucune-sortie">Étape 3 — Temporisation T0 = 3 s (M3 actif, aucune sortie)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-4-c-sortie-du-verin-c-m4-actif-y6-on">Étape 4 — C+ : sortie du vérin C (M4 actif, Y6 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-5-c-rentree-du-verin-c-m5-actif-y7-on">Étape 5 — C- : rentrée du vérin C (M5 actif, Y7 = ON)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#etape-6-b-rentree-du-verin-b-m6-actif-y4-on">Étape 6 — B- : rentrée du vérin B (M6 actif, Y4 = ON)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id62">11. Questions de réflexion</a></li>
+<li class="toctree-l3"><a class="reference internal" href="Travaux_Pratiques.html#id63">12. Conclusion</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="Travaux_Pratiques.html#id64">Simulation du circuit (FluidSIM)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="Travaux_Pratiques.html#corrige-des-questions-de-reflexion">Corrigé des questions de réflexion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-1-distributeur-4-2-a-commande-manuelle">Corrigé TP 1 — Distributeur 4/2 à commande manuelle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-2-regulation-de-vitesse-meter-out">Corrigé TP 2 — Régulation de vitesse meter-out</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-3-limitation-et-controle-de-pression">Corrigé TP 3 — Limitation et contrôle de pression</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-4-commande-sequentielle-grafcet">Corrigé TP 4 — Commande séquentielle GRAFCET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-5-temporisation-et-regulation">Corrigé TP 5 — Temporisation et régulation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="Travaux_Pratiques.html#corrige-tp-6-trois-actionneurs-clapet-pilote-arret-d-urgence">Corrigé TP 6 — Trois actionneurs + clapet piloté + arrêt d’urgence</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Banc électro-hydraulique</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Automatisation et commande</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/commande.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="automatisation-et-commande">
+<h1>Automatisation et commande<a class="headerlink" href="#automatisation-et-commande" title="Lien vers cette rubrique"></a></h1>
+<div class="admonition-objectifs-de-ce-module admonition">
+<p class="admonition-title">Objectifs de ce module</p>
+<p>À l’issue de ce module, l’étudiant sera capable de :</p>
+<ul class="simple">
+<li><p>Décrire le cycle de fonctionnement d’un API (lecture entrées → traitement → écriture sorties)</p></li>
+<li><p>Identifier les modules d’entrées/sorties de l’API DELTA DVP et leurs connexions</p></li>
+<li><p>Établir le tableau d’adressage E/S d’un circuit hydraulique simple</p></li>
+<li><p>Lire et interpréter un diagramme GRAFCET d’un cycle automatique</p></li>
+<li><p>Identifier le rôle des relais, relais temporisés, boutons poussoirs et voyants sur le banc</p></li>
+<li><p>Expliquer le rôle du switch réseau dans la communication API ↔ PC</p></li>
+</ul>
+</div>
+<hr class="docutils" />
+<section id="vue-d-ensemble-de-la-couche-commande">
+<h2>Vue d’ensemble de la couche commande<a class="headerlink" href="#vue-d-ensemble-de-la-couche-commande" title="Lien vers cette rubrique"></a></h2>
+<p>La couche commande est l’intelligence du banc TDS DIDACTIC. Elle relie les capteurs
+(informations sur l’état du système) aux actionneurs (électrovannes, pompe) via un
+programme logique stocké dans l’API. C’est cette couche qui transforme un simple
+circuit hydraulique en un <strong>système automatisé</strong> capable d’exécuter des cycles
+répétitifs sans intervention humaine <a class="reference internal" href="#s30" id="id1"><span>[S30]</span></a>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Capteurs &amp; boutons                   Actionneurs &amp; voyants
+(Fins de course, inductifs,     API     (Électrovannes 24V DC,
+ magnétiques, pressostat,      DELTA     relais de puissance,
+ boutons poussoirs)             DVP      voyants lumineux)
+       │                         │               │
+       └─── Entrées numériques ──┤               │
+                                 ├── Sorties numériques ──┘
+       PC (ISPSoft) ─ USB/Ethernet ─┘
+</pre></div>
+</div>
+</section>
+<hr class="docutils" />
+<section id="automate-programmable-industriel-api-delta-dvp">
+<h2>1. Automate programmable industriel — API DELTA DVP<a class="headerlink" href="#automate-programmable-industriel-api-delta-dvp" title="Lien vers cette rubrique"></a></h2>
+<section id="description">
+<h3>1.1 Description<a class="headerlink" href="#description" title="Lien vers cette rubrique"></a></h3>
+<p>L’API DELTA DVP est un automate programmable industriel modulaire. Il constitue
+l’unité centrale de traitement du banc TDS DIDACTIC. Sa conception modulaire
+lui permet d’être étendu par l’ajout de modules d’entrées/sorties supplémentaires
+selon les besoins du circuit à automatiser <a class="reference internal" href="#s30" id="id2"><span>[S30]</span></a>.</p>
+<figure class="align-center" id="id27">
+<a class="reference internal image-reference" href="_images/api_reel.png"><img alt="Automate programmable industriel DELTA DVP" src="_images/api_reel.png" style="width: 65%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 46 </span><span class="caption-text"><em>Fig. 1 — Automate programmable industriel DELTA DVP utilisé dans le système</em>
+<em>(Source : Venara Collective)</em></span><a class="headerlink" href="#id27" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="role-dans-le-systeme">
+<h3>1.2 Rôle dans le système<a class="headerlink" href="#role-dans-le-systeme" title="Lien vers cette rubrique"></a></h3>
+<p>L’API centralise la logique de commande : il reçoit les signaux de tous les capteurs
+du circuit, exécute le programme de commande (Ladder ou GRAFCET), et envoie les ordres
+aux électrovannes pour piloter les mouvements des vérins selon une séquence définie.</p>
+</section>
+<section id="cycle-de-fonctionnement-de-l-api-s31">
+<h3>1.3 Cycle de fonctionnement de l’API <a class="reference internal" href="#s31" id="id3"><span>[S31]</span></a><a class="headerlink" href="#cycle-de-fonctionnement-de-l-api-s31" title="Lien vers cette rubrique"></a></h3>
+<p>L’API fonctionne de manière cyclique et répétitive. Chaque cycle comprend trois phases
+enchaînées en permanence :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 10.0%" />
+<col style="width: 25.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Phase</p></th>
+<th class="head"><p>Nom</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p><strong>Lecture des entrées</strong></p></td>
+<td><p>L’API lit l’état de toutes ses bornes d’entrée (capteurs, boutons) et
+mémorise leur valeur dans une zone mémoire interne appelée « image des entrées »</p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><strong>Traitement du programme</strong></p></td>
+<td><p>Le processeur exécute le programme Ladder ou GRAFCET ligne par ligne en
+utilisant l’image des entrées pour calculer l’état des sorties</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><strong>Écriture des sorties</strong></p></td>
+<td><p>L’API applique les résultats du calcul sur ses bornes de sortie physiques,
+ce qui active ou désactive les électrovannes, relais et voyants</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id28">
+<a class="reference internal image-reference" href="_images/api_schema.png"><img alt="Cycle de fonctionnement de l'API" src="_images/api_schema.png" style="width: 60%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 47 </span><span class="caption-text"><em>Fig. 2 — Cycle de fonctionnement d’un automate programmable :</em>
+<em>lecture entrées → traitement → écriture sorties (Source : Tech3Elec)</em></span><a class="headerlink" href="#id28" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>La durée d’un cycle complet s’appelle le <strong>temps de cycle</strong> (ou scan time). Pour
+l’API DELTA DVP en application hydraulique didactique, ce temps est typiquement de
+l’ordre de 1 à 5 ms — largement suffisant pour des déplacements de vérins dont les
+vitesses sont de l’ordre de quelques cm/s.</p>
+</div>
+</section>
+<section id="tableau-d-adressage-e-s-du-banc-tds-didactic-s30">
+<h3>1.4 Tableau d’adressage E/S du banc TDS DIDACTIC <a class="reference internal" href="#s30" id="id4"><span>[S30]</span></a><a class="headerlink" href="#tableau-d-adressage-e-s-du-banc-tds-didactic-s30" title="Lien vers cette rubrique"></a></h3>
+<p>Le tableau ci-dessous propose un adressage type pour le câblage du banc. Les adresses
+réelles dépendent du module DELTA DVP utilisé et peuvent être adaptées.</p>
+<table class="docutils align-default" id="id29">
+<caption><span class="caption-number">Tableau 7 </span><span class="caption-text">Entrées numériques (I) — capteurs et commandes</span><a class="headerlink" href="#id29" title="Lien vers ce tableau"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Adresse</p></th>
+<th class="head"><p>Composant raccordé</p></th>
+<th class="head"><p>Rôle dans le programme</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>I0.0</p></td>
+<td><p>Fin de course NF — vérin 1 avant</p></td>
+<td><p>Détecte la position avant du vérin 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>I0.1</p></td>
+<td><p>Fin de course NF — vérin 1 arrière</p></td>
+<td><p>Détecte la position arrière du vérin 1</p></td>
+</tr>
+<tr class="row-even"><td><p>I0.2</p></td>
+<td><p>Fin de course NO — vérin 2 avant</p></td>
+<td><p>Détecte la position avant du vérin 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>I0.3</p></td>
+<td><p>Fin de course NO — vérin 2 arrière</p></td>
+<td><p>Détecte la position arrière du vérin 2</p></td>
+</tr>
+<tr class="row-even"><td><p>I0.4</p></td>
+<td><p>Détecteur inductif 1</p></td>
+<td><p>Détecte la présence d’une pièce métallique</p></td>
+</tr>
+<tr class="row-odd"><td><p>I0.5</p></td>
+<td><p>Détecteur inductif 2</p></td>
+<td><p>Détecte la présence d’une pièce métallique</p></td>
+</tr>
+<tr class="row-even"><td><p>I0.6</p></td>
+<td><p>Capteur magnétique 1 (noir)</p></td>
+<td><p>Position piston vérin 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>I0.7</p></td>
+<td><p>Capteur magnétique 2 (noir)</p></td>
+<td><p>Position piston vérin 2</p></td>
+</tr>
+<tr class="row-even"><td><p>I1.0</p></td>
+<td><p>Capteur magnétique 3 (gris)</p></td>
+<td><p>Position intermédiaire du piston</p></td>
+</tr>
+<tr class="row-odd"><td><p>I1.1</p></td>
+<td><p>Pressostat électrique</p></td>
+<td><p>Signal quand seuil de pression atteint</p></td>
+</tr>
+<tr class="row-even"><td><p>I1.2</p></td>
+<td><p>Bouton poussoir Démarrage (NO)</p></td>
+<td><p>Lance le cycle automatique</p></td>
+</tr>
+<tr class="row-odd"><td><p>I1.3</p></td>
+<td><p>Bouton poussoir Arrêt (NF)</p></td>
+<td><p>Arrête le cycle en cours</p></td>
+</tr>
+<tr class="row-even"><td><p>I1.4</p></td>
+<td><p>Switch (interrupteur à clé)</p></td>
+<td><p>Sélection mode manuel / automatique</p></td>
+</tr>
+</tbody>
+</table>
+<table class="docutils align-default" id="id30">
+<caption><span class="caption-number">Tableau 8 </span><span class="caption-text">Sorties numériques (Q) — actionneurs et voyants</span><a class="headerlink" href="#id30" title="Lien vers ce tableau"></a></caption>
+<colgroup>
+<col style="width: 15.0%" />
+<col style="width: 35.0%" />
+<col style="width: 50.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Adresse</p></th>
+<th class="head"><p>Composant raccordé</p></th>
+<th class="head"><p>Rôle dans le programme</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Q0.0</p></td>
+<td><p>Électrovanne 4/2 — bobine (vérin 1 sortie)</p></td>
+<td><p>Commande la sortie de tige du vérin 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q0.1</p></td>
+<td><p>Électrovanne 4/3 — bobine L1 (vérin 1)</p></td>
+<td><p>Commande le sens aller du vérin 1</p></td>
+</tr>
+<tr class="row-even"><td><p>Q0.2</p></td>
+<td><p>Électrovanne 4/3 — bobine L2 (vérin 1)</p></td>
+<td><p>Commande le sens retour du vérin 1</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q0.3</p></td>
+<td><p>Électrovanne 4/3 — bobine L1 (vérin 2)</p></td>
+<td><p>Commande le sens aller du vérin 2</p></td>
+</tr>
+<tr class="row-even"><td><p>Q0.4</p></td>
+<td><p>Électrovanne 4/3 — bobine L2 (vérin 2)</p></td>
+<td><p>Commande le sens retour du vérin 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q0.5</p></td>
+<td><p>Relais pompe</p></td>
+<td><p>Démarre ou arrête le moteur de la pompe</p></td>
+</tr>
+<tr class="row-even"><td><p>Q0.6</p></td>
+<td><p>Voyant vert (système en marche)</p></td>
+<td><p>S’allume quand le cycle est actif</p></td>
+</tr>
+<tr class="row-odd"><td><p>Q0.7</p></td>
+<td><p>Voyant rouge (arrêt / défaut)</p></td>
+<td><p>S’allume en cas d’arrêt ou de défaut détecté</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exemple-de-grafcet-cycle-automatique-simple-s31">
+<h3>1.5 Exemple de GRAFCET — cycle automatique simple <a class="reference internal" href="#s31" id="id5"><span>[S31]</span></a><a class="headerlink" href="#exemple-de-grafcet-cycle-automatique-simple-s31" title="Lien vers cette rubrique"></a></h3>
+<p>Voici un exemple de GRAFCET pour un cycle automatique de va-et-vient du vérin 1 :</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>┌───────────────────────────────────┐
+│  Étape 0 — Initialisation         │  Action : Arrêt pompe, distributeur position repos
+└──────────────┬────────────────────┘
+               │ Démarrage (I1.2 = 1)
+┌──────────────▼────────────────────┐
+│  Étape 1 — Démarrage pompe        │  Action : Q0.5 = 1 (pompe ON)
+└──────────────┬────────────────────┘
+               │ Temporisation 1 s (pression stabilisée)
+┌──────────────▼────────────────────┐
+│  Étape 2 — Sortie tige vérin 1    │  Action : Q0.1 = 1 (bobine L1 ON → tige sort)
+└──────────────┬────────────────────┘
+               │ I0.0 = 1 (fin de course avant atteint)
+┌──────────────▼────────────────────┐
+│  Étape 3 — Attente 2 s            │  Action : Q0.1 = 0 (bobine OFF → position tenue)
+└──────────────┬────────────────────┘
+               │ Temporisation 2 s écoulée
+┌──────────────▼────────────────────┐
+│  Étape 4 — Rentrée tige vérin 1   │  Action : Q0.2 = 1 (bobine L2 ON → tige rentre)
+└──────────────┬────────────────────┘
+               │ I0.1 = 1 (fin de course arrière atteint)
+┌──────────────▼────────────────────┐
+│  Étape 5 — Fin de cycle           │  Action : Q0.2 = 0 — retour étape 2 si cycle continu
+└───────────────────────────────────┘
+</pre></div>
+</div>
+</section>
+<section id="logiciel-de-programmation">
+<h3>1.6 Logiciel de programmation<a class="headerlink" href="#logiciel-de-programmation" title="Lien vers cette rubrique"></a></h3>
+<p>L’API DELTA DVP se programme avec le logiciel <strong>ISPSoft</strong>, fourni gratuitement par Delta Electronics. La connexion entre
+le PC et l’API s’effectue via le port <strong>USB</strong> ou <strong>Ethernet</strong> du banc <a class="reference internal" href="#s32" id="id6"><span>[S32]</span></a>.</p>
+<p>Le langage principal utilisé dans les TPs est le <strong>Ladder</strong> (schéma à contacts),
+qui représente le programme sous forme de circuits électriques virtuels. Les blocs
+fonctionnels TON (temporisation à l’enclenchement) et TOF (temporisation au
+déclenchement) sont disponibles nativement dans WPLSoft.</p>
+</section>
+<section id="caracteristiques-techniques-s30">
+<h3>1.7 Caractéristiques techniques <a class="reference internal" href="#s30" id="id7"><span>[S30]</span></a><a class="headerlink" href="#caracteristiques-techniques-s30" title="Lien vers cette rubrique"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 40.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Paramètre</p></th>
+<th class="head"><p>Valeur</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Marque / Modèle</p></td>
+<td><p>Delta Electronics — gamme DVP</p></td>
+</tr>
+<tr class="row-odd"><td><p>Nombre de modules</p></td>
+<td><p>2 modules multifonction</p></td>
+</tr>
+<tr class="row-even"><td><p>Entrées numériques</p></td>
+<td><p>8 entrées numériques capteurs</p></td>
+</tr>
+<tr class="row-odd"><td><p>Sorties numériques</p></td>
+<td><p>6 sorties relais pour électrovannes</p></td>
+</tr>
+<tr class="row-even"><td><p>Entrées/sorties analogiques</p></td>
+<td><p>8 entrées + 4 sorties analogiques 0 – 10 V</p></td>
+</tr>
+<tr class="row-odd"><td><p>Communication PC</p></td>
+<td><p>USB + Ethernet (port RJ45)</p></td>
+</tr>
+<tr class="row-even"><td><p>Logiciel de programmation</p></td>
+<td><p>ISPSoft (Delta Electronics)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Langages supportés</p></td>
+<td><p>Ladder, SFC (GRAFCET), FBD, IL</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="modules-d-entrees-sorties-i-o">
+<h2>2. Modules d’entrées/sorties (I/O)<a class="headerlink" href="#modules-d-entrees-sorties-i-o" title="Lien vers cette rubrique"></a></h2>
+<section id="id8">
+<h3>2.1 Description<a class="headerlink" href="#id8" title="Lien vers cette rubrique"></a></h3>
+<p>Les modules d’entrées/sorties sont les interfaces physiques entre le monde réel
+(capteurs, actionneurs) et l’unité centrale de l’API. Ils assurent la conversion
+des niveaux de tension, l’isolation galvanique et la protection des circuits
+d’entrée contre les surtensions <a class="reference internal" href="#s33" id="id9"><span>[S33]</span></a>.</p>
+<figure class="align-center" id="id31">
+<a class="reference internal image-reference" href="_images/io_fonctionnement.png"><img alt="Interface entre capteurs, API et actionneurs" src="_images/io_fonctionnement.png" style="width: 65%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 48 </span><span class="caption-text"><em>Fig. 3 — Architecture de la couche E/S : capteurs → interface d’entrée →</em>
+<em>processeur → interface de sortie → préactionneurs (Source : Tech3Elec)</em></span><a class="headerlink" href="#id31" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="modules-d-entrees-numeriques">
+<h3>2.2 Modules d’entrées numériques<a class="headerlink" href="#modules-d-entrees-numeriques" title="Lien vers cette rubrique"></a></h3>
+<p>Chaque borne d’entrée reçoit un signal TOR (0 V ou +24 V DC) depuis un capteur.
+Le module d’entrée convertit ce signal en niveau logique 0 ou 1 pour le processeur.
+Il assure également une <strong>isolation optique</strong> (optocoupleur) entre le circuit capteur
+et le circuit interne de l’API — protégeant l’automate contre les perturbations
+électriques du circuit hydraulique <a class="reference internal" href="#s33" id="id10"><span>[S33]</span></a>.</p>
+</section>
+<section id="modules-de-sorties-numeriques-relais">
+<h3>2.3 Modules de sorties numériques (relais)<a class="headerlink" href="#modules-de-sorties-numeriques-relais" title="Lien vers cette rubrique"></a></h3>
+<p>Sur le banc TDS DIDACTIC, les sorties sont de type <strong>relais</strong> : chaque sortie Qx.x
+commande la bobine d’un relais interne. Lorsque la sortie est activée par le programme,
+le relais se ferme et alimente la charge (bobine solénoïde de l’électrovanne ou
+voyant lumineux) en <strong>24 V DC</strong> <a class="reference internal" href="#s30" id="id11"><span>[S30]</span></a>.</p>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Les sorties relais du DELTA DVP supportent une charge maximale de <strong>2 A par contact</strong>.
+Ne jamais raccorder directement un moteur ou une charge inductive importante sans
+interposer un relais de puissance externe — le relais interne serait endommagé par
+les pics de courant au démarrage.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="relais-electrique">
+<h2>3. Relais électrique<a class="headerlink" href="#relais-electrique" title="Lien vers cette rubrique"></a></h2>
+<section id="id12">
+<h3>3.1 Description<a class="headerlink" href="#id12" title="Lien vers cette rubrique"></a></h3>
+<p>Le relais est un composant électromécanique qui assure une <strong>isolation galvanique</strong>
+entre le circuit de commande (faible tension, API) et le circuit de puissance
+(tension et courant plus élevés pour les actionneurs).</p>
+<figure class="align-center" id="id32">
+<a class="reference internal image-reference" href="_images/relais_fonctionnement.png"><img alt="Fonctionnement d'un relais électrique" src="_images/relais_fonctionnement.png" style="width: 55%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 49 </span><span class="caption-text"><em>Fig. 4 — Fonctionnement d’un relais électrique : bobine en repos (contacts NF fermés,</em>
+<em>NO ouverts) et bobine alimentée (contacts inversés) (Source : ElectroSchema)</em></span><a class="headerlink" href="#id32" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="principe-de-fonctionnement-s34">
+<h3>3.2 Principe de fonctionnement <a class="reference internal" href="#s34" id="id13"><span>[S34]</span></a><a class="headerlink" href="#principe-de-fonctionnement-s34" title="Lien vers cette rubrique"></a></h3>
+<p>Lorsque la bobine du relais reçoit une tension d’alimentation (24 V DC depuis une
+sortie de l’API), elle crée un champ magnétique qui attire un armature métallique
+mobile. Ce déplacement modifie simultanément l’état de tous les contacts du relais :</p>
+<ul class="simple">
+<li><p>Les contacts <strong>NO</strong> (Normalement Ouverts) <strong>se ferment</strong> → circuit de puissance alimenté</p></li>
+<li><p>Les contacts <strong>NF</strong> (Normalement Fermés) <strong>s’ouvrent</strong> → circuit de puissance coupé</p></li>
+</ul>
+<p>Dès que la bobine est désalimentée, un ressort de rappel ramène l’armature en position
+initiale et les contacts retrouvent leur état de repos.</p>
+</section>
+<section id="symboles-normalises-s34">
+<h3>3.3 Symboles normalisés <a class="reference internal" href="#s34" id="id14"><span>[S34]</span></a><a class="headerlink" href="#symboles-normalises-s34" title="Lien vers cette rubrique"></a></h3>
+<figure class="align-center" id="id33">
+<a class="reference internal image-reference" href="_images/relais_bobine.png"><img alt="Symbole de la bobine du relais" src="_images/relais_bobine.png" style="width: 22%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 50 </span><span class="caption-text"><em>Fig. 5 — Symbole de la bobine du relais (bornes A1 et A2)</em>
+<em>(Source : GEYA)</em></span><a class="headerlink" href="#id33" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id34">
+<a class="reference internal image-reference" href="_images/relais_contacts.png"><img alt="Symboles contacts NO et NF du relais" src="_images/relais_contacts.png" style="width: 32%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 51 </span><span class="caption-text"><em>Fig. 6 — Symboles des contacts NO (normalement ouvert) et NF (normalement fermé)</em>
+<em>(Source : GEYA)</em></span><a class="headerlink" href="#id34" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="connexions">
+<h3>3.4 Connexions<a class="headerlink" href="#connexions" title="Lien vers cette rubrique"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Borne</p></th>
+<th class="head"><p>Fonction</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>A1</strong></p></td>
+<td><p>Alimentation bobine (+) — raccordée à une sortie de l’API (Q0.x)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>A2</strong></p></td>
+<td><p>Alimentation bobine (−) — raccordée au 0 V commun (GND)</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>COM</strong></p></td>
+<td><p>Borne commune des contacts (point de commutation)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NO</strong></p></td>
+<td><p>Contact normalement ouvert — se ferme quand la bobine est alimentée</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>NF</strong></p></td>
+<td><p>Contact normalement fermé — s’ouvre quand la bobine est alimentée</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<hr class="docutils" />
+<section id="relais-temporise">
+<h2>4. Relais temporisé<a class="headerlink" href="#relais-temporise" title="Lien vers cette rubrique"></a></h2>
+<section id="id15">
+<h3>4.1 Description<a class="headerlink" href="#id15" title="Lien vers cette rubrique"></a></h3>
+<p>Le relais temporisé est un relais standard augmenté d’un <strong>circuit de temporisation
+intégré</strong> à réglage mécanique (potentiomètre). Il introduit un délai réglable entre
+la réception du signal de commande et la commutation de ses contacts.</p>
+<figure class="align-center" id="id35">
+<a class="reference internal image-reference" href="_images/relais_temp_reel.png"><img alt="Relais temporisé industriel" src="_images/relais_temp_reel.png" style="width: 38%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 52 </span><span class="caption-text"><em>Fig. 7 — Relais temporisé industriel sur rail DIN (Source : Legrand)</em></span><a class="headerlink" href="#id35" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="les-deux-types-de-temporisation-s35">
+<h3>4.2 Les deux types de temporisation <a class="reference internal" href="#s35" id="id16"><span>[S35]</span></a><a class="headerlink" href="#les-deux-types-de-temporisation-s35" title="Lien vers cette rubrique"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Comportement</p></th>
+<th class="head"><p>Application sur le banc</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>TON</strong> — Temporisation à l’enclenchement</p></td>
+<td><p>La bobine est alimentée → les contacts changent d’état après le délai T réglé</p></td>
+<td><p>Attente avant de lancer le mouvement suivant (ex. : stabilisation de pression)</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>TOF</strong> — Temporisation au déclenchement</p></td>
+<td><p>La bobine est désalimentée → les contacts changent d’état après le délai T réglé</p></td>
+<td><p>Maintien d’une action pendant T secondes après la fin de la commande</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id36">
+<a class="reference internal image-reference" href="_images/relais_temp_ton.png"><img alt="Symbole relais temporisé TON" src="_images/relais_temp_ton.png" style="width: 35%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 53 </span><span class="caption-text"><em>Fig. 8 — Relais temporisé à l’enclenchement (TON)</em>
+<em>(Source : Michel All)</em></span><a class="headerlink" href="#id36" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id37">
+<a class="reference internal image-reference" href="_images/relais_temp_tof.png"><img alt="Symbole relais temporisé TOF" src="_images/relais_temp_tof.png" style="width: 35%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 54 </span><span class="caption-text"><em>Fig. 9 — Relais temporisé au déclenchement (TOF)</em>
+<em>(Source : Michel All)</em></span><a class="headerlink" href="#id37" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id17">
+<h3>4.3 Connexions<a class="headerlink" href="#id17" title="Lien vers cette rubrique"></a></h3>
+<p>Identiques au relais standard :
+- <strong>A1 / A2</strong> : alimentation bobine (+/−)
+- <strong>NO / NF</strong> : contacts temporisés (changent d’état après le délai T)</p>
+</section>
+</section>
+<hr class="docutils" />
+<section id="bouton-poussoir">
+<h2>5. Bouton poussoir<a class="headerlink" href="#bouton-poussoir" title="Lien vers cette rubrique"></a></h2>
+<section id="id18">
+<h3>5.1 Description<a class="headerlink" href="#id18" title="Lien vers cette rubrique"></a></h3>
+<p>Le bouton poussoir est un interrupteur à actionnement manuel et à rappel automatique
+par ressort. Appuyé, il change l’état de son contact ; relâché, il revient
+immédiatement à son état de repos.</p>
+</section>
+<section id="les-deux-types-de-contact-s36">
+<h3>5.2 Les deux types de contact <a class="reference internal" href="#s36" id="id19"><span>[S36]</span></a><a class="headerlink" href="#les-deux-types-de-contact-s36" title="Lien vers cette rubrique"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 35.0%" />
+<col style="width: 45.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>Au repos</p></th>
+<th class="head"><p>Quand appuyé</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><strong>NO</strong> (normalement ouvert)</p></td>
+<td><p>Contact ouvert → signal à 0</p></td>
+<td><p>Contact se ferme → signal à 1</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>NF</strong> (normalement fermé)</p></td>
+<td><p>Contact fermé → signal à 1</p></td>
+<td><p>Contact s’ouvre → signal à 0</p></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Usage typique sur le banc :</strong>
+- Bouton <strong>Démarrage</strong> : NO — le signal passe de 0 à 1 pour lancer le cycle
+- Bouton <strong>Arrêt d’urgence</strong> : NF — le signal passe de 1 à 0 pour stopper immédiatement (comportement sécurisé : une coupure de fil arrête aussi le système)</p>
+<figure class="align-center" id="id38">
+<a class="reference internal image-reference" href="_images/bouton_nf.png"><img alt="Symbole bouton poussoir NF" src="_images/bouton_nf.png" style="width: 30%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 55 </span><span class="caption-text"><em>Fig. 10 — Symbole d’un bouton poussoir normalement fermé (NF)</em>
+<em>(Source : BPMEI Prades)</em></span><a class="headerlink" href="#id38" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<figure class="align-center" id="id39">
+<a class="reference internal image-reference" href="_images/bouton_no.png"><img alt="Symbole bouton poussoir NO" src="_images/bouton_no.png" style="width: 30%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 56 </span><span class="caption-text"><em>Fig. 11 — Symbole d’un bouton poussoir normalement ouvert (NO)</em>
+<em>(Source : BPMEI Prades)</em></span><a class="headerlink" href="#id39" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+</section>
+<section id="id20">
+<h3>5.3 Connexions<a class="headerlink" href="#id20" title="Lien vers cette rubrique"></a></h3>
+<ul class="simple">
+<li><p><strong>COM</strong> : borne commune (reliée au +24 V ou au 0 V selon schéma)</p></li>
+<li><p><strong>NO</strong> : vers entrée API — signal à 1 quand le bouton est appuyé</p></li>
+<li><p><strong>NF</strong> : vers entrée API — signal à 0 quand le bouton est appuyé</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="voyant-lumineux">
+<h2>6. Voyant lumineux<a class="headerlink" href="#voyant-lumineux" title="Lien vers cette rubrique"></a></h2>
+<section id="id21">
+<h3>6.1 Description<a class="headerlink" href="#id21" title="Lien vers cette rubrique"></a></h3>
+<p>Le voyant lumineux est un indicateur visuel à LED qui signale l’état opérationnel
+du système à l’opérateur.</p>
+</section>
+<section id="id22">
+<h3>6.2 Rôle dans le système<a class="headerlink" href="#id22" title="Lien vers cette rubrique"></a></h3>
+<p>Les voyants transmettent en temps réel des informations sur l’état du cycle :</p>
+<ul class="simple">
+<li><p><strong>Voyant vert</strong> : système en marche, cycle en cours</p></li>
+<li><p><strong>Voyant rouge</strong> : arrêt, défaut détecté ou arrêt d’urgence actionné</p></li>
+</ul>
+</section>
+<section id="principe-de-fonctionnement">
+<h3>6.3 Principe de fonctionnement<a class="headerlink" href="#principe-de-fonctionnement" title="Lien vers cette rubrique"></a></h3>
+<p>Une LED à l’intérieur du voyant s’allume dès qu’une tension de 24 V DC est appliquée
+à ses bornes par la sortie de l’API. L’extinction correspond à l’absence de tension
+en sortie (Q = 0).</p>
+</section>
+<section id="symbole-et-connexions-s36">
+<h3>6.4 Symbole et connexions <a class="reference internal" href="#s36" id="id23"><span>[S36]</span></a><a class="headerlink" href="#symbole-et-connexions-s36" title="Lien vers cette rubrique"></a></h3>
+<figure class="align-center" id="id40">
+<a class="reference internal image-reference" href="_images/voyant_symbole.png"><img alt="Symbole d'un voyant lumineux" src="_images/voyant_symbole.png" style="width: 22%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 57 </span><span class="caption-text"><em>Fig. 12 — Symbole d’un voyant lumineux (Source : Positron Libre)</em></span><a class="headerlink" href="#id40" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<ul class="simple">
+<li><p><strong>Entrée</strong> : +24 V DC depuis sortie API (Q0.6 ou Q0.7)</p></li>
+<li><p><strong>Retour</strong> : 0 V commun (GND)</p></li>
+</ul>
+</section>
+</section>
+<hr class="docutils" />
+<section id="interface-d-alimentation">
+<h2>7. Interface d’alimentation<a class="headerlink" href="#interface-d-alimentation" title="Lien vers cette rubrique"></a></h2>
+<section id="id24">
+<h3>7.1 Description<a class="headerlink" href="#id24" title="Lien vers cette rubrique"></a></h3>
+<p>L’interface d’alimentation assure la distribution et la protection de l’énergie
+électrique vers tous les composants du banc. Elle reçoit le réseau 230 V AC
+via un disjoncteur différentiel 30 mA (protection des personnes) et le distribue
+après conversion en <strong>24 V DC</strong> vers les circuits de commande <a class="reference internal" href="#s30" id="id25"><span>[S30]</span></a>.</p>
+</section>
+<section id="architecture-d-alimentation-s37">
+<h3>7.2 Architecture d’alimentation <a class="reference internal" href="#s37" id="id26"><span>[S37]</span></a><a class="headerlink" href="#architecture-d-alimentation-s37" title="Lien vers cette rubrique"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 70.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Niveau</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>230 V AC — réseau</p></td>
+<td><p>Alimentation principale du banc (moteur, transformateur d’alimentation)</p></td>
+</tr>
+<tr class="row-odd"><td><p>Protection réseau</p></td>
+<td><p>2× modules 230 V/16 A + 1× disjoncteur + différentiel 30 mA</p></td>
+</tr>
+<tr class="row-even"><td><p>24 V DC — commande</p></td>
+<td><p>Alimentation de l’API, capteurs, bobines électrovannes, voyants</p></td>
+</tr>
+<tr class="row-odd"><td><p>Distribution</p></td>
+<td><p>Via bornes de connexion vers API, capteurs, relais, électrovannes</p></td>
+</tr>
+</tbody>
+</table>
+<figure class="align-center" id="id41">
+<a class="reference internal image-reference" href="_images/alimentation.png"><img alt="Sources d'alimentation DC et AC" src="_images/alimentation.png" style="width: 40%;" />
+</a>
+<figcaption>
+<p><span class="caption-number">Fig. 58 </span><span class="caption-text"><em>Fig. 13 — Symboles des sources d’alimentation : courant continu (DC) et courant</em>
+<em>alternatif (AC) (Source : PCBasic)</em></span><a class="headerlink" href="#id41" title="Lien vers cette image"></a></p>
+</figcaption>
+</figure>
+<div class="admonition warning">
+<p class="admonition-title">Avertissement</p>
+<p>Ne jamais intervenir sur le câblage électrique du banc sans avoir d’abord coupé
+le disjoncteur principal et consigné le banc. La présence simultanée de 230 V AC
+(puissance) et 24 V DC (commande) impose une vigilance particulière lors du câblage.</p>
+</div>
+</section>
+</section>
+<hr class="docutils" />
+<section id="tableau-recapitulatif-composants-de-la-couche-commande">
+<h2>9. Tableau récapitulatif — composants de la couche commande<a class="headerlink" href="#tableau-recapitulatif-composants-de-la-couche-commande" title="Lien vers cette rubrique"></a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 35.0%" />
+<col style="width: 40.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Composant</p></th>
+<th class="head"><p>Référence/Marque</p></th>
+<th class="head"><p>Rôle principal</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>API DELTA DVP</p></td>
+<td><p>Delta Electronics DVP</p></td>
+<td><p>Unité centrale — exécute le programme Ladder/GRAFCET</p></td>
+</tr>
+<tr class="row-odd"><td><p>Modules I/O</p></td>
+<td><p>DVP — 8E numériques + 6S relais</p></td>
+<td><p>Interface capteurs ↔ API ↔ actionneurs</p></td>
+</tr>
+<tr class="row-even"><td><p>Relais électrique</p></td>
+<td><p>Standard 24 V DC</p></td>
+<td><p>Isolation puissance / commande</p></td>
+</tr>
+<tr class="row-odd"><td><p>Relais temporisé</p></td>
+<td><p>TON/TOF</p></td>
+<td><p>Temporisations dans les séquences</p></td>
+</tr>
+<tr class="row-even"><td><p>Bouton poussoir</p></td>
+<td><p>NO + NF</p></td>
+<td><p>Commandes manuelles opérateur</p></td>
+</tr>
+<tr class="row-odd"><td><p>Voyant lumineux</p></td>
+<td><p>LED 24 V DC</p></td>
+<td><p>Signalisation état du système</p></td>
+</tr>
+<tr class="row-even"><td><p>Interface alimentation</p></td>
+<td><p>230 V AC → 24 V DC</p></td>
+<td><p>Distribution et protection électrique</p></td>
+</tr>
+</tbody>
+</table>
+<hr class="docutils" />
+<p class="rubric">Sources utilisées dans ce module</p>
+<div role="list" class="citation-list">
+<div class="citation" id="s30" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>S30<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id1">1</a>,<a role="doc-backlink" href="#id2">2</a>,<a role="doc-backlink" href="#id4">3</a>,<a role="doc-backlink" href="#id7">4</a>,<a role="doc-backlink" href="#id11">5</a>,<a role="doc-backlink" href="#id25">6</a>)</span>
+<p>TDS DIDACTIC, <em>Fiche technique — Banc didactique électro-hydraulique lot 18</em>,
+Technology Development Systems, 2023. (fiche fournie avec le matériel)</p>
+</div>
+<div class="citation" id="s31" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>S31<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id3">1</a>,<a role="doc-backlink" href="#id5">2</a>)</span>
+<p>Tech3Elec, <em>Fonctionnement d’un automate programmable industriel — cycle,
+entrées/sorties et adressage</em>, ressource pédagogique,
+disponible en ligne : <a class="reference external" href="https://www.tech3elec.fr">https://www.tech3elec.fr</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s32" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id6">S32</a><span class="fn-bracket">]</span></span>
+<p>Delta Electronics, <em>WPLSoft — logiciel de programmation API DELTA DVP,
+guide de démarrage rapide</em>, documentation officielle,
+disponible en ligne : <a class="reference external" href="https://www.deltaww.com">https://www.deltaww.com</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s33" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>S33<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id9">1</a>,<a role="doc-backlink" href="#id10">2</a>)</span>
+<p>Tech3Elec, <em>Modules d’entrées/sorties des API — isolation optique et
+câblage</em>, ressource pédagogique,
+disponible en ligne : <a class="reference external" href="https://www.tech3elec.fr">https://www.tech3elec.fr</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s34" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>S34<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id13">1</a>,<a role="doc-backlink" href="#id14">2</a>)</span>
+<p>GEYA Electric, <em>Relais électromécaniques — symboles, câblage et
+caractéristiques</em>, documentation produit,
+disponible en ligne : <a class="reference external" href="https://www.geya.net">https://www.geya.net</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s35" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id16">S35</a><span class="fn-bracket">]</span></span>
+<p>Michel All (ElectroSchéma), <em>Relais temporisés TON et TOF — symboles
+et applications en automatisme</em>, ressource pédagogique,
+disponible en ligne : <a class="reference external" href="https://www.electroschema.fr">https://www.electroschema.fr</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s36" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span>S36<span class="fn-bracket">]</span></span>
+<span class="backrefs">(<a role="doc-backlink" href="#id19">1</a>,<a role="doc-backlink" href="#id23">2</a>)</span>
+<p>BPMEI Prades, <em>Boutons poussoirs et voyants lumineux — symboles et
+câblage vers API</em>, ressource pédagogique,
+disponible en ligne : <a class="reference external" href="https://www.bpmei-prades.fr">https://www.bpmei-prades.fr</a> (consulté en 2024)</p>
+</div>
+<div class="citation" id="s37" role="doc-biblioentry">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id26">S37</a><span class="fn-bracket">]</span></span>
+<p>PCBasic, <em>Sources d’alimentation électrique DC et AC — symboles et
+protection</em>, documentation technique,
+disponible en ligne : <a class="reference external" href="https://www.pcbasic.fr">https://www.pcbasic.fr</a> (consulté en 2024)</p>
+</div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="capteurs.html" class="btn btn-neutral float-left" title="Capteurs et instrumentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="regulation.html" class="btn btn-neutral float-right" title="Organes de régulation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2026, Mohamed Amine jabeur / Nour Miladi.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
